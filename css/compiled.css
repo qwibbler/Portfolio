@@ -1,0 +1,95 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  width: 100vw;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+main {
+  width: 100vw;
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/bg/cork.jpg);
+}
+
+.main-page .curtain {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+}
+.main-page .curtain.left {
+  left: 0;
+  width: 50%;
+}
+.main-page .curtain.right {
+  right: 0;
+  width: 50%;
+}
+.main-page .plaque {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3A3D3E;
+  border: 2px solid #DE9B72;
+  padding: 5px;
+}
+.main-page .plaque:before, .main-page .plaque:after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: #DE9B72;
+  border: 2px solid #DE9B72;
+  line-height: 12px;
+  top: 5px;
+  text-align: center;
+}
+.main-page .plaque:before {
+  left: 5px;
+}
+.main-page .plaque:after {
+  right: 5px;
+}
+.main-page .plaque-inner {
+  position: relative;
+  border: 2px solid #DE9B72;
+  padding: 40px;
+}
+.main-page .plaque-inner:before, .main-page .plaque-inner:after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: #DE9B72;
+  border: 2px solid #DE9B72;
+  border-bottom-width: 1px;
+  line-height: 12px;
+  bottom: -1px;
+  text-align: center;
+}
+.main-page .plaque-inner:before {
+  left: -2px;
+}
+.main-page .plaque-inner:after {
+  right: -2px;
+}
+
+/*# sourceMappingURL=compiled.css.map */
