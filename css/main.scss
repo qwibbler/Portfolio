@@ -8,45 +8,62 @@
 
 body {
   scroll-behavior: smooth;
-  font-family: 'Inter', sans-serif;
+  // font-family: 'Inter', sans-serif;
   font-style: normal;
   width: 100vw;
   overflow-x: hidden;
   text-align: center;
 }
 
-main {
-  width: 100vw;
-}
-
 section {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url(../images/bg/cork.jpg);
-  // border: 1rem solid #fff;
-  // border-image: url(../images/bg/wood.jpg) 30% round;
 }
 
-.main-page {
+.splash-page {
+  z-index: 100;
+  position: fixed;
   $color-skin: #DE9B72;
   // $color-skin2: #b78846;
   $color-dark: #3A3D3E;
+  $bg: linear-gradient(7deg, #151515 5px, transparent 5px) 0 5px,
+  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
 
-  .curtain {
+  @mixin curtain($position) {
     position: absolute;
     top: 0;
     height: 100vh;
+    width: 50%;
+    #{$position}: 0;
+  }
 
-    &.left {
-      left: 0;
-      width: 50%;
+  .curtain {
+    &#left {
+      @include curtain(left);
     }
 
-    &.right {
-      right: 0;
-      width: 50%;
+    &#right {
+      @include curtain(right);
     }
+  }
+
+  @mixin plaque-corner($horizontal, $x, $vertical, $y) {
+    content: "•";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    color: $color-skin;
+    border: 2px solid $color-skin;
+    line-height: 12px;
+    text-align: center;
+    #{$vertical}: #{$y};
+    #{$horizontal}: #{$x};
   }
 
   .plaque {
@@ -55,30 +72,20 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     // width: 60%;
+    color: $color-skin;
     background-color: $color-dark;
+    background: $bg;
+    background-color: #131313;
+    background-size: 20px 20px;
     border: 2px solid $color-skin;
     padding: 5px;
 
-    &:before,
-    &:after {
-      content: "•";
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      font-size: 14px;
-      color: $color-skin;
-      border: 2px solid $color-skin;
-      line-height: 12px;
-      top: 5px;
-      text-align: center;
-    }
-
     &:before {
-      left: 5px;
+      @include plaque-corner(left, 5px, top, 5px);
     }
 
     &:after {
-      right: 5px;
+      @include plaque-corner(right, 5px, top, 5px);
     }
 
     &-inner {
@@ -88,26 +95,92 @@ section {
 
       &:before,
       &:after {
-        content: "•";
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        font-size: 14px;
-        color: $color-skin;
-        border: 2px solid $color-skin;
         border-bottom-width: 1px;
-        line-height: 12px;
-        bottom: -1px;
-        text-align: center;
       }
 
       &:before {
-        left: -2px;
+        @include plaque-corner(left, -2px, bottom, -1px);
       }
 
       &:after {
-        right: -2px;
+        @include plaque-corner(right, -2px, bottom, -1px);
       }
+    }
+  }
+}
+
+main {
+  width: 100vw;
+
+  section {
+    background-color: black;
+
+    // background-color: hsl(60, 20%, 83%);
+    // border: solid 5vmin #eee;
+    // border-bottom-color: #fff;
+    // border-left-color: #eee;
+    // border-radius: 2px;
+    // border-right-color: #eee;
+    // border-top-color: #ddd;
+    // box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+    // box-sizing: border-box;
+    // display: inline-block;
+    // height: 100vh;
+    // padding: 8vmin;
+    // position: relative;
+    // text-align: center;
+
+    // @mixin section-border($pos: -2vmin) {
+    //   content: "";
+    //   position: absolute;
+    //   border-radius: 2px;
+    //   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25) inset;
+    //   bottom: #{$pos};
+    //   left: #{$pos};
+    //   right: #{$pos};
+    //   top: #{$pos};
+    // }
+
+    // &:before {
+    //   @include section-border(-2vmin);
+    // }
+
+    // &:after {
+    //   @include section-border(-2.5vmin);
+    // }
+
+    // .cork {
+    //   width: 100%;
+    //   height: 100%;
+    //   background-image: url(../images/bg/cork.jpg);
+    //   box-shadow: 0px 0px 3px black inset;
+    // }
+  }
+}
+
+.projects {
+  $card-width: 20vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $card-width);
+  align-content: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem;
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    max-width: $card-width;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: hsl(60, 20%, 83%);
+    border-top-left-radius: 250px 15px;
+    border-bottom-left-radius: 20px 115px;
+    border-bottom-right-radius: 105px 15px;
+
+    ul {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
