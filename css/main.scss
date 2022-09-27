@@ -109,6 +109,32 @@ section {
   }
 }
 
+.blank-page {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  height: 200vh;
+  margin: 0;
+  padding: 20vh 0 0 0;
+  width: 100vw;
+
+  .light {
+    background-color: rgba(255, 255, 0, 1);
+    height: 8vw;
+    width: 10vw;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  .spotlight {
+    height: 150vh;
+    width: 10vw;
+    margin: -4vw auto;
+    background: linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 255, 0));
+    // border-radius: 10vw 10vw 0 0;
+  }
+}
+
 main {
   width: 100vw;
 

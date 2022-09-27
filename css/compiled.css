@@ -9,47 +9,50 @@
 
 body {
   scroll-behavior: smooth;
-  font-family: "Inter", sans-serif;
   font-style: normal;
   width: 100vw;
   overflow-x: hidden;
   text-align: center;
 }
 
-main {
-  width: 100vw;
-}
-
 section {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url(../images/bg/cork.jpg);
 }
 
-.main-page .curtain {
+.splash-page {
+  z-index: 100;
+  position: fixed;
+}
+.splash-page .curtain#left {
   position: absolute;
   top: 0;
   height: 100vh;
-}
-.main-page .curtain.left {
+  width: 50%;
   left: 0;
-  width: 50%;
 }
-.main-page .curtain.right {
+.splash-page .curtain#right {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 50%;
   right: 0;
-  width: 50%;
 }
-.main-page .plaque {
+.splash-page .plaque {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: #DE9B72;
   background-color: #3A3D3E;
+  background: linear-gradient(7deg, #151515 5px, transparent 5px) 0 5px, linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px, linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px, linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px, linear-gradient(90deg, #1b1b1b 10px, transparent 10px), linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
   border: 2px solid #DE9B72;
   padding: 5px;
 }
-.main-page .plaque:before, .main-page .plaque:after {
+.splash-page .plaque:before {
   content: "•";
   position: absolute;
   width: 14px;
@@ -58,21 +61,32 @@ section {
   color: #DE9B72;
   border: 2px solid #DE9B72;
   line-height: 12px;
-  top: 5px;
   text-align: center;
-}
-.main-page .plaque:before {
+  top: 5px;
   left: 5px;
 }
-.main-page .plaque:after {
+.splash-page .plaque:after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: #DE9B72;
+  border: 2px solid #DE9B72;
+  line-height: 12px;
+  text-align: center;
+  top: 5px;
   right: 5px;
 }
-.main-page .plaque-inner {
+.splash-page .plaque-inner {
   position: relative;
   border: 2px solid #DE9B72;
   padding: 40px;
 }
-.main-page .plaque-inner:before, .main-page .plaque-inner:after {
+.splash-page .plaque-inner:before, .splash-page .plaque-inner:after {
+  border-bottom-width: 1px;
+}
+.splash-page .plaque-inner:before {
   content: "•";
   position: absolute;
   width: 14px;
@@ -80,16 +94,77 @@ section {
   font-size: 14px;
   color: #DE9B72;
   border: 2px solid #DE9B72;
-  border-bottom-width: 1px;
   line-height: 12px;
-  bottom: -1px;
   text-align: center;
-}
-.main-page .plaque-inner:before {
+  bottom: -1px;
   left: -2px;
 }
-.main-page .plaque-inner:after {
+.splash-page .plaque-inner:after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: #DE9B72;
+  border: 2px solid #DE9B72;
+  line-height: 12px;
+  text-align: center;
+  bottom: -1px;
   right: -2px;
+}
+
+.blank-page {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  height: 200vh;
+  margin: 0;
+  padding: 20vh 0 0 0;
+  width: 100vw;
+}
+.blank-page .light {
+  background-color: rgb(255, 255, 0);
+  height: 8vw;
+  width: 10vw;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.blank-page .spotlight {
+  height: 150vh;
+  width: 10vw;
+  margin: -4vw auto;
+  background: linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 255, 0));
+}
+
+main {
+  width: 100vw;
+}
+main section {
+  background-color: black;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20vw);
+  align-content: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem;
+}
+.projects .project-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 20vw;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: hsl(60deg, 20%, 83%);
+  border-top-left-radius: 250px 15px;
+  border-bottom-left-radius: 20px 115px;
+  border-bottom-right-radius: 105px 15px;
+}
+.projects .project-card ul {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=compiled.css.map */
