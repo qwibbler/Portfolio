@@ -74,7 +74,7 @@ const toggleCurtains = () => {
       curtains[i].style.width = `${(scrolledPagePercent / 2) * 100}%`;
     }
     $('.plaque').css('opacity', `${scrolledPagePercent}`);
-    $('.blank-page').css('opacity', `${scrolledPagePercent * 2}`);
+    $('.blank-page').css('opacity', `${scrolledPagePercent * 1.5}`);
     return;
   }
   $('.splash-page').css('z-index', '-1');

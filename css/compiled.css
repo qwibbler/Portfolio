@@ -154,4 +154,74 @@ main {
   flex-direction: column;
 }
 
+header {
+  background: #3A3D3E;
+  margin: 0 auto;
+  width: 95vw;
+  /* Decorations */
+}
+header .heading {
+  font-style: normal;
+  color: #DE9B72;
+  font-size: 1em;
+  padding: 2em;
+}
+header .outer-border {
+  border: 2px solid #DE9B72;
+  padding: 6px;
+}
+header .mid-border {
+  border: 6px solid #DE9B72;
+  padding: 6px;
+}
+header .inner-border {
+  border: 2px solid #DE9B72;
+  padding: 6px;
+  position: relative;
+}
+header .corner-decoration {
+  position: absolute;
+  width: 3em;
+  margin: -3px;
+}
+header .corner-decoration.left-top {
+  left: 0;
+  top: 0;
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+header .corner-decoration.right-top {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+header .corner-decoration.right-bottom {
+  right: 0;
+  bottom: 0;
+  -webkit-transform: scale(-1);
+  transform: scale(-1);
+}
+header .corner-decoration.left-bottom {
+  left: 0;
+  bottom: 0;
+  -webkit-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+header .vertical-decoration {
+  position: absolute;
+  width: 11em;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+header .vertical-decoration.top {
+  top: 0;
+}
+header .vertical-decoration.bottom {
+  bottom: 0;
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
 /*# sourceMappingURL=compiled.css.map */
