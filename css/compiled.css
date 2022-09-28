@@ -119,31 +119,12 @@ section {
 .blank-page {
   position: relative;
   display: flex;
+  background-color: black;
   flex-direction: column;
   height: 200vh;
   margin: 0;
   padding: 20vh 0 0 0;
   width: 100vw;
-}
-.blank-page .spotlight {
-  height: 150vh;
-  width: 10vw;
-  margin: -4vw auto;
-  background: linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 255, 0));
-  width: 0;
-  height: 10vw;
-  border-left: 10vw solid transparent;
-  border-right: 10vw solid transparent;
-  border-bottom: 150vh solid yellow;
-  box-shadow: 0 0 0 0 pink;
-}
-.blank-page .stage {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50vh;
-  background-image: url(../images/bg/planks.jpeg);
 }
 
 main {

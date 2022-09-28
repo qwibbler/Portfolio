@@ -61,26 +61,28 @@ const projects = [
   },
 ];
 
-const toggle_curtains = () => {
+
+const toggleCurtains = () => {
   const window_height = window.innerHeight;
-  const scroll = window_height - window.pageYOffset
+  const scrolledPagePercent = (window_height - window.pageYOffset) / window_height;
+
   const curtains = $('.curtain');
 
-  if (window.pageYOffset < window_height) {
+  if (scrolledPagePercent >= 0) {
     $('.splash-page').css('z-index', '100');
     for (let i = 0; i < curtains.length; i += 1) {
-      curtains[i].style.width = `${((scroll / (2 * window_height)) * 100)}%`;
+      curtains[i].style.width = `${(scrolledPagePercent / 2) * 100}%`;
     }
-    $('.plaque').css('opacity', `${scroll / window_height}`);
+    $('.plaque').css('opacity', `${scrolledPagePercent}`);
+    $('.blank-page').css('opacity', `${scrolledPagePercent * 2}`);
     return;
   }
   $('.splash-page').css('z-index', '-1');
 };
 
 window.addEventListener('scroll', () => {
-  // document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-  // document.body.style.setProperty('--pos', window.pageYOffset);
-  toggle_curtains();
+  toggleCurtains();
 }, false);
+
 // $(
 // )
