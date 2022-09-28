@@ -63,17 +63,18 @@ const projects = [
 
 const toggle_curtains = () => {
   const window_height = window.innerHeight;
+  const scroll = window_height - window.pageYOffset
   const curtains = $('.curtain');
 
   if (window.pageYOffset < window_height) {
-    $('.splash-page').css('display', 'inherit');
+    $('.splash-page').css('z-index', '100');
     for (let i = 0; i < curtains.length; i += 1) {
-      curtains[i].style.width = `${(((window_height - window.pageYOffset) / (2 * window_height)) * 100)}%`;
+      curtains[i].style.width = `${((scroll / (2 * window_height)) * 100)}%`;
     }
-    $('.plaque').css('opacity', `${(window_height - window.pageYOffset) / window_height}`);
+    $('.plaque').css('opacity', `${scroll / window_height}`);
     return;
   }
-  $('.splash-page').css('display', 'none');
+  $('.splash-page').css('z-index', '-1');
 };
 
 window.addEventListener('scroll', () => {

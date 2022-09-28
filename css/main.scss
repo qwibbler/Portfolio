@@ -13,6 +13,9 @@ body {
   width: 100vw;
   overflow-x: hidden;
   text-align: center;
+  background: black url(../images/bg/stage.jpg) no-repeat fixed;
+  background-size: auto 100%;
+  background-position: center;
 }
 
 section {
@@ -110,21 +113,13 @@ section {
 }
 
 .blank-page {
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: black;
   height: 200vh;
   margin: 0;
   padding: 20vh 0 0 0;
   width: 100vw;
-
-  .light {
-    background-color: rgba(255, 255, 0, 1);
-    height: 8vw;
-    width: 10vw;
-    margin: 0 auto;
-    border-radius: 50%;
-  }
 
   .spotlight {
     height: 150vh;
@@ -132,6 +127,27 @@ section {
     margin: -4vw auto;
     background: linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 255, 0));
     // border-radius: 10vw 10vw 0 0;
+    width: 0;
+    height: 10vw;
+    border-left: 10vw solid transparent;
+    border-right: 10vw solid transparent;
+    border-bottom: 150vh solid yellow;
+    box-shadow: 0 0 0 0 pink;
+    // border-image: linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 255, 0));
+    // transform: perspective(100vw);
+  }
+
+  // perspective: 100px;
+  // perspective-origin: center bottom;
+  .stage {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    background-image: url(../images/bg/planks.jpeg);
+    // transform: rotateX(45deg);
+    
   }
 }
 
@@ -139,8 +155,6 @@ main {
   width: 100vw;
 
   section {
-    background-color: black;
-
     // background-color: hsl(60, 20%, 83%);
     // border: solid 5vmin #eee;
     // border-bottom-color: #fff;
