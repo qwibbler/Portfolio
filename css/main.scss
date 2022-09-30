@@ -127,7 +127,70 @@ section {
 main {
   width: 100vw;
 
-  section {}
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    $red: #ac0200;
+    $gold: gold;
+    $hang: 1.5em;
+    $border: 0.1em;
+
+    .heading {
+      position: sticky;
+      padding: 0.5em;
+      margin: auto;
+      background: $red url(../images/bg/red.jpeg);
+      background-size: cover;
+      background-blend-mode: hard-light;
+
+      h1 {
+        border: $gold $border solid;
+        color: $gold;
+      }
+    }
+
+    .page-visible {
+      position: fixed;
+      // z-index: 10;
+      top: $hang;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: enter-heading 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 500ms no-repeat;
+
+      &::before {
+        content: '';
+        position: fixed;
+        // z-index: 9;
+        top: #{-$hang - $border};
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5em;
+        height: $hang;
+        border: $border solid $gold;
+        border-bottom: none;
+      }
+
+    }
+
+    @keyframes enter-heading {
+      0% {
+        transform: translateY(-200%);
+      }
+
+      50% {
+        transform: translateY(0);
+      }
+
+      75% {
+        transform: translateY(-10%);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
 }
 
 .projects {
@@ -157,85 +220,85 @@ main {
   }
 }
 
-header {
-  $color-skin: #DE9B72;
-  $color-dark: #3A3D3E;
-  background: $color-dark;
-  margin: 0 auto;
-  width: 95vw;
+// header {
+//   $color-skin: #DE9B72;
+//   $color-dark: #3A3D3E;
+//   background: $color-dark;
+//   margin: 0 auto;
+//   width: 95vw;
 
-  .heading {
-    font-style: normal;
-    color: $color-skin;
-    font-size: 1em;
-    padding: 2em;
-  }
+//   .heading {
+//     font-style: normal;
+//     color: $color-skin;
+//     font-size: 1em;
+//     padding: 2em;
+//   }
 
-  @mixin border($border-width) {
-    border: $border-width solid $color-skin;
-    padding: 6px;
-  }
+//   @mixin border($border-width) {
+//     border: $border-width solid $color-skin;
+//     padding: 6px;
+//   }
 
-  .outer-border {
-    @include border(2px);
-  }
+//   .outer-border {
+//     @include border(2px);
+//   }
 
-  .mid-border {
-    @include border(6px);
-  }
+//   .mid-border {
+//     @include border(6px);
+//   }
 
-  .inner-border {
-    @include border(2px);
-    position: relative;
-  }
+//   .inner-border {
+//     @include border(2px);
+//     position: relative;
+//   }
 
-  /* Decorations */
-  @mixin corners($width, $margin) {
-    position: absolute;
-    width: $width;
-    margin: $margin;
-  }
+//   /* Decorations */
+//   @mixin corners($width, $margin) {
+//     position: absolute;
+//     width: $width;
+//     margin: $margin;
+//   }
 
-  .corner-decoration {
-    @include corners(3em, -3px);
+//   .corner-decoration {
+//     @include corners(3em, -3px);
 
-    @mixin position($pos1, $pos2, $scale) {
-      #{$pos1}: 0;
-      #{$pos2}: 0;
-      -webkit-transform: scale($scale);
-      transform: scale($scale);
-    }
+//     @mixin position($pos1, $pos2, $scale) {
+//       #{$pos1}: 0;
+//       #{$pos2}: 0;
+//       -webkit-transform: scale($scale);
+//       transform: scale($scale);
+//     }
 
-    &.left-top {
-      @include position(left, top, (1, 1));
-    }
+//     &.left-top {
+//       @include position(left, top, (1, 1));
+//     }
 
-    &.right-top {
-      @include position(right, top, (-1, 1));
-    }
+//     &.right-top {
+//       @include position(right, top, (-1, 1));
+//     }
 
-    &.right-bottom {
-      @include position(right, bottom, -1);
-    }
+//     &.right-bottom {
+//       @include position(right, bottom, -1);
+//     }
 
-    &.left-bottom {
-      @include position(left, bottom, (1, -1));
-    }
-  }
+//     &.left-bottom {
+//       @include position(left, bottom, (1, -1));
+//     }
+//   }
 
-  .vertical-decoration {
-    @include corners(11em, auto);
-    left: 0;
-    right: 0;
+//   .vertical-decoration {
+//     @include corners(11em, auto);
+//     left: 0;
+//     right: 0;
 
-    &.top {
-      top: 0;
-    }
+//     &.top {
+//       top: 0;
+//     }
 
-    &.bottom {
-      bottom: 0;
-      -webkit-transform: scaleY(-1);
-      transform: scaleY(-1);
-    }
-  }
-}
+//     &.bottom {
+//       bottom: 0;
+//       -webkit-transform: scaleY(-1);
+//       transform: scaleY(-1);
+//     }
+//   }
+// }

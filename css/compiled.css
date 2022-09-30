@@ -130,6 +130,56 @@ section {
 main {
   width: 100vw;
 }
+main section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main section .heading {
+  position: sticky;
+  padding: 0.5em;
+  margin: auto;
+  background: #ac0200 url(../images/bg/red.jpeg);
+  background-size: cover;
+  background-blend-mode: hard-light;
+}
+main section .heading h1 {
+  border: gold 0.1em solid;
+  color: gold;
+}
+main section .page-visible {
+  position: fixed;
+  top: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: enter-heading 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 500ms no-repeat;
+}
+main section .page-visible::before {
+  content: "";
+  position: fixed;
+  top: -1.6em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5em;
+  height: 1.5em;
+  border: 0.1em solid gold;
+  border-bottom: none;
+}
+@keyframes enter-heading {
+  0% {
+    transform: translateY(-200%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, 20vw);
@@ -152,76 +202,6 @@ main {
 .projects .project-card ul {
   display: flex;
   flex-direction: column;
-}
-
-header {
-  background: #3A3D3E;
-  margin: 0 auto;
-  width: 95vw;
-  /* Decorations */
-}
-header .heading {
-  font-style: normal;
-  color: #DE9B72;
-  font-size: 1em;
-  padding: 2em;
-}
-header .outer-border {
-  border: 2px solid #DE9B72;
-  padding: 6px;
-}
-header .mid-border {
-  border: 6px solid #DE9B72;
-  padding: 6px;
-}
-header .inner-border {
-  border: 2px solid #DE9B72;
-  padding: 6px;
-  position: relative;
-}
-header .corner-decoration {
-  position: absolute;
-  width: 3em;
-  margin: -3px;
-}
-header .corner-decoration.left-top {
-  left: 0;
-  top: 0;
-  -webkit-transform: scale(1, 1);
-  transform: scale(1, 1);
-}
-header .corner-decoration.right-top {
-  right: 0;
-  top: 0;
-  -webkit-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-}
-header .corner-decoration.right-bottom {
-  right: 0;
-  bottom: 0;
-  -webkit-transform: scale(-1);
-  transform: scale(-1);
-}
-header .corner-decoration.left-bottom {
-  left: 0;
-  bottom: 0;
-  -webkit-transform: scale(1, -1);
-  transform: scale(1, -1);
-}
-header .vertical-decoration {
-  position: absolute;
-  width: 11em;
-  margin: auto;
-  left: 0;
-  right: 0;
-}
-header .vertical-decoration.top {
-  top: 0;
-}
-header .vertical-decoration.bottom {
-  bottom: 0;
-  -webkit-transform: scaleY(-1);
-  transform: scaleY(-1);
 }
 
 /*# sourceMappingURL=compiled.css.map */

@@ -61,27 +61,35 @@ const projects = [
   },
 ];
 
-
-const toggleCurtains = () => {
-  const window_height = window.innerHeight;
+const splashPage = (window_height) => {
   const scrolledPagePercent = (window_height - window.pageYOffset) / window_height;
-
   const curtains = $('.curtain');
 
+  // While window_height > scroll_height
   if (scrolledPagePercent >= 0) {
     $('.splash-page').css('z-index', '100');
     for (let i = 0; i < curtains.length; i += 1) {
+      // Open curtains
       curtains[i].style.width = `${(scrolledPagePercent / 2) * 100}%`;
     }
+    // Fade away the plaque
     $('.plaque').css('opacity', `${scrolledPagePercent}`);
+    // Fade in the background
     $('.blank-page').css('opacity', `${scrolledPagePercent * 1.5}`);
     return;
   }
+
+  // When window_height < scroll_height move splash to background
   $('.splash-page').css('z-index', '-1');
+}
+
+const onScroll = () => {
+  const window_height = window.innerHeight;
+  splashPage(window_height);
 };
 
 window.addEventListener('scroll', () => {
-  toggleCurtains();
+  onScroll();
 }, false);
 
 // $(
