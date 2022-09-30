@@ -151,32 +151,28 @@ main section .page-visible {
   position: fixed;
   top: 1.5em;
   left: 50%;
-  transform: translateX(-50%);
-  animation: enter-heading 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 500ms no-repeat;
-}
-main section .page-visible::before {
-  content: "";
-  position: fixed;
-  top: -1.6em;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5em;
-  height: 1.5em;
-  border: 0.1em solid gold;
-  border-bottom: none;
+  transform: translate(-50%, 0);
+  animation: enter-heading 1s;
+  animation-timing-function: ease-in;
 }
 @keyframes enter-heading {
   0% {
-    transform: translateY(-200%);
+    transform: translate(-50%, -200%);
   }
-  50% {
-    transform: translateY(0);
+  20% {
+    transform: translate(-50%, 0%) rotate(1.5deg);
   }
-  75% {
-    transform: translateY(-10%);
+  40% {
+    transform: translate(-50%, -30%) rotate(-2deg);
+  }
+  60% {
+    transform: translate(-50%, 0) rotate(2.5deg);
+  }
+  80% {
+    transform: translate(-50%, -10%) rotate(-2deg);
   }
   100% {
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
 }
 

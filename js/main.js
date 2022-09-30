@@ -92,5 +92,21 @@ window.addEventListener('scroll', () => {
   onScroll();
 }, false);
 
+const observer = new IntersectionObserver(entries => {
+  // Entries is always an array
+  entries.forEach(entry => {
+    console.log('entry', entry);
+    const heading = entry.target.querySelector('.heading');
+    if (entry.isIntersecting) {
+      heading.classList.add('page-visible');
+      return;
+    }
+    heading.classList.remove('page-visible');
+  });
+});
+
+// Tell the observer which elements to track
+$('.page').each((i, ele) => observer.observe(ele));
+
 // $(
 // )
