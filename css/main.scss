@@ -21,7 +21,7 @@ body {
 section {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .splash-page {
@@ -131,6 +131,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 100vh;
     $red: #ac0200;
     $gold: gold;
     $hang: 1.5em;
@@ -158,19 +159,6 @@ main {
       transform: translate(-50%, 0);
       animation: enter-heading 1s;
       animation-timing-function: ease-in;
-
-      // &::before {
-      //   content: '';
-      //   position: fixed;
-      //   // z-index: 9;
-      //   top: #{-$hang - $border};
-      //   left: 50%;
-      //   transform: translateX(-50%);
-      //   width: 5em;
-      //   height: $hang;
-      //   border: $border solid $gold;
-      //   border-bottom: none;
-      // }
     }
 
     @keyframes enter-heading {
@@ -185,24 +173,14 @@ main {
 }
 
 .projects {
-  $card-width: 20vw;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, $card-width);
-  align-content: center;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem;
-
+  $card-width: 80vw;
   .project-card {
     display: flex;
     flex-direction: column;
     max-width: $card-width;
-    margin: 0 auto;
+    margin: 1rem auto;
     padding: 1rem;
     background-color: hsl(60, 20%, 83%);
-    border-top-left-radius: 250px 15px;
-    border-bottom-left-radius: 20px 115px;
-    border-bottom-right-radius: 105px 15px;
 
     ul {
       display: flex;
