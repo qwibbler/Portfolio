@@ -92,10 +92,9 @@ window.addEventListener('scroll', () => {
   onScroll();
 }, false);
 
-const observer = new IntersectionObserver(entries => {
+const headingObserver = new IntersectionObserver((entries) => {
   // Entries is always an array
-  entries.forEach(entry => {
-    console.log('entry', entry);
+  entries.forEach((entry) => {
     const heading = entry.target.querySelector('.heading');
     if (entry.isIntersecting) {
       heading.classList.add('page-visible');
@@ -106,7 +105,35 @@ const observer = new IntersectionObserver(entries => {
 });
 
 // Tell the observer which elements to track
-$('.page').each((i, ele) => observer.observe(ele));
+$('.page').each((i, ele) => headingObserver.observe(ele));
 
-// $(
-// )
+const $folded = $('.project-card').oriDomi({
+  vPanels: [10, 10, 10, 70], // number of panels when folding left or right (vertically oriented)
+  hPanels: 5, // number of panels when folding top or bottom
+  speed: 1200, // folding duration in ms
+  ripple: 1, // ripple effect when animating
+  shadingIntensity: 1, // lessen the shading effect
+  perspective: 800, // smaller values exaggerate 3D distortion
+  maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
+  shading: 'soft', // change the shading type
+});
+// when using jQuery, iterate OriDomi methods over multiple elements like this:
+// $folded.oriDomi('accordion', 20, top);
+// to access the OriDomi instance at the top of the jQuery selection directly:
+var folded = $folded.oriDomi(true);
+folded.accordion(50, 'bottom');
+
+const projectEntry = new IntersectionObserver((entries) => {
+  // Entries is always an array
+  entries.forEach((entry) => {
+    const projectCard = entry.target;
+    if (entry.isIntersecting) {
+      projectCard.classList.add('folded');
+      return;
+    }
+    projectCard.classList.remove('folded');
+  });
+});
+
+// Tell the observer which elements to track
+$('.project-card').each((i, ele) => projectEntry.observe(ele));

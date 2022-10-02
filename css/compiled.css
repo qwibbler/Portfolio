@@ -5,6 +5,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
 body {
@@ -26,10 +28,17 @@ section {
 
 .splash-page {
   z-index: 100;
-  position: fixed;
+  height: 200vh;
+}
+.splash-page .bg-dark {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 .splash-page .curtain#left {
   position: absolute;
+  position: fixed;
   top: 0;
   height: 100vh;
   width: 50%;
@@ -37,13 +46,14 @@ section {
 }
 .splash-page .curtain#right {
   position: absolute;
+  position: fixed;
   top: 0;
   height: 100vh;
   width: 50%;
   right: 0;
 }
 .splash-page .plaque {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -116,17 +126,6 @@ section {
   right: -2px;
 }
 
-.blank-page {
-  position: relative;
-  display: flex;
-  background-color: black;
-  flex-direction: column;
-  height: 200vh;
-  margin: 0;
-  padding: 20vh 0 0 0;
-  width: 100vw;
-}
-
 main {
   width: 100vw;
 }
@@ -177,17 +176,36 @@ main section .page-visible {
   }
 }
 
+.projects {
+  position: relative;
+}
 .projects .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 80vw;
-  margin: 1rem auto;
+  height: 70vh;
+  margin: 30vh auto;
   padding: 1rem;
-  background-color: hsl(60deg, 20%, 83%);
+  background: hsl(60deg, 20%, 83%) url(../images/bg/paper.jpg);
+}
+.projects .project-card::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  width: 90%;
+  height: 0px;
+  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.3803921569);
 }
 .projects .project-card ul {
   display: flex;
   flex-direction: column;
+}
+.projects .folded {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /*# sourceMappingURL=compiled.css.map */
