@@ -193,6 +193,10 @@ main {
   $card-width: 80vw;
   position: relative;
 
+  .project-space {
+    height: 70vh;
+  }
+
   .project-card {
     position: relative;
     display: flex;
@@ -223,6 +227,8 @@ main {
     bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
+    // animation: slidein 1s ease-in-out left;
+    transition: all 0.5s ease-in-out;
   }
 }
 
