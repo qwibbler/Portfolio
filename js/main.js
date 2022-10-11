@@ -69,18 +69,22 @@ const splashPage = (window_height) => {
   if (scrolledPagePercent >= 0) {
     $('.splash-page').css('z-index', '100');
     for (let i = 0; i < curtains.length; i += 1) {
-      // Open curtains
       curtains[i].style.width = `${(scrolledPagePercent / 2) * 100}%`;
     }
-    // Fade away the plaque
     $('.plaque').css('opacity', `${scrolledPagePercent}`);
-    // Fade in the background
-    $('.blank-page').css('opacity', `${scrolledPagePercent * 1.5}`);
+    $('.bg-dark').css('opacity', `${scrolledPagePercent * 1.5}`);
     return;
   }
-
-  // When window_height < scroll_height move splash to background
+  // Else move splash to background
   $('.splash-page').css('z-index', '-1');
+  projectEnter(window_height);
+}
+
+const projectEnter = (window_height) => {
+  console.log('enter');
+  const folded = $folded.oriDomi(true);
+  console.log('angle', 85 - (window.pageYOffset % window_height));
+  folded.accordion(85 - (window.pageYOffset % window_height), 'bottom');
 }
 
 const onScroll = () => {
@@ -92,8 +96,9 @@ window.addEventListener('scroll', () => {
   onScroll();
 }, false);
 
+
+
 const headingObserver = new IntersectionObserver((entries) => {
-  // Entries is always an array
   entries.forEach((entry) => {
     const heading = entry.target.querySelector('.heading');
     if (entry.isIntersecting) {
@@ -104,12 +109,11 @@ const headingObserver = new IntersectionObserver((entries) => {
   });
 });
 
-// Tell the observer which elements to track
 $('.page').each((i, ele) => headingObserver.observe(ele));
 
 const $folded = $('.project-card').oriDomi({
-  vPanels: [10, 10, 10, 70], // number of panels when folding left or right (vertically oriented)
-  hPanels: 5, // number of panels when folding top or bottom
+  // vPanels: [50, 50], // number of panels when folding left or right (vertically oriented)
+  hPanels: 9, // number of panels when folding top or bottom
   speed: 1200, // folding duration in ms
   ripple: 1, // ripple effect when animating
   shadingIntensity: 1, // lessen the shading effect
@@ -120,8 +124,6 @@ const $folded = $('.project-card').oriDomi({
 // when using jQuery, iterate OriDomi methods over multiple elements like this:
 // $folded.oriDomi('accordion', 20, top);
 // to access the OriDomi instance at the top of the jQuery selection directly:
-var folded = $folded.oriDomi(true);
-folded.accordion(50, 'bottom');
 
 const projectEntry = new IntersectionObserver((entries) => {
   // Entries is always an array
