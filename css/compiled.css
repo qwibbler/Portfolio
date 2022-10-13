@@ -181,6 +181,7 @@ main section .page-visible {
 }
 .projects .project-space {
   height: 70vh;
+  margin-bottom: 30vh;
 }
 .projects .project-card {
   position: relative;
@@ -207,9 +208,9 @@ main section .page-visible {
 .projects .folded {
   position: absolute;
   bottom: 5vh;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.5s ease-in-out;
 }
 
 /*# sourceMappingURL=compiled.css.map */

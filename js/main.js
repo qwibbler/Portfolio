@@ -62,7 +62,8 @@ const projects = [
 ];
 
 const splashPage = (window_height) => {
-  const scrolledPagePercent = (window_height - window.pageYOffset) / window_height;
+  const scrolledPagePercent =
+    (window_height - window.pageYOffset) / window_height;
   const curtains = $('.curtain');
 
   // While window_height > scroll_height
@@ -77,26 +78,28 @@ const splashPage = (window_height) => {
   }
   // Else move splash to background
   $('.splash-page').css('z-index', '-1');
-  projectEnter(window_height);
-}
+  // projectEnter(window_height);
+};
 
-const projectEnter = (window_height) => {
-  console.log('enter');
-  const folded = $folded.oriDomi(true);
-  console.log('angle', 85 - (window.pageYOffset % window_height));
-  folded.accordion(85 - (window.pageYOffset % window_height), 'bottom');
-}
+// const projectEnter = (window_height) => {
+//   // console.log('enter');
+//   const folded = $folded.oriDomi(true);
+//   // console.log('angle', 85 - (window.pageYOffset % window_height));
+//   folded.accordion(85 - (window.pageYOffset % window_height), 'bottom');
+// };
 
 const onScroll = () => {
   const window_height = window.innerHeight;
   splashPage(window_height);
 };
 
-window.addEventListener('scroll', () => {
-  onScroll();
-}, false);
-
-
+window.addEventListener(
+  'scroll',
+  () => {
+    onScroll();
+  },
+  false,
+);
 
 const headingObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -108,13 +111,12 @@ const headingObserver = new IntersectionObserver((entries) => {
     heading.classList.remove('page-visible');
   });
 });
-
 $('.page').each((i, ele) => headingObserver.observe(ele));
 
 const $folded = $('.project-card').oriDomi({
   // vPanels: [50, 50], // number of panels when folding left or right (vertically oriented)
   hPanels: 9, // number of panels when folding top or bottom
-  speed: 1200, // folding duration in ms
+  speed: 100, // folding duration in ms
   ripple: 1, // ripple effect when animating
   shadingIntensity: 1, // lessen the shading effect
   perspective: 800, // smaller values exaggerate 3D distortion
@@ -128,14 +130,20 @@ const $folded = $('.project-card').oriDomi({
 const projectEntry = new IntersectionObserver((entries) => {
   // Entries is always an array
   entries.forEach((entry) => {
-    const projectCard = entry.target;
+    const projectCard = entry.target.querySelector('.project-card');
     if (entry.isIntersecting) {
       projectCard.classList.add('folded');
+      const folded = $folded.oriDomi(true);
+      // console.log('angle', 85 - (window.pageYOffset % window_height));
+      folded.accordion(entry.intersectionRatio * 85 / 90, 'bottom');
+      console.log('folded', entry.intersectionRatio);
       return;
+    } else {
+      console.log('unfold', entry, entry.isIntersecting);
+      projectCard.classList.remove('folded');
     }
-    projectCard.classList.remove('folded');
   });
 });
 
 // Tell the observer which elements to track
-$('.project-card').each((i, ele) => projectEntry.observe(ele));
+$('.project-space').each((i, ele) => projectEntry.observe(ele));
