@@ -176,9 +176,6 @@ main section .page-visible {
   }
 }
 
-.projects {
-  position: relative;
-}
 .projects .project-space {
   height: 70vh;
   margin-bottom: 30vh;
@@ -189,7 +186,7 @@ main section .page-visible {
   flex-direction: column;
   max-width: 80vw;
   height: 70vh;
-  margin: 30vh auto;
+  margin: 0 auto;
   padding: 1rem;
   background: hsl(60deg, 20%, 83%) url(../images/bg/paper.jpg);
 }
@@ -197,6 +194,8 @@ main section .page-visible {
   content: "";
   position: absolute;
   bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90%;
   height: 0px;
   box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.3803921569);
@@ -206,9 +205,8 @@ main section .page-visible {
   flex-direction: column;
 }
 .projects .folded {
-  position: absolute;
+  position: fixed;
   bottom: 5vh;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
 }

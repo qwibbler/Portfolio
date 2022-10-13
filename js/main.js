@@ -131,7 +131,7 @@ const projectEntry = new IntersectionObserver(
   (entries) => {
     // Entries is always an array
     entries.forEach((entry) => {
-      const projectCard = entry.target.querySelector('.project-card');
+      const projectCard = entry.target.querySelector('.project-fixed');
       if (entry.isIntersecting) {
         projectCard.classList.add('folded');
         const folded = $folded.oriDomi(true);

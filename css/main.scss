@@ -191,7 +191,7 @@ main {
 
 .projects {
   $card-width: 80vw;
-  position: relative;
+  // position: relative;
 
   .project-space {
     height: 70vh;
@@ -204,7 +204,7 @@ main {
     flex-direction: column;
     max-width: $card-width;
     height: 70vh;
-    margin: 30vh auto;
+    margin: 0 auto;
     padding: 1rem;
     background: hsl(60, 20%, 83%) url(../images/bg/paper.jpg);
 
@@ -212,6 +212,8 @@ main {
       content: '';
       position: absolute;
       bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
       width: 90%;
       height: 0px;
       box-shadow: 0 0 0.5rem 0.25rem #00000061;
@@ -224,9 +226,9 @@ main {
   }
 
   .folded {
-    position: absolute;
+    position: fixed;
     bottom: 5vh;
-    top: 0;
+    // top: 0;
     left: 50%;
     transform: translateX(-50%);
     // animation: slidein 1s ease-in-out left;
