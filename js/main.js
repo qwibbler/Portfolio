@@ -127,23 +127,26 @@ const $folded = $('.project-card').oriDomi({
 // $folded.oriDomi('accordion', 20, top);
 // to access the OriDomi instance at the top of the jQuery selection directly:
 
-const projectEntry = new IntersectionObserver((entries) => {
-  // Entries is always an array
-  entries.forEach((entry) => {
-    const projectCard = entry.target.querySelector('.project-card');
-    if (entry.isIntersecting) {
-      projectCard.classList.add('folded');
-      const folded = $folded.oriDomi(true);
-      // console.log('angle', 85 - (window.pageYOffset % window_height));
-      folded.accordion(entry.intersectionRatio * 85 / 90, 'bottom');
-      console.log('folded', entry.intersectionRatio);
-      return;
-    } else {
-      console.log('unfold', entry, entry.isIntersecting);
-      projectCard.classList.remove('folded');
-    }
-  });
-});
+const projectEntry = new IntersectionObserver(
+  (entries) => {
+    // Entries is always an array
+    entries.forEach((entry) => {
+      const projectCard = entry.target.querySelector('.project-card');
+      if (entry.isIntersecting) {
+        projectCard.classList.add('folded');
+        const folded = $folded.oriDomi(true);
+        // console.log('angle', 85 - (window.pageYOffset % window_height));
+        folded.accordion((entry.intersectionRatio * 85) / 90, 'bottom');
+        console.log('folded', entry.intersectionRatio);
+        return;
+      } else {
+        console.log('unfold', entry, entry.isIntersecting);
+        projectCard.classList.remove('folded');
+      }
+    });
+  },
+  { threshold: [0, 0.25, 0.5, 0.75, 1] },
+);
 
 // Tell the observer which elements to track
 $('.project-space').each((i, ele) => projectEntry.observe(ele));
