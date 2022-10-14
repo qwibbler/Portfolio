@@ -134,8 +134,8 @@ const projectEntry = new IntersectionObserver(
       const projectCard = entry.target.querySelector('.project-fixed');
       if (entry.isIntersecting) {
         projectCard.classList.add('folded');
+        projectCard.style.left = `${(150 - (entry.intersectionRatio * 100))}%`;
         const folded = $folded.oriDomi(true);
-        // console.log('angle', 85 - (window.pageYOffset % window_height));
         folded.accordion((entry.intersectionRatio * 85) / 90, 'bottom');
         console.log('folded', entry.intersectionRatio);
         return;

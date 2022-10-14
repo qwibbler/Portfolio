@@ -209,6 +209,7 @@ main section .page-visible {
   bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
+  transition: all 0.2s;
 }
 
 /*# sourceMappingURL=compiled.css.map */
