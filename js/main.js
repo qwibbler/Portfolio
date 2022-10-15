@@ -136,8 +136,8 @@ const projectEntry = new IntersectionObserver(
         projectCard.classList.add('folded');
         projectCard.style.left = `${(150 - (entry.intersectionRatio * 100))}%`;
         const folded = $folded.oriDomi(true);
-        folded.accordion((entry.intersectionRatio * 85) / 90, 'bottom');
-        console.log('folded', entry.intersectionRatio);
+        folded.accordion((1 - entry.intersectionRatio) * 85, 'bottom');
+        console.log('folded', entry.intersectionRatio, (1 - entry.intersectionRatio), (1 - entry.intersectionRatio) * 85, 'bottom');
         return;
       } else {
         console.log('unfold', entry, entry.isIntersecting);
