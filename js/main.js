@@ -134,10 +134,21 @@ const projectEntry = new IntersectionObserver(
       const projectCard = entry.target.querySelector('.project-fixed');
       if (entry.isIntersecting) {
         projectCard.classList.add('folded');
-        projectCard.style.left = `${(150 - (entry.intersectionRatio * 100))}%`;
+        if (projectCard.classList.contains('left')) {
+          projectCard.style.left = `${50 - entry.intersectionRatio * 100}%`;
+        } else {
+          projectCard.style.right = `${50 - entry.intersectionRatio * 100}%`;
+          console.log('right', projectCard.style.right);
+        }
         const folded = $folded.oriDomi(true);
         folded.accordion((1 - entry.intersectionRatio) * 85, 'bottom');
-        console.log('folded', entry.intersectionRatio, (1 - entry.intersectionRatio), (1 - entry.intersectionRatio) * 85, 'bottom');
+        console.log(
+          'folded',
+          // entry.intersectionRatio,
+          // 1 - entry.intersectionRatio,
+          // (1 - entry.intersectionRatio) * 85,
+          // 'bottom',
+        );
         return;
       } else {
         console.log('unfold', entry, entry.isIntersecting);
