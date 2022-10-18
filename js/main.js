@@ -61,7 +61,9 @@ const projects = [
   },
 ];
 
-const splashPage = (window_height) => {
+// Handle the splash screen
+const splashPage = () => {
+  const window_height = window.innerHeight;
   const scrolledPagePercent =
     (window_height - window.pageYOffset) / window_height;
   const curtains = $('.curtain');
@@ -78,29 +80,12 @@ const splashPage = (window_height) => {
   }
   // Else move splash to background
   $('.splash-page').css('z-index', '-1');
-  // projectEnter(window_height);
 };
 
-// const projectEnter = (window_height) => {
-//   // console.log('enter');
-//   const folded = $folded.oriDomi(true);
-//   // console.log('angle', 85 - (window.pageYOffset % window_height));
-//   folded.accordion(85 - (window.pageYOffset % window_height), 'bottom');
-// };
+// TODO: Switch this to threshhold observer
+window.addEventListener('scroll', () => splashPage(), false);
 
-const onScroll = () => {
-  const window_height = window.innerHeight;
-  splashPage(window_height);
-};
-
-window.addEventListener(
-  'scroll',
-  () => {
-    onScroll();
-  },
-  false,
-);
-
+// Fix heading on top of page
 const headingObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     const heading = entry.target.querySelector('.heading');
@@ -113,19 +98,27 @@ const headingObserver = new IntersectionObserver((entries) => {
 });
 $('.page').each((i, ele) => headingObserver.observe(ele));
 
+// Intersection Observer threshold array
+const buildThreshold = (numSteps) => {
+  let thresholds = [0];
+
+  for (let i = 1.0; i <= numSteps; i++) {
+    let ratio = i / numSteps;
+    thresholds.push(ratio);
+  }
+  return thresholds;
+};
+
 const $folded = $('.project-card').oriDomi({
-  // vPanels: [50, 50], // number of panels when folding left or right (vertically oriented)
+  // vPanels: [50, 50], // number of panels when folding left or right
   hPanels: 9, // number of panels when folding top or bottom
-  speed: 100, // folding duration in ms
-  ripple: 1, // ripple effect when animating
+  speed: 0, // folding duration in ms
+  ripple: 0, // ripple effect when animating
   shadingIntensity: 1, // lessen the shading effect
-  perspective: 800, // smaller values exaggerate 3D distortion
+  perspective: 400, // smaller values exaggerate 3D distortion
   maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
   shading: 'soft', // change the shading type
 });
-// when using jQuery, iterate OriDomi methods over multiple elements like this:
-// $folded.oriDomi('accordion', 20, top);
-// to access the OriDomi instance at the top of the jQuery selection directly:
 
 const projectEntry = new IntersectionObserver(
   (entries) => {
@@ -135,29 +128,21 @@ const projectEntry = new IntersectionObserver(
       if (entry.isIntersecting) {
         projectCard.classList.add('folded');
         if (projectCard.classList.contains('left')) {
-          projectCard.style.left = `${50 - entry.intersectionRatio * 100}%`;
+          projectCard.style.left = `${150 - entry.intersectionRatio * 100}%`;
+          projectCard.style.transform = `translateX(-50%)`;
         } else {
-          projectCard.style.right = `${50 - entry.intersectionRatio * 100}%`;
-          console.log('right', projectCard.style.right);
+          projectCard.style.right = `${150 - entry.intersectionRatio * 100}%`;
+          projectCard.style.transform = `translateX(50%)`;
         }
-        const folded = $folded.oriDomi(true);
-        folded.accordion((1 - entry.intersectionRatio) * 85, 'bottom');
-        console.log(
-          'folded',
-          // entry.intersectionRatio,
-          // 1 - entry.intersectionRatio,
-          // (1 - entry.intersectionRatio) * 85,
-          // 'bottom',
-        );
+        $folded.oriDomi('accordion', (1 - entry.intersectionRatio) * 85, 'bottom');
         return;
       } else {
-        console.log('unfold', entry, entry.isIntersecting);
         projectCard.classList.remove('folded');
       }
     });
   },
-  { threshold: [0, 0.25, 0.5, 0.75, 1] },
+  {
+    threshold: buildThreshold(100),
+  },
 );
-
-// Tell the observer which elements to track
 $('.project-space').each((i, ele) => projectEntry.observe(ele));
