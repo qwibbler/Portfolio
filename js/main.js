@@ -134,7 +134,11 @@ const projectEntry = new IntersectionObserver(
           projectCard.style.right = `${150 - entry.intersectionRatio * 100}%`;
           projectCard.style.transform = `translateX(50%)`;
         }
-        $folded.oriDomi('accordion', (1 - entry.intersectionRatio) * 85, 'bottom');
+        $folded.oriDomi(
+          'accordion',
+          (1 - entry.intersectionRatio) * 85,
+          'bottom',
+        );
         return;
       } else {
         projectCard.classList.remove('folded');
@@ -142,7 +146,38 @@ const projectEntry = new IntersectionObserver(
     });
   },
   {
-    threshold: buildThreshold(100),
+    threshold: buildThreshold(1000),
   },
 );
 $('.project-space').each((i, ele) => projectEntry.observe(ele));
+
+// title: 'Concierge',
+// desc: 'A website to let you book a ticket to any number of events. You can create the event in question, or book the dates you’d like to go.',
+// langs: ['Ruby on rails', 'React', 'Redux'],
+// imgCard: "url('./images/projects/concierge-card.png')",
+// imgDesk: 'images/projects/concierge-desk.png',
+// imgPopup: 'images/projects/concierge-mob.png',
+// live: 'https://concierge-jtz.netlify.app/',
+// source: 'https://github.com/qwibbler/Concierge-Front-end',
+
+const createProject = (project, orientation) => {
+  return `
+    <div class="project-space">
+      <div class="project-fixed ${orientation}">
+        <div class="project-card">
+          <img src="images/project_img/Gmail.png" alt="projimg">
+          <h4>${project.title}</h4>
+          <p>${project.desc}</p>
+          <ul class="card-ul">
+            <li class="card-li">JavaScript</li>
+            <li class="card-li">Ruby</li>
+            <li class="card-li">Html</li>
+            <li class="card-li">css</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+// $('.project-space').
