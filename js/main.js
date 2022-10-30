@@ -116,7 +116,7 @@ const buildThreshold = (numSteps) => {
 // live: 'https://concierge-jtz.netlify.app/',
 // source: 'https://github.com/qwibbler/Concierge-Front-end',
 
-const createProject = (project, orientation) => {
+const projectTemplate = (project, orientation) => {
   return `
     <div class="project-space">
       <div class="project-fixed ${orientation}">
@@ -136,31 +136,31 @@ const createProject = (project, orientation) => {
   `;
 };
 
-const createAllProjects = () => {
-  console.log('createAllProjects');
-  let projectHTML = $('.projects').html();
-  console.log($('.projects').html());
-  console.log(projectHTML);
-  for (let i = 0; i < projectsData.length; i += 1) {
-    if (i % 2 === 0) {
-      projectHTML += createProject(projectsData[i], 'left');
-    } else {
-      projectHTML += createProject(projectsData[i], 'right');
-    }
-  }
-  $('.projects').html(projectHTML);
-  console.log($('.projects').html());
-
-  const $folded = $('.project-card').oriDomi({
+const foldedOridomi = () => {
+  return ($('.project-card').oriDomi({
     // vPanels: [50, 50], // number of panels when folding left or right
-    hPanels: 9, // number of panels when folding top or bottom
+    hPanels: 20, // number of panels when folding top or bottom
     speed: 0, // folding duration in ms
     ripple: 0, // ripple effect when animating
     shadingIntensity: 1, // lessen the shading effect
     perspective: 400, // smaller values exaggerate 3D distortion
     maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
     shading: 'soft', // change the shading type
-  });
+  }));
+}
+
+const createAllProjects = () => {
+  let projectHTML = $('.projects').html();
+  for (let i = 0; i < projectsData.length; i += 1) {
+    if (i % 2 === 0) {
+      projectHTML += projectTemplate(projectsData[i], 'left');
+    } else {
+      projectHTML += projectTemplate(projectsData[i], 'right');
+    }
+  }
+  $('.projects').html(projectHTML);
+
+  const $folded = foldedOridomi();
 
   const projectEntry = new IntersectionObserver(
     (entries) => {
