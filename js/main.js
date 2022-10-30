@@ -1,4 +1,4 @@
-const projects = [
+const projectsData = [
   {
     title: 'Concierge',
     desc: 'A website to let you book a ticket to any number of events. You can create the event in question, or book the dates you’d like to go.',
@@ -109,50 +109,6 @@ const buildThreshold = (numSteps) => {
   return thresholds;
 };
 
-const $folded = $('.project-card').oriDomi({
-  // vPanels: [50, 50], // number of panels when folding left or right
-  hPanels: 9, // number of panels when folding top or bottom
-  speed: 0, // folding duration in ms
-  ripple: 0, // ripple effect when animating
-  shadingIntensity: 1, // lessen the shading effect
-  perspective: 400, // smaller values exaggerate 3D distortion
-  maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
-  shading: 'soft', // change the shading type
-});
-
-const projectEntry = new IntersectionObserver(
-  (entries) => {
-    // Entries is always an array
-    entries.forEach((entry) => {
-      const projectCard = entry.target.querySelector('.project-fixed');
-      if (entry.isIntersecting) {
-        projectCard.classList.add('folded');
-        if (projectCard.classList.contains('left')) {
-          projectCard.style.left = `${150 - entry.intersectionRatio * 100}%`;
-          projectCard.style.transform = `translateX(-50%)`;
-        } else {
-          projectCard.style.right = `${150 - entry.intersectionRatio * 100}%`;
-          projectCard.style.transform = `translateX(50%)`;
-        }
-        $folded.oriDomi(
-          'accordion',
-          (1 - entry.intersectionRatio) * 85,
-          'bottom',
-        );
-        return;
-      } else {
-        projectCard.classList.remove('folded');
-      }
-    });
-  },
-  {
-    threshold: buildThreshold(1000),
-  },
-);
-$('.project-space').each((i, ele) => projectEntry.observe(ele));
-
-// title: 'Concierge',
-// desc: 'A website to let you book a ticket to any number of events. You can create the event in question, or book the dates you’d like to go.',
 // langs: ['Ruby on rails', 'React', 'Redux'],
 // imgCard: "url('./images/projects/concierge-card.png')",
 // imgDesk: 'images/projects/concierge-desk.png',
@@ -180,4 +136,61 @@ const createProject = (project, orientation) => {
   `;
 };
 
-// $('.project-space').
+const createAllProjects = () => {
+  console.log('createAllProjects');
+  let projectHTML = $('.projects').html();
+  console.log($('.projects').html());
+  console.log(projectHTML);
+  for (let i = 0; i < projectsData.length; i += 1) {
+    if (i % 2 === 0) {
+      projectHTML += createProject(projectsData[i], 'left');
+    } else {
+      projectHTML += createProject(projectsData[i], 'right');
+    }
+  }
+  $('.projects').html(projectHTML);
+  console.log($('.projects').html());
+
+  const $folded = $('.project-card').oriDomi({
+    // vPanels: [50, 50], // number of panels when folding left or right
+    hPanels: 9, // number of panels when folding top or bottom
+    speed: 0, // folding duration in ms
+    ripple: 0, // ripple effect when animating
+    shadingIntensity: 1, // lessen the shading effect
+    perspective: 400, // smaller values exaggerate 3D distortion
+    maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
+    shading: 'soft', // change the shading type
+  });
+
+  const projectEntry = new IntersectionObserver(
+    (entries) => {
+      // Entries is always an array
+      entries.forEach((entry) => {
+        const projectCard = entry.target.querySelector('.project-fixed');
+        if (entry.isIntersecting) {
+          projectCard.classList.add('folded');
+          if (projectCard.classList.contains('left')) {
+            projectCard.style.left = `${150 - entry.intersectionRatio * 100}%`;
+            projectCard.style.transform = `translateX(-50%)`;
+          } else {
+            projectCard.style.right = `${150 - entry.intersectionRatio * 100}%`;
+            projectCard.style.transform = `translateX(50%)`;
+          }
+          $folded.oriDomi(
+            'accordion',
+            (1 - entry.intersectionRatio) * 85,
+            'bottom',
+          );
+          return;
+        } else {
+          projectCard.classList.remove('folded');
+        }
+      });
+    },
+    {
+      threshold: buildThreshold(1000),
+    },
+  );
+  $('.project-space').each((i, ele) => projectEntry.observe(ele));
+};
+window.addEventListener('load', () => createAllProjects(), false);
