@@ -139,7 +139,7 @@ const projectTemplate = (project, orientation) => {
 const foldedOridomi = () => {
   return ($('.project-card').oriDomi({
     // vPanels: [50, 50], // number of panels when folding left or right
-    hPanels: 20, // number of panels when folding top or bottom
+    hPanels: 10, // number of panels when folding top or bottom
     speed: 0, // folding duration in ms
     ripple: 0, // ripple effect when animating
     shadingIntensity: 1, // lessen the shading effect
@@ -149,17 +149,7 @@ const foldedOridomi = () => {
   }));
 }
 
-const createAllProjects = () => {
-  let projectHTML = $('.projects').html();
-  for (let i = 0; i < projectsData.length; i += 1) {
-    if (i % 2 === 0) {
-      projectHTML += projectTemplate(projectsData[i], 'left');
-    } else {
-      projectHTML += projectTemplate(projectsData[i], 'right');
-    }
-  }
-  $('.projects').html(projectHTML);
-
+const projectEntrances = () => {
   const $folded = foldedOridomi();
 
   const projectEntry = new IntersectionObserver(
@@ -192,5 +182,19 @@ const createAllProjects = () => {
     },
   );
   $('.project-space').each((i, ele) => projectEntry.observe(ele));
+}
+
+const createAllProjects = () => {
+  let projectHTML = $('.projects').html();
+  for (let i = 0; i < projectsData.length; i += 1) {
+    if (i % 2 === 0) {
+      projectHTML += projectTemplate(projectsData[i], 'left');
+    } else {
+      projectHTML += projectTemplate(projectsData[i], 'right');
+    }
+  }
+  $('.projects').html(projectHTML);
+
+  projectEntrances();
 };
 window.addEventListener('load', () => createAllProjects(), false);
