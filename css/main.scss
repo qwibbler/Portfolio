@@ -144,6 +144,7 @@ main {
       background: $red url(../images/bg/red.jpeg);
       background-size: cover;
       background-blend-mode: hard-light;
+      font-family: 'Permanent Marker', cursive;
 
       h1 {
         border: $gold $border solid;
@@ -204,10 +205,12 @@ main {
     flex-direction: column;
     justify-content: space-between;
     max-width: $card-width;
+    border-radius: 0.2em;
     height: 70vh;
     margin: 0 auto;
     padding: 1rem;
-    background: hsl(60, 20%, 83%) url(../images/bg/paper.jpg);
+    background: hsl(60, 20%, 83%) url(../images/bg/cardboard.jpg);
+    background-size: cover;
 
     &::after {
       content: '';
@@ -221,13 +224,15 @@ main {
     }
 
     h4 {
-      font-size: 1.5em;
-      font-family: 'Signika Negative', sans-serif;
+      font-size: 2em;
+      // font-family: 'Signika Negative', sans-serif;
+      font-family: 'Permanent Marker', cursive;
     }
 
     p {
       text-align: justify;
       margin: 0.5rem auto;
+      font-family: 'Permanent Marker', cursive;
     }
 
     ul {
