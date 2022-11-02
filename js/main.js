@@ -145,13 +145,9 @@ const foldedOridomi = () => {
 
 const createAllProjects = () => {
   let projectHTML = $('.projects').html();
-  for (let i = 0; i < projectsData.length; i += 1) {
-    if (i % 2 === 0) {
-      projectHTML += projectTemplate(projectsData[i], 'left');
-    } else {
-      projectHTML += projectTemplate(projectsData[i], 'right');
-    }
-  }
+  projectsData.forEach((project, i) => {
+    projectHTML += projectTemplate(projectsData[i], i % 2 === 0 ? 'left' : 'right');
+  });
   $('.projects').html(projectHTML);
 };
 
