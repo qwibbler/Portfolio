@@ -72,32 +72,39 @@ const buildThreshold = (numSteps) => {
   return thresholds;
 };
 
-const curtains = $('.curtain');
-const splashPage = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.zIndex = 100;
-        for (let i = 0; i < 2; i += 1) {
-          curtains[i].style.width = `${(entry.intersectionRatio / 2) * 100}%`;
-        }
-        $('.plaque').css('opacity', `${entry.intersectionRatio * 2}`);
-        const opacity = entry.intersectionRatio / 2.5;
-        entry.target.style.opacity = opacity;
-        $('.bg-dark').css('opacity', `${opacity}`);
-        return;
-      }
-      entry.css('z-index', '-1');
-    });
-  },
-  {
-    threshold: buildThreshold(30),
-  },
-);
-$('.splash-space').each((i, ele) => splashPage.observe(ele));
+const openCurtains = (splashSpace, curtains) => {
+  splashSpace.target.style.zIndex = 100;
 
-// TODO: Switch this to threshhold observer
-// window.addEventListener('scroll', () => splashPage(), false);
+  for (let i = 0; i < 2; i += 1) {
+    curtains[i].style.width = `${(splashSpace.intersectionRatio / 2) * 100}%`;
+  }
+
+  $('.plaque').css('opacity', `${splashSpace.intersectionRatio * 2}`);
+
+  const opacity = splashSpace.intersectionRatio * 2;
+  splashSpace.target.style.opacity = opacity;
+  $('.bg-dark').css('opacity', `${opacity}`);
+  return;
+};
+
+const splashPage = () => {
+  const curtains = $('.curtain');
+  const splashPage = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          openCurtains(entry, curtains);
+          return;
+        }
+        openCurtains(entry, curtains);
+      });
+    },
+    {
+      threshold: buildThreshold(30),
+    },
+  );
+  $('.splash-space').each((i, ele) => splashPage.observe(ele));
+};
 
 // Fix heading on top of page
 const headingObserver = new IntersectionObserver((entries) => {
@@ -202,4 +209,11 @@ const createAllProjects = () => {
 
   projectEntrances();
 };
-window.addEventListener('load', () => createAllProjects(), false);
+window.addEventListener(
+  'load',
+  () => {
+    splashPage();
+    createAllProjects();
+  },
+  false,
+);
