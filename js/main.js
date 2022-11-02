@@ -99,14 +99,10 @@ const splashPage = () => {
 
 // Fix heading on top of page
 const headingObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const heading = entry.target.querySelector('.heading');
-    if (entry.isIntersecting) {
-      heading.classList.add('page-visible');
-      return;
-    }
-    heading.classList.remove('page-visible');
-  });
+  entries.forEach((entry) => entry.target
+      .querySelector('.heading')
+      .classList.toggle('page-visible', entry.isIntersecting)
+  );
 });
 $('.page').each((i, ele) => headingObserver.observe(ele));
 
