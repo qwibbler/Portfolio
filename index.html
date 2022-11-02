@@ -26,7 +26,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Permanent+Marker&display=swap"
+    rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
   <script src="js/oridomi.min.js" defer></script>
@@ -96,106 +97,12 @@
     </section>
 
     <main>
-      <!-- <header>
-        <div class="outer-border">
-           <div class="mid-border">
-              <div class="inner-border">
-                <div class="heading">
-                  <h1>Humaira Zaman</h1>
-                  <h2>Software Developer</h2>
-                </div>
-                <img class="corner-decoration left-top" src="https://i.ibb.co/4mKvK3N/corner-decoration.jpg"></img>
-                <img class="corner-decoration right-top" src="https://i.ibb.co/4mKvK3N/corner-decoration.jpg"></img>
-                <img class="corner-decoration right-bottom" src="https://i.ibb.co/4mKvK3N/corner-decoration.jpg"></img>
-                <img class="corner-decoration left-bottom" src="https://i.ibb.co/4mKvK3N/corner-decoration.jpg"></img>
-                <img class="vertical-decoration top" src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"></img>
-                <img class="vertical-decoration bottom" src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"></img>
-              </div>
-           </div>
-        </div>
-      </header> -->
-
       <!-- Project Page -->
       <section class="project page" id="second-page">
         <div class="heading" id="works">
           <h1>Featured Works ➢</h1>
         </div>
-        <div class="projects" id="projects">
-          <!-- <div class="project-space">
-            <div class="project-fixed left">
-              <div class="project-card">
-                <img src="images/project_img/Gmail.png" alt="projimg">
-                <h4>Project1</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
-                <ul class="card-ul">
-                  <li class="card-li">JavaScript</li>
-                  <li class="card-li">Ruby</li>
-                  <li class="card-li">Html</li>
-                  <li class="card-li">css</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="project-space">
-            <div class="project-fixed right">
-              <div class="project-card">
-                Project2
-                <img src="images/project_img/Gmail.png" alt="projimg">
-                <h4>Languages</h4>
-                <ul class="card-ul">
-                  <li class="card-li">JavaScript</li>
-                  <li class="card-li">Ruby</li>
-                  <li class="card-li">Html</li>
-                  <li class="card-li">css</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="project-space">
-            <div class="project-fixed left">
-              <div class="project-card">
-                Project3
-                <img src="images/project_img/Gmail.png" alt="projimg">
-                <h4>Languages</h4>
-                <ul class="card-ul">
-                  <li class="card-li">JavaScript</li>
-                  <li class="card-li">Ruby</li>
-                  <li class="card-li">Html</li>
-                  <li class="card-li">css</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="project-space">
-            <div class="project-fixed right">
-              <div class="project-card">
-                Project4
-                <img src="images/project_img/Gmail.png" alt="projimg">
-                <h4>Languages</h4>
-                <ul class="card-ul">
-                  <li class="card-li">JavaScript</li>
-                  <li class="card-li">Ruby</li>
-                  <li class="card-li">Html</li>
-                  <li class="card-li">css</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="project-space">
-            <div class="project-fixed left">
-              <div class="project-card">
-                Project5
-                <img src="images/project_img/Gmail.png" alt="projimg">
-                <h4>Languages</h4>
-                <ul class="card-ul">
-                  <li class="card-li">JavaScript</li>
-                  <li class="card-li">Ruby</li>
-                  <li class="card-li">Html</li>
-                  <li class="card-li">css</li>
-                </ul>
-              </div>
-            </div>
-          </div> -->
+        <div class="projects cards" id="projects">
           <!-- <div class="project_cards" id="popupWrapper">
             </div> -->
         </div>
@@ -213,52 +120,55 @@
             don’t hestiate to contact me.</p>
           <button type="button">Get My Resume</button>
         </div>
-        <div class="skill-cards">
-          <div class="skill-card">
-            Project1
-            <h4>Languages</h4>
-            <ul class="card-ul">
-              <li class="card-li">JavaScript</li>
-              <li class="card-li">Ruby</li>
-              <li class="card-li">Html</li>
-              <li class="card-li">css</li>
-            </ul>
+        <div class="cards">
+          <div class="project-space">
+            <div class="project-fixed ${orientation}">
+              <div class="project-card">
+                <div class="card-content">
+                  <h4>Languages</h4>
+                  <ul class="card-ul">
+                    <li class="card-li">JavaScript</li>
+                    <li class="card-li">Ruby</li>
+                    <li class="card-li">Html</li>
+                    <li class="card-li">css</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-space">
+            <div class="project-fixed ${orientation}">
+              <div class="project-card">
+                <div class="card-content">
+                  <h4>Frameworks</h4>
+                  <ul class="card-ul">
+                    <li class="card-li">Bootstrap</li>
+                    <li class="card-li">Ruby on rails</li>
+                    <li class="card-li">RSpec</li>
+                    <li class="card-li">Capybara</li>
+                    <li class="card-li">Selenium</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-space">
+            <div class="project-fixed ${orientation}">
+              <div class="project-card">
+                <div class="card-content">
+                  <h4>Skills</h4>
+                  <ul class="card-ul">
+                    <li class="card-li">Codekit</li>
+                    <li class="card-li">GitHub</li>
+                    <li class="card-li">Codepen</li>
+                    <li class="card-li">Gitlab</li>
+                    <li class="card-li">Terminal</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- <div class="skill-cards">
-                    <div class="card">
-                        <img src="images/Icon-Langguage.svg" alt="">
-                        <h4>Languages</h4>
-                        <ul class="card-ul">
-                            <li class="card-li">JavaScript</li>
-                            <li class="card-li">Ruby</li>
-                            <li class="card-li">Html</li>
-                            <li class="card-li">css</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <img src="images/Icon-Name.svg" alt="">
-                        <h4>Frameworks</h4>
-                        <ul class="card-ul">
-                            <li class="card-li">Bootstrap</li>
-                            <li class="card-li">Ruby on rails</li>
-                            <li class="card-li">RSpec</li>
-                            <li class="card-li">Capybara</li>
-                            <li class="card-li">Selenium</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <img src="images/Icon_skills.svg" alt="">
-                        <h4>Skills</h4>
-                        <ul class="card-ul">
-                            <li class="card-li">Codekit</li>
-                            <li class="card-li">GitHub</li>
-                            <li class="card-li">Codepen</li>
-                            <li class="card-li">Gitlab</li>
-                            <li class="card-li">Terminal</li>
-                        </ul>
-                    </div>
-                </div> -->
       </section>
 
       <!-- Contact Page -->

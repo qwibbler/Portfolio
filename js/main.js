@@ -73,7 +73,7 @@ const buildThreshold = (numSteps) => {
 };
 
 const openCurtains = (splashSpace, curtains) => {
-  splashSpace.target.style.zIndex = 100;
+  splashSpace.target.parentNode.style.zIndex = splashSpace.intersectionRatio * 100;
 
   for (let i = 0; i < 2; i += 1) {
     curtains[i].style.width = `${(splashSpace.intersectionRatio / 2) * 100}%`;
@@ -84,7 +84,6 @@ const openCurtains = (splashSpace, curtains) => {
   const opacity = splashSpace.intersectionRatio * 2;
   splashSpace.target.style.opacity = opacity;
   $('.bg-dark').css('opacity', `${opacity}`);
-  return;
 };
 
 const splashPage = () => {
@@ -168,6 +167,7 @@ const projectEntrances = () => {
     (entries) => {
       // Entries is always an array
       entries.forEach((entry) => {
+        console.log(entry);
         const projectCard = entry.target.querySelector('.project-fixed');
         if (entry.isIntersecting) {
           projectCard.classList.add('folded');
@@ -206,14 +206,13 @@ const createAllProjects = () => {
     }
   }
   $('.projects').html(projectHTML);
-
-  projectEntrances();
 };
 window.addEventListener(
   'load',
   () => {
     splashPage();
     createAllProjects();
+    projectEntrances();
   },
   false,
 );
