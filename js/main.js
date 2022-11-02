@@ -72,8 +72,11 @@ const buildThreshold = (numSteps) => {
   return thresholds;
 };
 
-const openCurtains = (splashSpace, curtains) => {
-  splashSpace.target.parentNode.style.zIndex = splashSpace.intersectionRatio * 100;
+const openCurtains = (splashSpace) => {
+  const curtains = $('.curtain');
+
+  splashSpace.target.parentNode.style.zIndex =
+    splashSpace.intersectionRatio * 100;
 
   for (let i = 0; i < 2; i += 1) {
     curtains[i].style.width = `${(splashSpace.intersectionRatio / 2) * 100}%`;
@@ -87,20 +90,9 @@ const openCurtains = (splashSpace, curtains) => {
 };
 
 const splashPage = () => {
-  const curtains = $('.curtain');
   const splashPage = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          openCurtains(entry, curtains);
-          return;
-        }
-        openCurtains(entry, curtains);
-      });
-    },
-    {
-      threshold: buildThreshold(30),
-    },
+    (entries) => entries.forEach((entry) => openCurtains(entry)),
+    { threshold: buildThreshold(30) },
   );
   $('.splash-space').each((i, ele) => splashPage.observe(ele));
 };
@@ -118,7 +110,6 @@ const headingObserver = new IntersectionObserver((entries) => {
 });
 $('.page').each((i, ele) => headingObserver.observe(ele));
 
-// langs: ['Ruby on rails', 'React', 'Redux'],
 // imgCard: "url('./images/projects/concierge-card.png')",
 // imgDesk: 'images/projects/concierge-desk.png',
 // imgPopup: 'images/projects/concierge-mob.png',
@@ -126,20 +117,16 @@ $('.page').each((i, ele) => headingObserver.observe(ele));
 // source: 'https://github.com/qwibbler/Concierge-Front-end',
 
 const projectTemplate = (project, orientation) => {
+  const list = project.langs.map((lang) => `<li>${lang}</li>`).join('');
   return `
     <div class="card-space">
-      <div class="project-fixed ${orientation}">
+      <div class="card-pos-fixed ${orientation}">
         <div class="card">
           <div class="card-content">
             <img src="images/project_img/Gmail.png" alt="projimg">
             <h4>${project.title}</h4>
             <p>${project.desc}</p>
-            <ul>
-              <li>JavaScript</li>
-              <li>Ruby</li>
-              <li>Html</li>
-              <li>css</li>
-            </ul>
+            <ul>${list}</ul>
           </div>
         </div>
       </div>
@@ -160,44 +147,6 @@ const foldedOridomi = () => {
   });
 };
 
-const projectEntrances = () => {
-  const $folded = foldedOridomi();
-
-  const projectEntry = new IntersectionObserver(
-    (entries) => {
-      // Entries is always an array
-      entries.forEach((entry) => {
-        console.log(entry);
-        const projectCard = entry.target.querySelector('.project-fixed');
-        if (entry.isIntersecting) {
-          projectCard.classList.add('folded');
-          if (projectCard.classList.contains('left')) {
-            projectCard.style.left = `${150 - entry.intersectionRatio * 100}%`;
-            projectCard.style.transform = `translateX(-50%)`;
-          } else {
-            projectCard.style.right = `${150 - entry.intersectionRatio * 100}%`;
-            projectCard.style.transform = `translateX(50%)`;
-          }
-          $folded.oriDomi(
-            'accordion',
-            (1 - entry.intersectionRatio) * 85,
-            'bottom',
-          );
-          return;
-        } else {
-          projectCard.classList.remove('folded');
-          projectCard.style.transform = `translate(-100%)`;
-
-        }
-      });
-    },
-    {
-      threshold: buildThreshold(800),
-    },
-  );
-  $('.card-space').each((i, ele) => projectEntry.observe(ele));
-};
-
 const createAllProjects = () => {
   let projectHTML = $('.projects').html();
   for (let i = 0; i < projectsData.length; i += 1) {
@@ -209,12 +158,50 @@ const createAllProjects = () => {
   }
   $('.projects').html(projectHTML);
 };
+
+const cardEntrances = () => {
+  const $folded = foldedOridomi();
+
+  const cardEntry = new IntersectionObserver(
+    (entries) => {
+      // Entries is always an array
+      entries.forEach((entry) => {
+        console.log(entry);
+        const card = entry.target.querySelector('.card-pos-fixed');
+        if (entry.isIntersecting) {
+          card.classList.add('folded');
+          if (card.classList.contains('left')) {
+            card.style.left = `${150 - entry.intersectionRatio * 100}%`;
+            card.style.transform = `translateX(-50%)`;
+          } else {
+            card.style.right = `${150 - entry.intersectionRatio * 100}%`;
+            card.style.transform = `translateX(50%)`;
+          }
+          $folded.oriDomi(
+            'accordion',
+            (1 - entry.intersectionRatio) * 85,
+            'bottom',
+          );
+          return;
+        } else {
+          card.classList.remove('folded');
+          card.style.transform = `translate(-100%)`;
+        }
+      });
+    },
+    {
+      threshold: buildThreshold(800),
+    },
+  );
+  $('.card-space').each((i, ele) => cardEntry.observe(ele));
+};
+
 window.addEventListener(
   'load',
   () => {
     splashPage();
     createAllProjects();
-    projectEntrances();
+    cardEntrances();
   },
   false,
 );
