@@ -28,10 +28,9 @@ section {
 
 .splash-page {
   z-index: 100;
-  // position: fixed;
   height: 200vh;
+  margin-bottom: 100vh;
   $color-skin: #DE9B72;
-  // $color-skin2: #b78846;
   $color-dark: #3A3D3E;
   $bg: linear-gradient(7deg, #151515 5px, transparent 5px) 0 5px,
   linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
@@ -39,6 +38,11 @@ section {
   linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
   linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
   linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+
+  .splash-space {
+    height: 100vh;
+    background-color: black;
+  }
 
   .bg-dark {
     background-color: black;

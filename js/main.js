@@ -61,29 +61,43 @@ const projectsData = [
   },
 ];
 
-// Handle the splash screen
-const splashPage = () => {
-  const window_height = window.innerHeight;
-  const scrolledPagePercent =
-    (window_height - window.pageYOffset) / window_height;
-  const curtains = $('.curtain');
+// Intersection Observer threshold array
+const buildThreshold = (numSteps) => {
+  let thresholds = [0];
 
-  // While window_height > scroll_height
-  if (scrolledPagePercent >= 0) {
-    $('.splash-page').css('z-index', '100');
-    for (let i = 0; i < curtains.length; i += 1) {
-      curtains[i].style.width = `${(scrolledPagePercent / 2) * 100}%`;
-    }
-    $('.plaque').css('opacity', `${scrolledPagePercent}`);
-    $('.bg-dark').css('opacity', `${scrolledPagePercent * 1.5}`);
-    return;
+  for (let i = 1.0; i <= numSteps; i++) {
+    let ratio = i / numSteps;
+    thresholds.push(ratio);
   }
-  // Else move splash to background
-  $('.splash-page').css('z-index', '-1');
+  return thresholds;
 };
 
+const curtains = $('.curtain');
+const splashPage = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.zIndex = 100;
+        for (let i = 0; i < 2; i += 1) {
+          curtains[i].style.width = `${(entry.intersectionRatio / 2) * 100}%`;
+        }
+        $('.plaque').css('opacity', `${entry.intersectionRatio * 2}`);
+        const opacity = entry.intersectionRatio / 2.5;
+        entry.target.style.opacity = opacity;
+        $('.bg-dark').css('opacity', `${opacity}`);
+        return;
+      }
+      entry.css('z-index', '-1');
+    });
+  },
+  {
+    threshold: buildThreshold(30),
+  },
+);
+$('.splash-space').each((i, ele) => splashPage.observe(ele));
+
 // TODO: Switch this to threshhold observer
-window.addEventListener('scroll', () => splashPage(), false);
+// window.addEventListener('scroll', () => splashPage(), false);
 
 // Fix heading on top of page
 const headingObserver = new IntersectionObserver((entries) => {
@@ -97,17 +111,6 @@ const headingObserver = new IntersectionObserver((entries) => {
   });
 });
 $('.page').each((i, ele) => headingObserver.observe(ele));
-
-// Intersection Observer threshold array
-const buildThreshold = (numSteps) => {
-  let thresholds = [0];
-
-  for (let i = 1.0; i <= numSteps; i++) {
-    let ratio = i / numSteps;
-    thresholds.push(ratio);
-  }
-  return thresholds;
-};
 
 // langs: ['Ruby on rails', 'React', 'Redux'],
 // imgCard: "url('./images/projects/concierge-card.png')",
@@ -139,7 +142,7 @@ const projectTemplate = (project, orientation) => {
 };
 
 const foldedOridomi = () => {
-  return ($('.project-card').oriDomi({
+  return $('.project-card').oriDomi({
     // vPanels: [50, 50], // number of panels when folding left or right
     hPanels: 10, // number of panels when folding top or bottom
     speed: 0, // folding duration in ms
@@ -148,8 +151,8 @@ const foldedOridomi = () => {
     perspective: 400, // smaller values exaggerate 3D distortion
     maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
     shading: 'soft', // change the shading type
-  }));
-}
+  });
+};
 
 const projectEntrances = () => {
   const $folded = foldedOridomi();
@@ -180,11 +183,11 @@ const projectEntrances = () => {
       });
     },
     {
-      threshold: buildThreshold(1000),
+      threshold: buildThreshold(800),
     },
   );
   $('.project-space').each((i, ele) => projectEntry.observe(ele));
-}
+};
 
 const createAllProjects = () => {
   let projectHTML = $('.projects').html();
