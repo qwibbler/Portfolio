@@ -198,12 +198,12 @@ main {
 .cards {
   $card-width: 80vw;
 
-  .project-space {
+  .card-space {
     height: 70vh;
     margin-bottom: 120vh;
   }
 
-  .project-card {
+  .card {
     position: relative;
     max-width: $card-width;
     // height: 70vh;
@@ -242,108 +242,19 @@ main {
       p {
         text-align: justify;
       }
-    }
 
-    .projects {
       ul {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
+        text-align: left;
         padding-left: 1em;
       }
     }
-
   }
 
   .folded {
     position: fixed;
     bottom: 5vh;
-    // top: 0;
-    // left: 50%;
-    // transform: translateX(-50%);
-    // animation: slidein 1s ease-in-out left;
     transition: all 0.2s;
   }
 }
-
-// header {
-//   $color-skin: #DE9B72;
-//   $color-dark: #3A3D3E;
-//   background: $color-dark;
-//   margin: 0 auto;
-//   width: 95vw;
-
-//   .heading {
-//     font-style: normal;
-//     color: $color-skin;
-//     font-size: 1em;
-//     padding: 2em;
-//   }
-
-//   @mixin border($border-width) {
-//     border: $border-width solid $color-skin;
-//     padding: 6px;
-//   }
-
-//   .outer-border {
-//     @include border(2px);
-//   }
-
-//   .mid-border {
-//     @include border(6px);
-//   }
-
-//   .inner-border {
-//     @include border(2px);
-//     position: relative;
-//   }
-
-//   /* Decorations */
-//   @mixin corners($width, $margin) {
-//     position: absolute;
-//     width: $width;
-//     margin: $margin;
-//   }
-
-//   .corner-decoration {
-//     @include corners(3em, -3px);
-
-//     @mixin position($pos1, $pos2, $scale) {
-//       #{$pos1}: 0;
-//       #{$pos2}: 0;
-//       -webkit-transform: scale($scale);
-//       transform: scale($scale);
-//     }
-
-//     &.left-top {
-//       @include position(left, top, (1, 1));
-//     }
-
-//     &.right-top {
-//       @include position(right, top, (-1, 1));
-//     }
-
-//     &.right-bottom {
-//       @include position(right, bottom, -1);
-//     }
-
-//     &.left-bottom {
-//       @include position(left, bottom, (1, -1));
-//     }
-//   }
-
-//   .vertical-decoration {
-//     @include corners(11em, auto);
-//     left: 0;
-//     right: 0;
-
-//     &.top {
-//       top: 0;
-//     }
-
-//     &.bottom {
-//       bottom: 0;
-//       -webkit-transform: scaleY(-1);
-//       transform: scaleY(-1);
-//     }
-//   }
-// }
