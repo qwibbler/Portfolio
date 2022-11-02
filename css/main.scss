@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  list-style: none;
+  // list-style: none;
 }
 
 body {
@@ -150,6 +150,7 @@ main {
       h1 {
         border: $gold $border solid;
         color: $gold;
+        border-radius: 0.1em;
       }
     }
 
@@ -192,7 +193,7 @@ main {
 }
 
 .projects {
-  $card-width: 80vw;
+  $card-width: 90vw;
   // position: relative;
 
   .project-space {
@@ -202,16 +203,15 @@ main {
 
   .project-card {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     max-width: $card-width;
-    border-radius: 0.2em;
-    height: 70vh;
+    // height: 70vh;
     margin: 0 auto;
     padding: 1rem;
-    background: hsl(60, 20%, 83%) url(../images/bg/cardboard.jpg);
-    background-size: cover;
+    border-radius: 0.2em;
+    background: hsl(60, 20%, 83%) url(../images/bg/black-paper.jpg);
+    // background-size: cover;
+    font-family: 'Permanent Marker', cursive;
+    color: goldenrod;
 
     &::after {
       content: '';
@@ -224,16 +224,25 @@ main {
       box-shadow: 0 0 0.5rem 0.25rem #00000061;
     }
 
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      border: 4px solid goldenrod;
+      border-image: url(../images/bg/gold.jpg) 30 round;
+    }
+
     h4 {
-      font-size: 2em;
+      font-size: 1.5em;
       // font-family: 'Signika Negative', sans-serif;
-      font-family: 'Permanent Marker', cursive;
+      // font-family: 'Permanent Marker', cursive;
     }
 
     p {
       text-align: justify;
-      margin: 0.5rem auto;
-      font-family: 'Permanent Marker', cursive;
+      // margin: 0.5rem auto;
+      // font-family: 'Permanent Marker', cursive;
     }
 
     ul {

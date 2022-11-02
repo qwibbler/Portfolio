@@ -121,15 +121,17 @@ const projectTemplate = (project, orientation) => {
     <div class="project-space">
       <div class="project-fixed ${orientation}">
         <div class="project-card">
-          <img src="images/project_img/Gmail.png" alt="projimg">
-          <h4>${project.title}</h4>
-          <p>${project.desc}</p>
-          <ul class="card-ul">
-            <li class="card-li">JavaScript</li>
-            <li class="card-li">Ruby</li>
-            <li class="card-li">Html</li>
-            <li class="card-li">css</li>
-          </ul>
+          <div class="card-content">
+            <img src="images/project_img/Gmail.png" alt="projimg">
+            <h4>${project.title}</h4>
+            <p>${project.desc}</p>
+            <ul class="card-ul">
+              <li class="card-li">JavaScript</li>
+              <li class="card-li">Ruby</li>
+              <li class="card-li">Html</li>
+              <li class="card-li">css</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
