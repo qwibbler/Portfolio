@@ -127,18 +127,18 @@ $('.page').each((i, ele) => headingObserver.observe(ele));
 
 const projectTemplate = (project, orientation) => {
   return `
-    <div class="project-space">
+    <div class="card-space">
       <div class="project-fixed ${orientation}">
-        <div class="project-card">
+        <div class="card">
           <div class="card-content">
             <img src="images/project_img/Gmail.png" alt="projimg">
             <h4>${project.title}</h4>
             <p>${project.desc}</p>
-            <ul class="card-ul">
-              <li class="card-li">JavaScript</li>
-              <li class="card-li">Ruby</li>
-              <li class="card-li">Html</li>
-              <li class="card-li">css</li>
+            <ul>
+              <li>JavaScript</li>
+              <li>Ruby</li>
+              <li>Html</li>
+              <li>css</li>
             </ul>
           </div>
         </div>
@@ -148,7 +148,7 @@ const projectTemplate = (project, orientation) => {
 };
 
 const foldedOridomi = () => {
-  return $('.project-card').oriDomi({
+  return $('.card').oriDomi({
     // vPanels: [50, 50], // number of panels when folding left or right
     hPanels: 10, // number of panels when folding top or bottom
     speed: 0, // folding duration in ms
@@ -186,6 +186,8 @@ const projectEntrances = () => {
           return;
         } else {
           projectCard.classList.remove('folded');
+          projectCard.style.transform = `translate(-100%)`;
+
         }
       });
     },
@@ -193,7 +195,7 @@ const projectEntrances = () => {
       threshold: buildThreshold(800),
     },
   );
-  $('.project-space').each((i, ele) => projectEntry.observe(ele));
+  $('.card-space').each((i, ele) => projectEntry.observe(ele));
 };
 
 const createAllProjects = () => {
