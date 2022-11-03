@@ -141,7 +141,7 @@ main {
     justify-content: center;
     min-height: 100vh;
     $red: #ac0200;
-    $gold: gold;
+    $gold: goldenrod;
     $hang: 1.5em;
     $border: 0.1em;
     // margin-bottom: 100vh;
@@ -150,14 +150,21 @@ main {
       position: sticky;
       padding: 0.5em;
       margin: auto;
-      background: $red url(../images/bg/red.jpeg);
+      background: $red url(../images/bg/dark-wood.jpg);
       background-size: cover;
       background-blend-mode: hard-light;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Gravitas One', cursive;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px, rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
       h1 {
         border: $gold $border solid;
-        color: $gold;
+        border-image: url(../images/bg/gold.jpg) 30 round;
+        background: url(../images/bg/gold.jpg);
+        background-size: 50%;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-clip: text;
+        padding: 0.1em;
         border-radius: 0.1em;
       }
     }
@@ -243,8 +250,6 @@ main {
 
       h4 {
         font-size: 1.5em;
-        background: hsl(60, 20%, 83%) url(../images/bg/black-paper.jpg);
-        background-clip: text;
       }
 
       p {
@@ -252,10 +257,13 @@ main {
       }
 
       ul {
-        // display: flex;
-        // justify-content: space-between;
         text-align: left;
         padding-left: 1em;
+      }
+
+      ul.project-list {
+        display: flex;
+        justify-content: space-between;
       }
     }
   }

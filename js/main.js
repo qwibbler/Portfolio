@@ -122,7 +122,7 @@ const projectTemplate = (project, orientation) => {
             <img src="images/project_img/Gmail.png" alt="projimg">
             <h4>${project.title}</h4>
             <p>${project.desc}</p>
-            <ul>${list}</ul>
+            <ul class="project-list">${list}</ul>
           </div>
         </div>
       </div>
