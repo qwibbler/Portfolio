@@ -158,7 +158,6 @@ const cardEntrances = () => {
     (entries) => {
       // Entries is always an array
       entries.forEach((entry) => {
-        console.log(entry);
         const card = entry.target.querySelector('.card-pos-fixed');
         if (entry.isIntersecting) {
           card.classList.add('folded');
@@ -182,7 +181,7 @@ const cardEntrances = () => {
       });
     },
     {
-      threshold: buildThreshold(800),
+      threshold: buildThreshold(85),
     },
   );
   $('.card-space').each((i, ele) => cardEntry.observe(ele));
