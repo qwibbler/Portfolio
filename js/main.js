@@ -99,9 +99,10 @@ const splashPage = () => {
 
 // Fix heading on top of page
 const headingObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => entry.target
+  entries.forEach((entry) =>
+    entry.target
       .querySelector('.heading')
-      .classList.toggle('page-visible', entry.isIntersecting)
+      .classList.toggle('page-visible', entry.isIntersecting),
   );
 });
 $('.page').each((i, ele) => headingObserver.observe(ele));
@@ -146,7 +147,10 @@ const foldedOridomi = () => {
 const createAllProjects = () => {
   let projectHTML = $('.projects').html();
   projectsData.forEach((project, i) => {
-    projectHTML += projectTemplate(projectsData[i], i % 2 === 0 ? 'left' : 'right');
+    projectHTML += projectTemplate(
+      projectsData[i],
+      i % 2 === 0 ? 'left' : 'right',
+    );
   });
   $('.projects').html(projectHTML);
 };
