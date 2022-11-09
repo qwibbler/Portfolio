@@ -145,8 +145,13 @@ main {
     $hang: 1.5em;
     $border: 0.1em;
 
+    p.heading {
+      display: flex;
+      flex-direction: column;
+      text-align: justify;
+    }
+
     .heading {
-      position: sticky;
       padding: 0.5em;
       margin: auto;
       max-width: 90vw;
@@ -177,6 +182,7 @@ main {
         background-clip: text;
         color: transparent;
       }
+
     }
 
     .page-visible {
