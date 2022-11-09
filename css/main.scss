@@ -171,7 +171,6 @@ main {
 
       h1 {
         @include gold-border(0.1em);
-        @include gold-text;
         padding: 0.1em;
       }
     }
@@ -183,10 +182,6 @@ main {
       background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
       background-blend-mode: difference;
       background-size: 100% 100%;
-
-      span {
-        @include gold-text;
-      }
 
       #sub-heading {
         font-size: 1.5em;
