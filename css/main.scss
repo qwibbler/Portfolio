@@ -19,6 +19,19 @@ body {
   background-position: center;
 }
 
+@mixin gold-border($width) {
+  border: #{$width} solid goldenrod;
+  border-image: url(../images/bg/gold.jpg) 7 round;
+}
+
+@mixin gold-text {
+  background: url(../images/bg/gold.jpg);
+  background-size: 50px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 section {
   position: relative;
   width: 100vw;
@@ -153,32 +166,22 @@ main {
       background-size: 100% 100%;
 
       h1 {
-        border: $gold 0.1em solid;
-        border-image: url(../images/bg/gold.jpg) 30 round;
-        background: url(../images/bg/gold.jpg);
-        background-size: 50%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        @include gold-border(0.1em);
+        @include gold-text;
         padding: 0.1em;
       }
     }
 
     p.wood-bg {
+      @include gold-border(0.3em);
       display: flex;
       flex-direction: column;
-      border: $gold 0.3em solid;
-      border-image: url(../images/bg/gold.jpg) 7 round;
       background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
       background-blend-mode: difference;
       background-size: 100% 100%;
 
       span {
-        background: url(../images/bg/gold.jpg);
-        background-size: 50px;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        @include gold-text;
       }
 
       #sub-heading {
@@ -256,13 +259,13 @@ main {
     }
 
     .card-content {
+      @include gold-border(4px);
+      @include gold-text;
       display: flex;
       flex-direction: column;
       max-height: 70vh;
       justify-content: space-between;
       padding: 1rem;
-      border: 4px solid goldenrod;
-      border-image: url(../images/bg/gold.jpg) 30 round;
 
       h4 {
         font-size: 1.5em;
