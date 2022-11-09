@@ -126,11 +126,11 @@ section {
       }
 
       &:before {
-        @include plaque-corner(left, -2px, bottom, -1px);
+        @include plaque-corner(left, -2px, bottom, -1.5px);
       }
 
       &:after {
-        @include plaque-corner(right, -2px, bottom, -1px);
+        @include plaque-corner(right, -2px, bottom, -1.5px);
       }
     }
   }
