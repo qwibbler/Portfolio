@@ -10,7 +10,6 @@
 
 body {
   scroll-behavior: smooth;
-  // font-family: 'Inter', sans-serif;
   font-style: normal;
   width: 100vw;
   overflow-x: hidden;
@@ -90,7 +89,6 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    // width: 60%;
     color: $color-skin;
     background-color: $color-dark;
     background: $bg;
@@ -145,15 +143,9 @@ main {
     $hang: 1.5em;
     $border: 0.1em;
 
-    p.heading {
-      display: flex;
-      flex-direction: column;
-      text-align: justify;
-    }
-
     .heading {
       padding: 0.5em;
-      margin: auto;
+      margin: 0 auto;
       max-width: 90vw;
       background: $red url(../images/bg/dark-wood.jpg);
       background-size: cover;
@@ -174,6 +166,11 @@ main {
         color: transparent;
         padding: 0.1em;
       }
+    }
+
+    p.heading {
+      display: flex;
+      flex-direction: column;
 
       span {
         background: url(../images/bg/gold.jpg);
@@ -183,6 +180,9 @@ main {
         color: transparent;
       }
 
+      #sub-heading {
+        font-size: 1.5em;
+      }
     }
 
     .page-visible {
