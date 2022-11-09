@@ -118,7 +118,7 @@ const projectTemplate = (project, orientation) => {
   return `
     <div class="card-space">
       <div class="card-pos-fixed ${orientation}">
-        <div class="card">
+        <div class="card to-fold">
           <div class="card-content">
             <img src="images/project_img/Gmail.png" alt="projimg">
             <h4>${project.title}</h4>
@@ -132,7 +132,7 @@ const projectTemplate = (project, orientation) => {
 };
 
 const foldedOridomi = () => {
-  return $('.card').oriDomi({
+  return $('.to-fold').oriDomi({
     // vPanels: [50, 50], // number of panels when folding left or right
     hPanels: 10, // number of panels when folding top or bottom
     speed: 0, // folding duration in ms
