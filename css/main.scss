@@ -191,7 +191,7 @@ main {
       top: $hang;
       left: 50%;
       transform: translate(-50%, 0);
-      animation: 1s enter-heading alternate ease-in;
+      animation: 1s enter-heading ease-in;
     }
 
     @keyframes enter-heading {
