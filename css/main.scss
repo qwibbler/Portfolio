@@ -63,11 +63,11 @@ section {
   $color-skin: #DE9B72;
   $color-dark: #3A3D3E;
   $plaque-bg: linear-gradient(7deg, #151515 5px, transparent 5px) 0 5px,
-  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
   $plaque-border: 2px solid $color-skin;
   $plaque-corner-size: 14px;
   $plaque-padding: 5px;
@@ -121,7 +121,7 @@ section {
 }
 
 main {
-  width: 100vw;
+  // width: 100vw;
 
   .gap {
     height: 115vh;
@@ -135,23 +135,26 @@ main {
     $red: #ac0200;
     $gold: goldenrod;
     $hang: 1.5em;
-    $border: 0.1em;
+    $border-width: 0.1em;
 
-    .heading {
+    .wood-bg {
       padding: 0.5em;
       margin: 0 auto;
       max-width: 90vw;
-      background: $red url(../images/bg/dark-wood.jpg);
-      background-size: cover;
-      background-blend-mode: hard-light;
       font-family: 'Gravitas One', cursive;
       font-family: 'Vollkorn SC', serif;
       line-height: 1;
       border-radius: 2px;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px, rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    .heading.wood-bg {
+      background: $red url(../images/bg/dark-wood.jpg);
+      background-size: cover;
+      background-blend-mode: hard-light;
 
       h1 {
-        border: $gold $border solid;
+        border: $gold $border-width solid;
         border-image: url(../images/bg/gold.jpg) 30 round;
         background: url(../images/bg/gold.jpg);
         background-size: 50%;
@@ -162,7 +165,7 @@ main {
       }
     }
 
-    p.heading {
+    p.wood-bg {
       display: flex;
       flex-direction: column;
       border: $gold 0.3em solid;
