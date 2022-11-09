@@ -164,7 +164,7 @@ const cardEntrances = () => {
       entries.forEach((entry) => {
         const card = entry.target.querySelector('.card-pos-fixed');
         if (entry.isIntersecting) {
-          card.classList.add('folded');
+          card.classList.add('active');
           if (card.classList.contains('left')) {
             card.style.left = `${150 - entry.intersectionRatio * 100}%`;
             card.style.transform = `translateX(-50%)`;
@@ -179,17 +179,46 @@ const cardEntrances = () => {
           );
           return;
         } else {
-          card.classList.remove('folded');
+          card.classList.remove('active');
           card.style.transform = `translate(-100%)`;
         }
       });
     },
     {
-      threshold: buildThreshold(85),
+      threshold: buildThreshold(100),
     },
   );
   $('.card-space').each((i, ele) => cardEntry.observe(ele));
 };
+
+const aboutCardsEntrance = () => {
+  const aboutCardEntry = new IntersectionObserver(
+    (entries) => {
+      // Entries is always an array
+      entries.forEach((entry) => {
+        const cards = entry.target.querySelector('.about.cards');
+        if (entry.isIntersecting) {
+          cards.classList.add('active');
+          if (cards.classList.contains('left')) {
+            cards.style.left = `${150 - entry.intersectionRatio * 100}%`;
+            cards.style.transform = `translateX(-50%)`;
+          } else {
+            cards.style.right = `${150 - entry.intersectionRatio * 100}%`;
+            cards.style.transform = `translateX(50%)`;
+          }
+          return;
+        } else {
+          cards.classList.remove('active');
+          cards.style.transform = `translate(-100%)`;
+        }
+      });
+    },
+    {
+      threshold: buildThreshold(100),
+    },
+  );
+  $('.about-page').each((i, ele) => aboutCardEntry.observe(ele));
+}
 
 window.addEventListener(
   'load',
@@ -197,6 +226,7 @@ window.addEventListener(
     splashPage();
     createAllProjects();
     cardEntrances();
+    aboutCardsEntrance();
   },
   false,
 );
