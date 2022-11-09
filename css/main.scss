@@ -135,7 +135,6 @@ main {
     $red: #ac0200;
     $gold: goldenrod;
     $hang: 1.5em;
-    $border-width: 0.1em;
 
     .wood-bg {
       padding: 0.5em;
@@ -150,11 +149,11 @@ main {
 
     .heading.wood-bg {
       background: $red url(../images/bg/dark-wood.jpg);
-      background-size: cover;
       background-blend-mode: hard-light;
+      background-size: 100% 100%;
 
       h1 {
-        border: $gold $border-width solid;
+        border: $gold 0.1em solid;
         border-image: url(../images/bg/gold.jpg) 30 round;
         background: url(../images/bg/gold.jpg);
         background-size: 50%;
@@ -169,14 +168,14 @@ main {
       display: flex;
       flex-direction: column;
       border: $gold 0.3em solid;
-      border-image: url(../images/bg/gold.jpg) 30 round;
+      border-image: url(../images/bg/gold.jpg) 7 round;
       background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
       background-blend-mode: difference;
       background-size: 100% 100%;
 
       span {
         background: url(../images/bg/gold.jpg);
-        background-size: 50%;
+        background-size: 50px;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
