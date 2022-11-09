@@ -171,6 +171,9 @@ main {
     p.heading {
       display: flex;
       flex-direction: column;
+      border: $gold 0.3em solid;
+      border-image: url(../images/bg/gold.jpg) 30 round;
+      background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
 
       span {
         background: url(../images/bg/gold.jpg);
