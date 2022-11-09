@@ -193,8 +193,7 @@ main {
       top: $hang;
       left: 50%;
       transform: translate(-50%, 0);
-      animation: enter-heading 1s;
-      animation-timing-function: ease-in;
+      animation: 1s enter-heading alternate ease-in;
     }
 
     @keyframes enter-heading {
