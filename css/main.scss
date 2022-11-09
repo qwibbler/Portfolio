@@ -78,18 +78,20 @@ section {
   linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
   linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
   linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  $plaque-border: $plaque-border;
   $plaque-corner-size: 14px;
+  $plaque-padding: 5px;
 
   @mixin plaque-corner($horizontal, $x, $vertical, $y) {
     content: "•";
     position: absolute;
-    width: 14px;
-    height: 14px;
-    font-size: 14px;
-    color: $color-skin;
-    border: 2px solid $color-skin;
-    line-height: 12px;
-    text-align: center;
+    width: $plaque-corner-size;
+    // height: $plaque-corner-size;
+    font-size: $plaque-corner-size;
+    // color: $color-skin;
+    border: $plaque-border;
+    line-height: $plaque-corner-size;
+    // text-align: center;
     #{$vertical}: #{$y};
     #{$horizontal}: #{$x};
   }
@@ -101,23 +103,23 @@ section {
     transform: translate(-50%, -50%);
     color: $color-skin;
     background-color: $color-dark;
-    background: $bg;
+    background: $plaque-bg;
     background-color: #131313;
     background-size: 20px 20px;
-    border: 2px solid $color-skin;
-    padding: 5px;
+    border: $plaque-border;
+    padding: $plaque-padding;
 
     &:before {
-      @include plaque-corner(left, 5px, top, 5px);
+      @include plaque-corner(left, $plaque-padding, top, $plaque-padding);
     }
 
     &:after {
-      @include plaque-corner(right, 5px, top, 5px);
+      @include plaque-corner(right, $plaque-padding, top, $plaque-padding);
     }
 
     &-inner {
       position: relative;
-      border: 2px solid $color-skin;
+      border: $plaque-border;
       padding: 40px;
 
       &:before,
