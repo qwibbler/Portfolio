@@ -287,17 +287,17 @@ main {
         justify-content: space-between;
         max-height: 10vh;
       }
+    }
+  }
 
-      hr {
-        @include gold-border(1px);
-      }
+  .btn {
+    perspective: 100px;
+    perspective-origin: 50%;
+    opacity: 0;
 
-      button {
-        color: transparent;
-        background-color: transparent;
-        border: none;
-        padding: 4px;
-      }
+    button {
+      padding: 0.2rem 1rem;
+      transform: rotateX(20deg);
     }
   }
 }
