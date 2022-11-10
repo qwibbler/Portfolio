@@ -287,6 +287,17 @@ main {
         justify-content: space-between;
         max-height: 10vh;
       }
+
+      hr {
+        @include gold-border(1px);
+      }
+
+      button {
+        color: transparent;
+        background-color: transparent;
+        border: none;
+        padding: 4px;
+      }
     }
   }
 }

@@ -124,6 +124,8 @@ const projectTemplate = (project, orientation) => {
             <h4>${project.title}</h4>
             <p>${project.desc}</p>
             <ul class="project-list">${list}</ul>
+            <hr>
+            <button>See Project</button>
           </div>
         </div>
       </div>
@@ -199,13 +201,7 @@ const aboutCardsEntrance = () => {
         const cards = entry.target.querySelector('.about.cards');
         if (entry.isIntersecting) {
           cards.classList.add('active');
-          if (cards.classList.contains('left')) {
-            cards.style.left = `${150 - entry.intersectionRatio * 100}%`;
-            cards.style.transform = `translateX(-50%)`;
-          } else {
-            cards.style.right = `${150 - entry.intersectionRatio * 100}%`;
-            cards.style.transform = `translateX(50%)`;
-          }
+          cards.style.transform = `translateX(${100 - entry.intersectionRatio}%)`;
           return;
         } else {
           cards.classList.remove('active');
