@@ -124,13 +124,12 @@ const projectTemplate = (project, orientation) => {
             <h4>${project.title}</h4>
             <p>${project.desc}</p>
             <ul class="project-list">${list}</ul>
-            <hr>
-            <button>See Project</button>
           </div>
         </div>
+        <div class="btn"><button>See Project</button></div>
       </div>
     </div>
-  `;
+    `;
 };
 
 const foldedOridomi = () => {
@@ -201,7 +200,9 @@ const aboutCardsEntrance = () => {
         const cards = entry.target.querySelector('.about.cards');
         if (entry.isIntersecting) {
           cards.classList.add('active');
-          cards.style.transform = `translateX(${100 - entry.intersectionRatio}%)`;
+          cards.style.transform = `translateX(${
+            100 - entry.intersectionRatio
+          }%)`;
           return;
         } else {
           cards.classList.remove('active');
@@ -214,7 +215,7 @@ const aboutCardsEntrance = () => {
     },
   );
   $('.about-page').each((i, ele) => aboutCardEntry.observe(ele));
-}
+};
 
 window.addEventListener(
   'load',
