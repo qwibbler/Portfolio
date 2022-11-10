@@ -164,6 +164,7 @@ const cardEntrances = () => {
       // Entries is always an array
       entries.forEach((entry) => {
         const card = entry.target.querySelector('.card-pos-fixed');
+        const button = card.querySelector('.btn');
         if (entry.isIntersecting) {
           card.classList.add('active');
           if (card.classList.contains('left')) {
@@ -173,11 +174,13 @@ const cardEntrances = () => {
             card.style.right = `${150 - entry.intersectionRatio * 100}%`;
             card.style.transform = `translateX(50%)`;
           }
+          button.style.opacity = Math.trunc(entry.intersectionRatio);
           $folded.oriDomi(
             'accordion',
             (1 - entry.intersectionRatio) * 85,
             'bottom',
           );
+          button.style.opacity = Math.trunc(entry.intersectionRatio);
           return;
         } else {
           card.classList.remove('active');
