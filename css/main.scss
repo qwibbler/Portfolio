@@ -134,8 +134,6 @@ section {
 }
 
 main {
-  // width: 100vw;
-
   .gap {
     height: 115vh;
   }
@@ -152,7 +150,8 @@ main {
     .wood-bg {
       padding: 0.5em;
       margin: 0 auto;
-      max-width: 90vw;
+      width: max-content;
+      max-width: 75vw;
       font-family: 'Gravitas One', cursive;
       font-family: 'Vollkorn SC', serif;
       font-family: 'Tienne', serif;
@@ -165,7 +164,7 @@ main {
       }
     }
 
-    .heading.wood-bg {
+    &.heading {
       background: $red url(../images/bg/dark-wood.jpg);
       background-blend-mode: hard-light;
       background-size: 100% 100%;
@@ -174,9 +173,43 @@ main {
         @include gold-border(0.1em);
         padding: 0.1em;
       }
+
+      &.page-visible {
+        position: fixed;
+        top: $hang;
+        left: 50%;
+        transform: translate(-50%, 0);
+        animation: 1s enter-heading ease-in;
+      }
+
+      @keyframes enter-heading {
+        0% {
+          transform: translate(-50%, -200%)
+        }
+
+        20% {
+          transform: translate(-50%, 0%) rotate(1.5deg)
+        }
+
+        40% {
+          transform: translate(-50%, -30%) rotate(-2deg)
+        }
+
+        60% {
+          transform: translate(-50%, 0) rotate(2.5deg)
+        }
+
+        80% {
+          transform: translate(-50%, -10%) rotate(-2deg)
+        }
+
+        100% {
+          transform: translate(-50%, 0)
+        }
+      }
     }
 
-    p.wood-bg {
+    &.infobox {
       @include gold-border(0.3em);
       display: flex;
       flex-direction: column;
@@ -185,47 +218,21 @@ main {
       background-size: 100% 100%;
 
       span {
-        text-align: justify
+        // text-align: justify
         // margin-bottom: 0.5rem;
       }
 
       .sub-heading {
-        text-align: center;
+        // text-align: center;
         font-size: 1.5em;
       }
-    }
 
-    .page-visible {
-      position: fixed;
-      top: $hang;
-      left: 50%;
-      transform: translate(-50%, 0);
-      animation: 1s enter-heading ease-in;
-    }
-
-    @keyframes enter-heading {
-      0% {
-        transform: translate(-50%, -200%)
-      }
-
-      20% {
-        transform: translate(-50%, 0%) rotate(1.5deg)
-      }
-
-      40% {
-        transform: translate(-50%, -30%) rotate(-2deg)
-      }
-
-      60% {
-        transform: translate(-50%, 0) rotate(2.5deg)
-      }
-
-      80% {
-        transform: translate(-50%, -10%) rotate(-2deg)
-      }
-
-      100% {
-        transform: translate(-50%, 0)
+      &.active {
+        position: fixed;
+        height: fit-content;
+        top: 6rem;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
