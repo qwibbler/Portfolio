@@ -162,77 +162,71 @@ main {
       &>* {
         @include gold-text;
       }
-    }
 
-    &.heading {
-      background: $red url(../images/bg/dark-wood.jpg);
-      background-blend-mode: hard-light;
-      background-size: 100% 100%;
+      &.heading {
+        background: $red url(../images/bg/dark-wood.jpg);
+        background-blend-mode: hard-light;
+        background-size: 100% 100%;
 
-      h1 {
-        @include gold-border(0.1em);
-        padding: 0.1em;
+        h1 {
+          @include gold-border(0.1em);
+          padding: 0.1em;
+        }
+
+        &.page-visible {
+          position: fixed;
+          top: $hang;
+          left: 50%;
+          transform: translate(-50%, 0);
+          animation: 1s enter-heading ease-in;
+        }
+
+        @keyframes enter-heading {
+          0% {
+            transform: translate(-50%, -200%)
+          }
+
+          20% {
+            transform: translate(-50%, 0%) rotate(1.5deg)
+          }
+
+          40% {
+            transform: translate(-50%, -30%) rotate(-2deg)
+          }
+
+          60% {
+            transform: translate(-50%, 0) rotate(2.5deg)
+          }
+
+          80% {
+            transform: translate(-50%, -10%) rotate(-2deg)
+          }
+
+          100% {
+            transform: translate(-50%, 0)
+          }
+        }
       }
 
-      &.page-visible {
-        position: fixed;
-        top: $hang;
-        left: 50%;
-        transform: translate(-50%, 0);
-        animation: 1s enter-heading ease-in;
-      }
+      &.infobox {
+        @include gold-border(0.3em);
+        display: flex;
+        flex-direction: column;
+        background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
+        background-blend-mode: difference;
+        background-size: 100% 100%;
 
-      @keyframes enter-heading {
-        0% {
-          transform: translate(-50%, -200%)
+        .sub-heading {
+          font-size: 1.5em;
         }
 
-        20% {
-          transform: translate(-50%, 0%) rotate(1.5deg)
+        &.active {
+          position: fixed;
+          height: fit-content;
+          top: 6rem;
+          left: 50%;
+          transform: translateX(-50%);
         }
-
-        40% {
-          transform: translate(-50%, -30%) rotate(-2deg)
-        }
-
-        60% {
-          transform: translate(-50%, 0) rotate(2.5deg)
-        }
-
-        80% {
-          transform: translate(-50%, -10%) rotate(-2deg)
-        }
-
-        100% {
-          transform: translate(-50%, 0)
-        }
-      }
-    }
-
-    &.infobox {
-      @include gold-border(0.3em);
-      display: flex;
-      flex-direction: column;
-      background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
-      background-blend-mode: difference;
-      background-size: 100% 100%;
-
-      span {
-        // text-align: justify
-        // margin-bottom: 0.5rem;
-      }
-
-      .sub-heading {
-        // text-align: center;
-        font-size: 1.5em;
-      }
-
-      &.active {
-        position: fixed;
-        height: fit-content;
-        top: 6rem;
-        left: 50%;
-        transform: translateX(-50%);
       }
     }
   }
