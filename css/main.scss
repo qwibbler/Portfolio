@@ -297,7 +297,14 @@ main {
 
     button {
       padding: 0.2rem 1rem;
-      transform: rotateX(20deg);
+      transform: rotateX(20deg) translateY(1.2rem);
+      font-family: 'Vollkorn SC', serif;
+      font-weight: bold;
+      background: url(../images/bg/mat.jpeg);
+      color: #3f1414;
+    }
+
+    button:hover, button:focus {
     }
   }
 }

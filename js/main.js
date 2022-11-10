@@ -180,7 +180,7 @@ const cardEntrances = () => {
             (1 - entry.intersectionRatio) * 85,
             'bottom',
           );
-          button.style.opacity = Math.trunc(entry.intersectionRatio);
+          button.style.opacity = Math.trunc(entry.intersectionRatio) - 0.25;
           return;
         } else {
           card.classList.remove('active');
