@@ -152,8 +152,8 @@ main {
       margin: 0 auto;
       width: max-content;
       max-width: 75vw;
-      font-family: 'Gravitas One', cursive;
-      font-family: 'Vollkorn SC', serif;
+      // font-family: 'Gravitas One', cursive;
+      // font-family: 'Vollkorn SC', serif;
       font-family: 'Tienne', serif;
       // line-height: 1.2;
       border-radius: 2px;
@@ -177,6 +177,7 @@ main {
           position: fixed;
           top: $hang;
           left: 50%;
+          z-index: 1;
           transform: translate(-50%, 0);
           animation: 1s enter-heading ease-in;
         }
@@ -223,9 +224,22 @@ main {
         &.active {
           position: fixed;
           height: fit-content;
-          top: 6rem;
+          top: 5.25em;
           left: 50%;
+          z-index: 0;
           transform: translateX(-50%);
+          transform-origin: top left;
+          animation: 1s enter-info ease-in;
+        }
+
+        @keyframes enter-info {
+          from {
+            transform: scale(0, -1) translateX(-50%);
+          }
+
+          to {
+            transform: scale(1, 1) translateX(-50%);
+          }
         }
       }
     }
