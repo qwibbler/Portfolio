@@ -134,6 +134,9 @@ section {
 }
 
 main {
+  $red: #ac0200;
+  $gold: goldenrod;
+
   .gap {
     height: 115vh;
   }
@@ -143,8 +146,6 @@ main {
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-    $red: #ac0200;
-    $gold: goldenrod;
     $hang: 1.5em;
 
     .wood-bg {
@@ -247,96 +248,96 @@ main {
         }
       }
     }
-  }
 
-  .cards {
-    $card-width: 80vw;
+    .cards {
+      $card-width: 80vw;
 
-    .card-space {
-      height: 70vh;
-      margin-bottom: 100vh;
-    }
-
-    .card-space:last-child {
-      margin-bottom: 0;
-    }
-
-    .card {
-      position: relative;
-      max-width: $card-width;
-      margin: 0 auto;
-      padding: 1rem;
-      border-radius: 2px;
-      background: hsl(60, 20%, 83%) url(../images/bg/black-paper.jpg);
-      font-family: 'IM Fell English SC', serif;
-      color: goldenrod;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -0.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 95%;
-        height: 0px;
-        box-shadow: 0 0 0.5rem 0.25rem #00000061;
+      .card-space {
+        height: 70vh;
+        margin-bottom: 100vh;
       }
 
-      .card-content {
-        @include gold-border(4px);
-        @include gold-text;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        max-height: 70vh;
-        justify-content: space-between;
+      .card-space:last-child {
+        margin-bottom: 0;
+      }
+
+      .card {
+        position: relative;
+        max-width: $card-width;
+        margin: 0 auto;
         padding: 1rem;
+        border-radius: 2px;
+        background: hsl(60, 20%, 83%) url(../images/bg/black-paper.jpg);
+        font-family: 'IM Fell English SC', serif;
+        color: goldenrod;
 
-        h4 {
-          font-size: 1.5em;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 95%;
+          height: 0px;
+          box-shadow: 0 0 0.5rem 0.25rem #00000061;
         }
 
-        p {
-          text-align: justify;
-        }
-
-        ul {
-          text-align: left;
-          padding-left: 1em;
-        }
-
-        ul.project-list {
+        .card-content {
+          @include gold-border(4px);
+          @include gold-text;
           display: flex;
           flex-direction: column;
-          flex-wrap: wrap;
+          height: 100%;
+          max-height: 70vh;
           justify-content: space-between;
-          max-height: 10vh;
+          padding: 1rem;
+
+          h4 {
+            font-size: 1.5em;
+          }
+
+          p {
+            text-align: justify;
+          }
+
+          ul {
+            text-align: left;
+            padding-left: 1em;
+          }
+
+          ul.project-list {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-height: 10vh;
+          }
         }
       }
-    }
 
-    .btn {
-      perspective: 100px;
-      perspective-origin: 50%;
-      opacity: 0;
+      .btn {
+        perspective: 100px;
+        perspective-origin: 50%;
+        opacity: 0;
 
-      button {
-        padding: 0.2rem 1rem;
-        transform: rotateX(20deg) translateY(1.2rem);
-        font-family: 'Vollkorn SC', serif;
-        font-weight: bold;
-        background: url(../images/bg/mat.jpeg);
-        color: #3f1414;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        border: none;
-        border-radius: 0.5rem;
+        button {
+          padding: 0.2rem 1rem;
+          transform: rotateX(20deg) translateY(1.2rem);
+          font-family: 'Vollkorn SC', serif;
+          font-weight: bold;
+          background: url(../images/bg/mat.jpeg);
+          color: #3f1414;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          border: none;
+          border-radius: 0.5rem;
 
-        &:hover {
-          transform: rotateX(10deg) translateY(1.1rem);
-        }
+          &:hover {
+            transform: rotateX(10deg) translateY(1.1rem);
+          }
 
-        &:active {
-          transform: rotateX(5deg) translateY(1rem);
+          &:active {
+            transform: rotateX(5deg) translateY(1rem);
+          }
         }
       }
     }
