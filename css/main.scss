@@ -377,6 +377,28 @@ main {
     }
   }
 
+  .contact-page {
+    fieldset {
+      @include gold-border(0.1em);
+
+      legend {
+        text-align: left;
+        padding: 0.2rem;
+        margin: 0 1rem;
+      }
+
+      input,
+      textarea {
+        color: $gold;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        font-size: 1rem;
+        background: transparent;
+        border: none;
+      }
+    }
+  }
+
   .active {
     position: fixed;
     bottom: 2rem;
