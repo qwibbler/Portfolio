@@ -207,22 +207,23 @@
         <form class="cards" id="contact-form" action="https://formspree.io/f/moqyzrzd" method="post">
           <div class="card">
             <fieldset>
-              <legend class="form-label" for="username">Name</legend>
-              <label class="form-label" for="username"></label>
+              <legend>Name</legend>
+              <label for="username"></label>
               <input type="text" id="username" name="user-name" placeholder="Full Name" maxlength="30" required>
             </fieldset>
             <fieldset>
-              <legend class="form-label" for="useremail">Email</legend>
-              <label class="form-label" for="useremail"></label>
+              <legend>Email</legend>
+              <label for="useremail"></label>
               <input type="email" id="useremail" name="user-email" placeholder="Email address" required>
             </fieldset>
             <fieldset>
-              <legend class="form-label" for="comment">Message</legend>
-              <label class="form-label" for="comment"></label>
+              <legend>Message</legend>
+              <label for="comment"></label>
               <textarea name="msg" id="comment" maxlength="500" placeholder="Message" required></textarea>
             </fieldset>
-            <button type="submit">Get in touch</button>
+            <input type="text" name="_gotcha" style="display:none" />
           </div>
+          <div class="btn"><button type="submit">Get In Touch</button></div>
         </form>
       </section>
       <!-- <div class="gap"></div> -->
