@@ -132,28 +132,26 @@
 
       <!-- About Page -->
       <section class="about-page page">
-        <div id="main-about">
-          <div class="wood-bg heading" id="about">
-            <h1>About Me ➢</h1>
-          </div>
-          <p class="wood-bg infobox">
-            <span class="sub-heading">Hi, I'm <strong>Humaira Zaman!</strong></span>
-            <span>
-              I'm a <strong>software developer</strong> who loves <strong>coding</strong>,
-              because it has all of my favorite things: <strong>problem solving</strong>,
-              <strong>creativity</strong>, and <strong>logic</strong>.
-            </span>
-            <span>
-              I'm passionate about <strong>learning new skills and technologies</strong>, and
-              I'm always looking for new opportunities to <strong>grow and improve</strong>.
-            </span>
-            <span>
-              I'm currently looking for a <strong><em>full-time position as a software developer</em></strong>.
-              If you have a project you need coded, don't hestiate to <strong>contact me</strong>.
-            </span>
-            <span><button type="button">Get My Resume</button></span>
-          </p>
+        <div class="wood-bg heading" id="about">
+          <h1>About Me ➢</h1>
         </div>
+        <p class="wood-bg infobox">
+          <span class="sub-heading">Hi, I'm <strong>Humaira Zaman!</strong></span>
+          <span>
+            I'm a <strong>software developer</strong> who loves <strong>coding</strong>,
+            because it has all of my favorite things: <strong>problem solving</strong>,
+            <strong>creativity</strong>, and <strong>logic</strong>.
+          </span>
+          <span>
+            I'm passionate about <strong>learning new skills and technologies</strong>, and
+            I'm always looking for new opportunities to <strong>grow and improve</strong>.
+          </span>
+          <span>
+            I'm currently looking for a <strong><em>full-time position as a software developer</em></strong>.
+            If you have a project you need coded, don't hestiate to <strong>contact me</strong>.
+          </span>
+          <span><button type="button">Get My Resume</button></span>
+        </p>
         <div class="about cards">
           <div class="card">
             <div class="card-content">
@@ -206,24 +204,28 @@
             so if you'd like to chat please get in touch.
           </p>
         </div>
-        <form id="contact-form" action="https://formspree.io/f/moqyzrzd" method="post">
-          <ul>
-            <li>
-              <label class="form-label" for="username">Name:</label>
+        <form class="cards" id="contact-form" action="https://formspree.io/f/moqyzrzd" method="post">
+          <div class="card">
+            <fieldset>
+              <legend class="form-label" for="username">Name</legend>
+              <label class="form-label" for="username"></label>
               <input type="text" id="username" name="user-name" placeholder="Full Name" maxlength="30" required>
-            </li>
-            <li>
-              <label class="form-label" for="useremail">Email:</label>
+            </fieldset>
+            <fieldset>
+              <legend class="form-label" for="useremail">Email</legend>
+              <label class="form-label" for="useremail"></label>
               <input type="email" id="useremail" name="user-email" placeholder="Email address" required>
-            </li>
-            <li>
-              <label class="form-label" for="comment">Message:</label>
+            </fieldset>
+            <fieldset>
+              <legend class="form-label" for="comment">Message</legend>
+              <label class="form-label" for="comment"></label>
               <textarea name="msg" id="comment" maxlength="500" placeholder="Enter text here" required></textarea>
-            </li>
-          </ul>
-          <button type="submit">Get in touch</button>
+            </fieldset>
+            <button type="submit">Get in touch</button>
+          </div>
         </form>
       </section>
+      <!-- <div class="gap"></div> -->
     </main>
 
     <footer class="end-page">
