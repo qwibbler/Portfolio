@@ -229,15 +229,19 @@ main {
           z-index: 0;
           transform: translateX(-50%);
           transform-origin: top left;
-          animation: 1s enter-info ease-in;
+          animation: 1.5s enter-info ease-in;
         }
 
         @keyframes enter-info {
-          from {
-            transform: scale(0, -1) translateX(-50%);
+          0% {
+            transform: scale(0, 0) translateX(-50%);
           }
 
-          to {
+          75% {
+            transform: scale(0.75, 0) translateX(-50%);
+          }
+
+          100% {
             transform: scale(1, 1) translateX(-50%);
           }
         }

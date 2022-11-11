@@ -100,14 +100,12 @@ const splashPage = () => {
 // Fix heading on top of page
 const headingObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    const heading = entry.target.querySelector('.heading');
-    const infobox = entry.target.querySelector('.infobox');
-    heading.classList.toggle('page-visible', entry.isIntersecting);
-    // delay the infobox to make it look better
-    setTimeout(
-      () => infobox.classList.toggle('active', entry.isIntersecting),
-      750,
-    );
+    entry.target
+      .querySelector('.heading')
+      .classList.toggle('page-visible', entry.isIntersecting);
+    entry.target
+      .querySelector('.infobox')
+      .classList.toggle('active', entry.isIntersecting);
   });
 });
 $('.page').each((i, ele) => headingObserver.observe(ele));
