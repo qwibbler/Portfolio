@@ -318,7 +318,6 @@ main {
       .btn {
         perspective: 100px;
         perspective-origin: 50%;
-        opacity: 0;
 
         button {
           padding: 0.2rem 1rem;
@@ -391,11 +390,21 @@ main {
       input,
       textarea {
         color: $gold;
+        font-family: 'IM Fell English SC', serif;
         padding: 0.5rem 1rem;
         width: 100%;
-        font-size: 1rem;
+        font-size: 1.3rem;
         background: transparent;
         border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      textarea {
+        resize: none;
+        height: 6rem;
       }
     }
   }
