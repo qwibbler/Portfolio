@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  list-style: none;
 }
 
 body {
@@ -28,7 +27,12 @@ section {
 
 .splash-page {
   z-index: 100;
-  height: 200vh;
+  height: 100vh;
+  margin-bottom: 100vh;
+}
+.splash-page .splash-space {
+  height: 100vh;
+  background-color: black;
 }
 .splash-page .bg-dark {
   background-color: black;
@@ -37,7 +41,6 @@ section {
   margin: 0;
 }
 .splash-page .curtain#left {
-  position: absolute;
   position: fixed;
   top: 0;
   height: 100vh;
@@ -45,7 +48,6 @@ section {
   left: 0;
 }
 .splash-page .curtain#right {
-  position: absolute;
   position: fixed;
   top: 0;
   height: 100vh;
@@ -69,12 +71,9 @@ section {
   content: "•";
   position: absolute;
   width: 14px;
-  height: 14px;
   font-size: 14px;
-  color: #DE9B72;
   border: 2px solid #DE9B72;
-  line-height: 12px;
-  text-align: center;
+  line-height: 14px;
   top: 5px;
   left: 5px;
 }
@@ -82,12 +81,9 @@ section {
   content: "•";
   position: absolute;
   width: 14px;
-  height: 14px;
   font-size: 14px;
-  color: #DE9B72;
   border: 2px solid #DE9B72;
-  line-height: 12px;
-  text-align: center;
+  line-height: 14px;
   top: 5px;
   right: 5px;
 }
@@ -96,38 +92,29 @@ section {
   border: 2px solid #DE9B72;
   padding: 40px;
 }
-.splash-page .plaque-inner:before, .splash-page .plaque-inner:after {
-  border-bottom-width: 1px;
-}
 .splash-page .plaque-inner:before {
   content: "•";
   position: absolute;
   width: 14px;
-  height: 14px;
   font-size: 14px;
-  color: #DE9B72;
   border: 2px solid #DE9B72;
-  line-height: 12px;
-  text-align: center;
-  bottom: -1px;
+  line-height: 14px;
+  bottom: -1.5px;
   left: -2px;
 }
 .splash-page .plaque-inner:after {
   content: "•";
   position: absolute;
   width: 14px;
-  height: 14px;
   font-size: 14px;
-  color: #DE9B72;
   border: 2px solid #DE9B72;
-  line-height: 12px;
-  text-align: center;
-  bottom: -1px;
+  line-height: 14px;
+  bottom: -1.5px;
   right: -2px;
 }
 
-main {
-  width: 100vw;
+main .gap {
+  height: 115vh;
 }
 main section {
   display: flex;
@@ -135,25 +122,39 @@ main section {
   justify-content: center;
   min-height: 100vh;
 }
-main section .heading {
-  position: sticky;
+main section .wood-bg {
   padding: 0.5em;
-  margin: auto;
-  background: #ac0200 url(../images/bg/red.jpeg);
-  background-size: cover;
+  margin: 0 auto;
+  width: max-content;
+  max-width: 75vw;
+  font-family: "Tienne", serif;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px, rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main section .wood-bg > * {
+  background: url(../images/bg/gold.jpg);
+  background-size: 50px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+main section .wood-bg.heading {
+  background: #ac0200 url(../images/bg/dark-wood.jpg);
   background-blend-mode: hard-light;
+  background-size: 100% 100%;
 }
-main section .heading h1 {
-  border: gold 0.1em solid;
-  color: gold;
+main section .wood-bg.heading h1 {
+  border: 0.1em solid goldenrod;
+  border-image: url(../images/bg/gold.jpg) 7 round;
+  padding: 0.1em;
 }
-main section .page-visible {
+main section .wood-bg.heading.page-visible {
   position: fixed;
   top: 1.5em;
   left: 50%;
+  z-index: 1;
   transform: translate(-50%, 0);
-  animation: enter-heading 1s;
-  animation-timing-function: ease-in;
+  animation: 1s enter-heading ease-in;
 }
 @keyframes enter-heading {
   0% {
@@ -175,40 +176,176 @@ main section .page-visible {
     transform: translate(-50%, 0);
   }
 }
-
-.projects .project-space {
-  height: 70vh;
-  margin-bottom: 70vh;
-}
-.projects .project-card {
-  position: relative;
+main section .wood-bg.infobox {
+  border: 0.3em solid goldenrod;
+  border-image: url(../images/bg/gold.jpg) 7 round;
   display: flex;
   flex-direction: column;
-  max-width: 80vw;
+  background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
+  background-blend-mode: difference;
+  background-size: 100% 100%;
+}
+main section .wood-bg.infobox .sub-heading {
+  font-size: 1.5em;
+}
+main section .wood-bg.infobox.active {
+  position: fixed;
+  height: fit-content;
+  top: 5.25em;
+  left: 50%;
+  z-index: 0;
+  transform: translateX(-50%);
+  transform-origin: top left;
+  animation: 1.5s enter-info ease-in;
+}
+@keyframes enter-info {
+  0% {
+    transform: scale(0, 0) translateX(-50%);
+  }
+  75% {
+    transform: scale(0.75, 0) translateX(-50%);
+  }
+  100% {
+    transform: scale(1, 1) translateX(-50%);
+  }
+}
+main section .cards .card-space {
   height: 70vh;
+  margin-bottom: 100vh;
+}
+main section .cards .card-space:last-child {
+  margin-bottom: 0;
+}
+main section .cards .card {
+  position: relative;
+  max-width: 80vw;
   margin: 0 auto;
   padding: 1rem;
-  background: hsl(60deg, 20%, 83%) url(../images/bg/paper.jpg);
+  border-radius: 2px;
+  background: hsl(60deg, 20%, 83%) url(../images/bg/black-paper.jpg);
+  font-family: "IM Fell English SC", serif;
+  color: goldenrod;
 }
-.projects .project-card::after {
+main section .cards .card::after {
   content: "";
   position: absolute;
-  bottom: -1rem;
+  bottom: -0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 95%;
   height: 0px;
   box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.3803921569);
 }
-.projects .project-card ul {
+main section .cards .card .card-content {
+  border: 4px solid goldenrod;
+  border-image: url(../images/bg/gold.jpg) 7 round;
+  background: url(../images/bg/gold.jpg);
+  background-size: 50px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-height: 70vh;
+  justify-content: space-between;
+  padding: 1rem;
 }
-.projects .folded {
+main section .cards .card .card-content h4 {
+  font-size: 1.5em;
+}
+main section .cards .card .card-content p {
+  text-align: justify;
+}
+main section .cards .card .card-content ul {
+  text-align: left;
+  padding-left: 1em;
+}
+main section .cards .card .card-content ul.project-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 10vh;
+}
+main section .cards .btn {
+  perspective: 100px;
+  perspective-origin: 50%;
+}
+main section .cards .btn button {
+  padding: 0.2rem 1rem;
+  transform: rotateX(20deg) translateY(1.2rem);
+  font-family: "Vollkorn SC", serif;
+  font-weight: bold;
+  background: url(../images/bg/mat.jpeg);
+  color: #3f1414;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border: none;
+  border-radius: 0.5rem;
+}
+main section .cards .btn button:hover {
+  transform: rotateX(10deg) translateY(1.1rem);
+}
+main section .cards .btn button:active {
+  transform: rotateX(5deg) translateY(1rem);
+}
+main .about-page button {
+  padding: 0.2rem 1rem;
+  margin-top: 0.2rem;
+  font-family: "Vollkorn SC", serif;
+  font-weight: bold;
+  background: url(../images/bg/mat.jpeg);
+  color: #3f1414;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 1px inset;
+  border: none;
+  border-radius: 0.5rem;
+}
+main .about-page button:hover {
+  transform: scale(0.99);
+  box-shadow: rgba(0, 0, 0, 0.3) 1.5px 2.5px 1px inset;
+}
+main .about-page button:active {
+  transform: scale(0.98);
+  box-shadow: rgba(0, 0, 0, 0.5) 2.5px 4px 3px inset;
+}
+main .about-page .cards {
+  display: flex;
+  justify-content: center;
+  transform: translateX(100%);
+}
+main .about-page .cards .card {
+  margin: 1rem;
+}
+main .contact-page fieldset {
+  border: 0.1em solid goldenrod;
+  border-image: url(../images/bg/gold.jpg) 7 round;
+}
+main .contact-page fieldset legend {
+  text-align: left;
+  padding: 0.2rem;
+  margin: 0 1rem;
+}
+main .contact-page fieldset input,
+main .contact-page fieldset textarea {
+  color: goldenrod;
+  font-family: "IM Fell English SC", serif;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  font-size: 1.3rem;
+  background: transparent;
+  border: none;
+}
+main .contact-page fieldset input:focus,
+main .contact-page fieldset textarea:focus {
+  outline: none;
+}
+main .contact-page fieldset textarea {
+  resize: none;
+  height: 6rem;
+}
+main .active {
   position: fixed;
-  bottom: 5vh;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 2rem;
   transition: all 0.2s;
 }
 
