@@ -6,13 +6,14 @@
   padding: 0;
   text-decoration: none;
   // list-style: none;
+  border: 2px solid pink;
 }
 
 body {
   scroll-behavior: smooth;
   font-style: normal;
   width: 100vw;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   text-align: center;
   background: black url(../images/bg/stage.jpg) no-repeat fixed;
   background-size: auto 100%;
@@ -41,10 +42,13 @@ section {
 .splash-page {
   z-index: 100;
   height: 100vh;
+  width: 100vw;
   margin-bottom: 100vh;
 
   .splash-space {
-    height: 100vh;
+    margin: 0;
+    height: 90vh;
+    width: 100vw;
     background-color: black;
   }
 
@@ -52,7 +56,7 @@ section {
     background-color: black;
     width: 100%;
     height: 100%;
-    margin: 0;
+    margin: -5vh 0;
   }
 
   @mixin curtain($position) {

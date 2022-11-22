@@ -78,6 +78,8 @@ const openCurtains = (splashSpace) => {
   splashSpace.target.parentNode.style.zIndex =
     splashSpace.intersectionRatio * 100;
 
+  // console.log(splashSpace);
+
   for (let i = 0; i < 2; i += 1) {
     curtains[i].style.width = `${(splashSpace.intersectionRatio / 2) * 100}%`;
   }
@@ -116,7 +118,7 @@ $('.page').each((i, ele) => headingObserver.observe(ele));
 // live: 'https://concierge-jtz.netlify.app/',
 // source: 'https://github.com/qwibbler/Concierge-Front-end',
 
-const projectTemplate = (project, orientation) => {
+const  projectTemplate = (project, orientation) => {
   const list = project.langs.map((lang) => `<li>${lang}</li>`).join('');
   return `
     <div class="card-space">
