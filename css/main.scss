@@ -6,14 +6,12 @@
   padding: 0;
   text-decoration: none;
   // list-style: none;
-  border: 2px solid pink;
 }
 
 body {
   scroll-behavior: smooth;
   font-style: normal;
-  width: 100vw;
-  // overflow-x: hidden;
+  overflow-x: hidden;
   text-align: center;
   background: black url(../images/bg/stage.jpg) no-repeat fixed;
   background-size: auto 100%;
