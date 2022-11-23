@@ -81,12 +81,12 @@ const openCurtains = (splashSpace) => {
   // console.log(splashSpace);
 
   for (let i = 0; i < 2; i += 1) {
-    curtains[i].style.width = `${(splashSpace.intersectionRatio / 2) * 100}%`;
+    curtains[i].style.width = `${((splashSpace.intersectionRatio / 2) * 100).toFixed(2)}vw`;
   }
 
-  $('.plaque').css('opacity', `${splashSpace.intersectionRatio * 2}`);
+  $('.plaque').css('opacity', `${(splashSpace.intersectionRatio * 2).toFixed(2)}`);
 
-  const opacity = splashSpace.intersectionRatio * 2;
+  const opacity = (splashSpace.intersectionRatio * 2).toFixed(2);
   splashSpace.target.style.opacity = opacity;
   $('.bg-dark').css('opacity', `${opacity}`);
 };
