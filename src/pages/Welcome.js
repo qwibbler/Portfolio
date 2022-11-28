@@ -1,9 +1,10 @@
 import Heading from '../components/Heading';
+import InfoBox from '../components/Infobox';
 
 const WelcomePage = () => (
   <section class="welcome page" id="first-page">
     <Heading id="works">Welcome! ➢</Heading>
-    <p class="wood-bg infobox">
+    <InfoBox>
       <span class="sub-heading">
         Hi, I’m <strong>Humaira Zaman!</strong>
       </span>
@@ -17,7 +18,7 @@ const WelcomePage = () => (
         Look through some of my work and experience. If you like what you see
         and have a project you need coded, don’t hestiate to contact me.
       </span>
-    </p>
+    </InfoBox>
   </section>
 );
 
