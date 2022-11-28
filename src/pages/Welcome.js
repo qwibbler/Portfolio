@@ -1,8 +1,8 @@
+import Heading from '../components/Heading';
+
 const WelcomePage = () => (
   <section class="welcome page" id="first-page">
-    <div class="wood-bg heading" id="works">
-      <h1>Welcome! ➢</h1>
-    </div>
+    <Heading id="works">Welcome! ➢</Heading>
     <p class="wood-bg infobox">
       <span class="sub-heading">
         Hi, I’m <strong>Humaira Zaman!</strong>
@@ -20,3 +20,5 @@ const WelcomePage = () => (
     </p>
   </section>
 );
+
+export default WelcomePage;

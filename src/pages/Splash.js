@@ -1,4 +1,4 @@
-import Plaque from '../components/plaque';
+import Plaque from '../components/Plaque';
 
 const SplashPage = () => {
   return (

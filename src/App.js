@@ -1,4 +1,5 @@
 import SplashPage from './pages/Splash';
+import WelcomePage from './pages/Welcome';
 import './App.css';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <>
       <SplashPage />
       <main>
-        
+
       </main>
     </>
   );
