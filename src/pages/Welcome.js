@@ -3,7 +3,7 @@ import InfoBox from '../components/Infobox';
 
 const WelcomePage = () => (
   <section class="welcome page" id="first-page">
-    <Heading id="works">Welcome! ➢</Heading>
+    <Heading>Welcome! ➢</Heading>
     <InfoBox>
       <span class="sub-heading">
         Hi, I’m <strong>Humaira Zaman!</strong>
