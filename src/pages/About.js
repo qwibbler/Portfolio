@@ -1,6 +1,7 @@
 import Card from '../components/Card';
 import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
+import Skills from '../components/Skills';
 
 const AboutPage = () => (
   <section class="about-page page" id="third-page">
@@ -37,32 +38,32 @@ const AboutPage = () => (
     <div class="about cards">
       <Card>
         <h4>Languages</h4>
-        <ul>
+        <Skills>
           <li>JavaScript</li>
           <li>Ruby</li>
           <li>Html</li>
           <li>CSS</li>
-        </ul>
+        </Skills>
       </Card>
       <Card>
         <h4>Frameworks</h4>
-        <ul>
+        <Skills>
           <li>Bootstrap</li>
           <li>Ruby on rails</li>
           <li>RSpec</li>
           <li>Capybara</li>
           <li>Selenium</li>
-        </ul>
+        </Skills>
       </Card>
       <Card>
         <h4>Skills</h4>
-        <ul>
+        <Skills>
           <li>Codekit</li>
           <li>GitHub</li>
           <li>Codepen</li>
           <li>Gitlab</li>
           <li>Terminal</li>
-        </ul>
+        </Skills>
       </Card>
     </div>
   </section>
