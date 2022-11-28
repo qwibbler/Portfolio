@@ -5,6 +5,9 @@ function App() {
   return (
     <>
       <SplashPage />
+      <main>
+        
+      </main>
     </>
   );
 }
