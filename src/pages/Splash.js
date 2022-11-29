@@ -1,10 +1,25 @@
 import Plaque from '../components/Plaque';
 import Curtain from '../images/bg/curtains.jpg';
+import { useInView } from 'react-intersection-observer';
+import { buildThreshold } from '../helper-functions';
+// import $ from 'jquery';
 
 const SplashPage = () => {
+  const { ref } = useInView({
+    /* Optional options */
+    threshold: buildThreshold(30),
+    onChange: (inView, entry) => {
+      const page = entry.target.parentNode;
+      page.style.zIndex = inView * 100;
+      page.querySelectorAll('.curtain').forEach((curtain) => {
+        curtain.style.width = `${(entry.intersectionRatio / 2) * 100}%`;
+      });
+    }
+  });
+
   return (
     <section className="splash-page" id="splash-page">
-      <div className="splash-space" />
+      <div className="splash-space" ref={ref} />
       <div className="bg-dark" />
       <img className="curtain" id="left" src={Curtain} alt="" />
       <img className="curtain" id="right" src={Curtain} alt="" />
