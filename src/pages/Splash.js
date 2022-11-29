@@ -14,13 +14,15 @@ const SplashPage = () => {
       page.querySelectorAll('.curtain').forEach((curtain) => {
         curtain.style.width = `${(entry.intersectionRatio / 2) * 100}%`;
       });
+      page.querySelector('.plaque').style.opacity = entry.intersectionRatio * 2;
+      page.querySelector('.bg-dark').style.opacity = entry.intersectionRatio * 2;
     }
   });
 
   return (
     <section className="splash-page" id="splash-page">
-      <div className="splash-space" ref={ref} />
       <div className="bg-dark" />
+      <div className="splash-space" ref={ref} />
       <img className="curtain" id="left" src={Curtain} alt="" />
       <img className="curtain" id="right" src={Curtain} alt="" />
       <Plaque>

@@ -11,7 +11,8 @@
 body {
   scroll-behavior: smooth;
   font-style: normal;
-  overflow-x: hidden;
+  // overflow-x: hidden;
+  width: 100vw;
   text-align: center;
   background: black url(./images/bg/stage.jpg) no-repeat fixed;
   background-size: auto 100%;
@@ -47,14 +48,16 @@ section {
     margin: 0;
     height: 90vh;
     width: 100vw;
-    background-color: black;
+    // background-color: black;
   }
 
   .bg-dark {
+    position: fixed;
     background-color: black;
-    width: 100%;
-    height: 100%;
-    margin: -5vh 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
   }
 
   @mixin curtain($position) {
@@ -144,9 +147,6 @@ main {
   }
 
   section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     min-height: 100vh;
     $hang: 1.5em;
 
@@ -368,15 +368,15 @@ main {
       }
     }
 
-    .cards {
-      display: flex;
-      justify-content: center;
-      transform: translateX(100%);
+    // .cards {
+    //   display: flex;
+    //   justify-content: center;
+    //   transform: translateX(100%);
 
-      .card {
-        margin: 1rem;
-      }
-    }
+    //   .card {
+    //     margin: 1rem;
+    //   }
+    // }
   }
 
   .contact-page {
