@@ -3,6 +3,7 @@ import WelcomePage from './pages/Welcome';
 import ProjectPage from './pages/Projects';
 import AboutPage from './pages/About';
 import './App.css';
+import ContactPage from './pages/Contact';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <ProjectPage />
         <div className="gap" />
         <AboutPage />
+        <div className="gap" />
+        <ContactPage />
       </main>
     </>
   );
