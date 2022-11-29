@@ -13,18 +13,18 @@ body {
   font-style: normal;
   overflow-x: hidden;
   text-align: center;
-  background: black url(../images/bg/stage.jpg) no-repeat fixed;
+  background: black url(./images/bg/stage.jpg) no-repeat fixed;
   background-size: auto 100%;
   background-position: center;
 }
 
 @mixin gold-border($width) {
   border: #{$width} solid goldenrod;
-  border-image: url(../images/bg/gold.jpg) 7 round;
+  border-image: url(./images/bg/gold.jpg) 7 round;
 }
 
 @mixin gold-text {
-  background: url(../images/bg/gold.jpg);
+  background: url(./images/bg/gold.jpg);
   background-size: 50px;
   -webkit-background-clip: text;
   background-clip: text;
@@ -167,7 +167,7 @@ main {
       }
 
       &.heading {
-        background: $red url(../images/bg/dark-wood.jpg);
+        background: $red url(./images/bg/dark-wood.jpg);
         background-blend-mode: hard-light;
         background-size: 100% 100%;
 
@@ -216,7 +216,7 @@ main {
         @include gold-border(0.3em);
         display: flex;
         flex-direction: column;
-        background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
+        background: rgb(27, 27, 27) url(./images/bg/dark-wood.jpg);
         background-blend-mode: difference;
         background-size: 100% 100%;
 
@@ -269,7 +269,7 @@ main {
         margin: 0 auto;
         padding: 1rem;
         border-radius: 2px;
-        background: hsl(60, 20%, 83%) url(../images/bg/black-paper.jpg);
+        background: hsl(60, 20%, 83%) url(./images/bg/black-paper.jpg);
         font-family: 'IM Fell English SC', serif;
         color: goldenrod;
 
@@ -326,7 +326,7 @@ main {
           transform: rotateX(20deg) translateY(1.2rem);
           font-family: 'Vollkorn SC', serif;
           font-weight: bold;
-          background: url(../images/bg/mat.jpeg);
+          background: url(./images/bg/mat.jpeg);
           color: #3f1414;
           box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
           border: none;
@@ -351,7 +351,7 @@ main {
       margin-top: 0.2rem;
       font-family: 'Vollkorn SC', serif;
       font-weight: bold;
-      background: url(../images/bg/mat.jpeg);
+      background: url(./images/bg/mat.jpeg);
       color: #3f1414;
       box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 1px inset;
       border: none;
