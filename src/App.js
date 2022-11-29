@@ -10,9 +10,9 @@ function App() {
       <SplashPage />
       <main>
         <WelcomePage />
-        <div class="gap" />
+        <div className="gap" />
         <ProjectPage />
-        <div class="gap" />
+        <div className="gap" />
         <AboutPage />
       </main>
     </>

@@ -4,12 +4,10 @@ import InfoBox from '../components/Infobox';
 import Skills from '../components/Skills';
 
 const AboutPage = () => (
-  <section class="about-page page" id="third-page">
-    <Heading>
-      <h1>About Me ➢</h1>
-    </Heading>
+  <section className="about-page page" id="third-page">
+    <Heading>About Me ➢</Heading>
     <InfoBox>
-      <span class="sub-heading">
+      <span className="sub-heading">
         Hi, I'm <strong>Humaira Zaman!</strong>
       </span>
       <span>
@@ -35,7 +33,7 @@ const AboutPage = () => (
         <button type="button">Get My Resume</button>
       </span>
     </InfoBox>
-    <div class="about cards">
+    <div className="about cards">
       <Card>
         <h4>Languages</h4>
         <Skills>

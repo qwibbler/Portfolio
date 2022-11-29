@@ -1,6 +1,6 @@
 const Card = ({ children }) => (
-  <div class="card">
-    <div class="card-content">
+  <div className="card">
+    <div className="card-content">
       {children}
     </div>
   </div>

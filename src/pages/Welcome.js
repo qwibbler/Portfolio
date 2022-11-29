@@ -2,10 +2,10 @@ import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
 
 const WelcomePage = () => (
-  <section class="welcome page" id="first-page">
+  <section className="welcome page" id="first-page">
     <Heading>Welcome! ➢</Heading>
     <InfoBox>
-      <span class="sub-heading">
+      <span className="sub-heading">
         Hi, I’m <strong>Humaira Zaman!</strong>
       </span>
       <span>

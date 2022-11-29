@@ -1,6 +1,6 @@
 const plaque = (props) => (
-  <div class="plaque">
-    <div class="plaque-inner">{props.children}</div>
+  <div className="plaque">
+    <div className="plaque-inner">{props.children}</div>
   </div>
 );
 

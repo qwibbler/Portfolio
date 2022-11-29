@@ -1,13 +1,11 @@
 import Heading from '../components/Heading';
 
 const ProjectPage = () => (
-  <section class="project page" id="second-page">
-    <Heading>
-      <h1>Featured Works ➢</h1>
-    </Heading>
-    <p class="wood-bg infobox"></p>
-    <div class="projects cards" id="projects">
-    {/* < class="project_cards" id="popupWrapper" /> */}
+  <section className="project page" id="second-page">
+    <Heading>Featured Works ➢</Heading>
+    <p className="wood-bg infobox"></p>
+    <div className="projects cards" id="projects">
+      {/* < className="project_cards" id="popupWrapper" /> */}
     </div>
   </section>
 );
