@@ -2,7 +2,7 @@ import SplashPage from './pages/Splash';
 import WelcomePage from './pages/Welcome';
 import ProjectPage from './pages/Projects';
 import AboutPage from './pages/About';
-import './App.css';
+import './main.scss';
 import ContactPage from './pages/Contact';
 
 function App() {
