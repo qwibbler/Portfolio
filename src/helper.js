@@ -8,6 +8,6 @@ const buildThreshold = (numSteps) => {
   return thresholds;
 };
 
-const headingEntranceOptions = { threshold: 0.3 };
+const pageOptions = { threshold: 0.3 };
 
-export { buildThreshold, headingEntranceOptions };
+export { buildThreshold, pageOptions };

@@ -3,9 +3,10 @@ import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
 import List from '../components/List';
 import { useInView } from 'react-intersection-observer';
+import { pageOptions } from '../helper';
 
 const AboutPage = () => {
-  const { ref, inView } = useInView({ threshold: 0.3 });
+  const { ref, inView } = useInView(pageOptions);
 
   return (
   <section ref={ref} className="about-page page" id="third-page">

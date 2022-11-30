@@ -2,9 +2,10 @@ import Heading from "../components/Heading";
 import InfoBox from "../components/Infobox";
 import FormInput from "../components/FormInput";
 import { useInView } from "react-intersection-observer";
+import { pageOptions } from "../helper";
 
 const ContactPage = () => {
-  const { ref, inView } = useInView({ threshold: 0.3 });
+  const { ref, inView } = useInView(pageOptions);
 
   return (
     <section ref={ref} className="contact-page page" id="contact-me">

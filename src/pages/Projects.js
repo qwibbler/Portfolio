@@ -1,9 +1,9 @@
 import Heading from '../components/Heading';
 import { useInView } from 'react-intersection-observer';
-import { headingEntranceOptions } from '../helper';
+import { pageOptions } from '../helper';
 
 const ProjectPage = () => {
-  const { ref, inView } = useInView(headingEntranceOptions);
+  const { ref, inView } = useInView(pageOptions);
 
   return (
     <section ref={ref} className="project page" id="second-page">
