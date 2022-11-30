@@ -248,10 +248,10 @@ main {
       .card-space {
         height: 70vh;
         margin-bottom: 100vh;
-      }
 
-      .card-space:last-child {
-        margin-bottom: 0;
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
 
       .card {
