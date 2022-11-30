@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const projectsData = [
   {
     title: 'Concierge',
@@ -73,4 +75,17 @@ const buildThreshold = (numSteps) => {
 
 const pageOptions = { threshold: 0.3 };
 
-export { projectsData, buildThreshold, pageOptions };
+const oridomiOptions = () => {
+  return $('.to-fold').oriDomi({
+    // vPanels: [50, 50], // number of panels when folding left or right
+    hPanels: 10, // number of panels when folding top or bottom
+    speed: 0, // folding duration in ms
+    ripple: 0, // ripple effect when animating
+    shadingIntensity: 1, // lessen the shading effect
+    perspective: 400, // smaller values exaggerate 3D distortion
+    maxAngle: 85, // keep the user's folds within a range of -40 to 40 degrees
+    shading: 'soft', // change the shading type
+  });
+};
+
+export { projectsData, buildThreshold, pageOptions, oridomiOptions };
