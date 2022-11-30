@@ -34,15 +34,15 @@ body {
 
 section {
   position: relative;
-  max-width: 100vw;
+  // max-width: 100vw;
   min-height: 100vh;
+  margin-bottom: 100vh;
 }
 
 .splash-page {
   z-index: 100;
   height: 100vh;
   // width: 100vw;
-  margin-bottom: 100vh;
 
   .splash-space {
     margin: 0;
@@ -145,13 +145,12 @@ main {
   }
 
   section {
-    min-height: 100vh;
     $hang: 1.5em;
 
     .wood-bg {
       padding: 0.5em;
       margin: 0 auto;
-      width: max-content;
+      // width: max-content;
       max-width: 75vw;
       // font-family: 'Gravitas One', cursive;
       // font-family: 'Vollkorn SC', serif;
@@ -168,19 +167,16 @@ main {
         background: $red url(./images/bg/dark-wood.jpg);
         background-blend-mode: hard-light;
         background-size: 100% 100%;
+        position: fixed;
+        top: $hang;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, 0);
+        animation: 1s enter-heading ease-in;
 
         h1 {
           @include gold-border(0.1em);
           padding: 0.1em;
-        }
-
-        &.page-visible {
-          position: fixed;
-          top: $hang;
-          left: 50%;
-          z-index: 1;
-          transform: translate(-50%, 0);
-          animation: 1s enter-heading ease-in;
         }
 
         @keyframes enter-heading {
@@ -217,20 +213,17 @@ main {
         background: rgb(27, 27, 27) url(./images/bg/dark-wood.jpg);
         background-blend-mode: difference;
         background-size: 100% 100%;
+        position: fixed;
+        // height: fit-content;
+        top: 5.25em;
+        left: 50%;
+        z-index: 0;
+        transform: translateX(-50%);
+        transform-origin: top left;
+        animation: 1.5s enter-info ease-in;
 
         .sub-heading {
           font-size: 1.5em;
-        }
-
-        &.active {
-          position: fixed;
-          height: fit-content;
-          top: 5.25em;
-          left: 50%;
-          z-index: 0;
-          transform: translateX(-50%);
-          transform-origin: top left;
-          animation: 1.5s enter-info ease-in;
         }
 
         @keyframes enter-info {
