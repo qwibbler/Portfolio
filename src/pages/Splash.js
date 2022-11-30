@@ -9,13 +9,14 @@ const SplashPage = () => {
     threshold: buildThreshold(30),
     onChange: (inView, entry) => {
       const page = entry.target.parentNode;
-      page.style.zIndex = inView * 100;
-      page.querySelectorAll('.curtain').forEach((curtain) => {
-        curtain.style.width = `${(entry.intersectionRatio / 2) * 100}%`;
-      });
-      page.querySelector('.plaque').style.opacity = entry.intersectionRatio * 2;
-      page.querySelector('.bg-dark').style.opacity =
-        entry.intersectionRatio * 2;
+      if (page.childElementCount > 1) {
+        page.querySelectorAll('.curtain').forEach((curtain) => {
+          curtain.style.width = `${(entry.intersectionRatio / 2) * 100}%`;
+        });
+        page.querySelector('.plaque').style.opacity = entry.intersectionRatio * 2;
+        page.querySelector('.bg-dark').style.opacity =
+          entry.intersectionRatio * 2;
+      }
     },
   });
 
