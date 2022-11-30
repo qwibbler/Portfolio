@@ -11,11 +11,11 @@ function App() {
       <SplashPage />
       <main>
         <WelcomePage />
-        <div className="gap" />
+        {/* <div className="gap" /> */}
         <ProjectPage />
-        <div className="gap" />
+        {/* <div className="gap" /> */}
         <AboutPage />
-        <div className="gap" />
+        {/* <div className="gap" /> */}
         <ContactPage />
       </main>
     </>
