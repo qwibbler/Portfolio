@@ -1,12 +1,11 @@
 import Plaque from '../components/Plaque';
 import Curtain from '../images/bg/curtains.jpg';
 import { useInView } from 'react-intersection-observer';
-import { buildThreshold } from '../helper-functions';
+import { buildThreshold } from '../helper';
 // import $ from 'jquery';
 
 const SplashPage = () => {
   const { ref } = useInView({
-    /* Optional options */
     threshold: buildThreshold(30),
     onChange: (inView, entry) => {
       const page = entry.target.parentNode;
