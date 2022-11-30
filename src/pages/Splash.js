@@ -5,7 +5,7 @@ import { buildThreshold } from '../helper';
 // import $ from 'jquery';
 
 const SplashPage = () => {
-  const { ref } = useInView({
+  const { ref, inView } = useInView({
     threshold: buildThreshold(30),
     onChange: (inView, entry) => {
       const page = entry.target.parentNode;
@@ -14,20 +14,25 @@ const SplashPage = () => {
         curtain.style.width = `${(entry.intersectionRatio / 2) * 100}%`;
       });
       page.querySelector('.plaque').style.opacity = entry.intersectionRatio * 2;
-      page.querySelector('.bg-dark').style.opacity = entry.intersectionRatio * 2;
-    }
+      page.querySelector('.bg-dark').style.opacity =
+        entry.intersectionRatio * 2;
+    },
   });
 
   return (
     <section className="splash-page" id="splash-page">
-      <div className="bg-dark" />
       <div className="splash-space" ref={ref} />
-      <img className="curtain" id="left" src={Curtain} alt="" />
-      <img className="curtain" id="right" src={Curtain} alt="" />
-      <Plaque>
-        <h1>Humaira Zaman</h1>
-        <h3>Software Developer</h3>
-      </Plaque>
+      {inView && (
+        <>
+          <div className="bg-dark" />
+          <img className="curtain" id="left" src={Curtain} alt="" />
+          <img className="curtain" id="right" src={Curtain} alt="" />
+          <Plaque>
+            <h1>Humaira Zaman</h1>
+            <h3>Software Developer</h3>
+          </Plaque>
+        </>
+      )}
     </section>
   );
 };
