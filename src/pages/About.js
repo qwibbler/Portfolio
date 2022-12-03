@@ -3,7 +3,7 @@ import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
 import List from '../components/List';
 import { useInView } from 'react-intersection-observer';
-import { pageOptions } from '../helper';
+import { pageOptions } from '../helpers/helper';
 
 const AboutPage = () => {
   const { ref, inView } = useInView(pageOptions);

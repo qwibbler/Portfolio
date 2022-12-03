@@ -1,7 +1,7 @@
 import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
 import { useInView } from 'react-intersection-observer';
-import { pageOptions } from '../helper';
+import { pageOptions } from '../helpers/helper';
 
 const WelcomePage = () => {
   const { ref, inView } = useInView(pageOptions);
