@@ -1,7 +1,7 @@
 import Plaque from '../components/Plaque';
 import Curtain from '../images/bg/curtains.jpg';
 import { useInView } from 'react-intersection-observer';
-import { buildThreshold } from '../helper';
+import { buildThreshold } from '../helpers/helper';
 // import $ from 'jquery';
 
 const SplashPage = () => {
@@ -13,12 +13,13 @@ const SplashPage = () => {
         page.querySelectorAll('.curtain').forEach((curtain) => {
           curtain.style.width = `${(entry.intersectionRatio / 2) * 100}%`;
         });
-        page.querySelector('.plaque').style.opacity = entry.intersectionRatio * 2;
+        page.querySelector('.plaque').style.opacity =
+          entry.intersectionRatio * 2;
         page.querySelector('.bg-dark').style.opacity =
           entry.intersectionRatio * 2;
-      }
-    },
-  });
+        }
+      },
+    });
 
   return (
     <section className="splash-page" id="splash-page">

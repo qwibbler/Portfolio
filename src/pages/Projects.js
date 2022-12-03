@@ -1,7 +1,7 @@
 import Heading from '../components/Heading';
 import { useInView } from 'react-intersection-observer';
 // import { pageOptions } from '../helper';
-import { projectsData } from '../helper';
+import { projectsData } from '../helpers/helper';
 import ProjectCard from '../components/ProjectCard';
 
 const ProjectPage = () => {
