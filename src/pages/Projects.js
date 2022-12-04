@@ -12,14 +12,14 @@ const ProjectPage = () => {
       {inView && (
         <>
           <Heading>Featured Works ➢</Heading>
+        </>
+      )}
           <div className="projects cards" id="projects">
             {projectsData.map((project, index) => (
               <ProjectCard key={index} index={index} project={project} />
             ))}
             {/* < className="project_cards" id="popupWrapper" /> */}
           </div>
-        </>
-      )}
     </section>
   );
 };
