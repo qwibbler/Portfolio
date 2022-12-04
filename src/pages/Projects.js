@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { projectsData } from '../helpers/helper';
 import ProjectCard from '../components/ProjectCard';
 import Foldable from '../components/Foldable';
+import FoldCard from '../components/FoldCard';
 
 const ProjectPage = () => {
   const { ref, inView } = useInView();
@@ -17,7 +18,7 @@ const ProjectPage = () => {
 
   const onclick = () => {
     setFolding(true);
-  }
+  };
 
   return (
     <section ref={ref} className="project page" id="second-page">
@@ -28,15 +29,7 @@ const ProjectPage = () => {
       )}
       <div className="projects cards" id="projects">
         {projectsData.map((project, index) => (
-          <>
-            <Foldable
-              isFolded={folding}
-              onCompleteFolding={finishAction}
-              front={<ProjectCard key={index} index={index} project={project} onclick={onclick} />}
-              back={<ProjectCard key={index} index={index} project={project} onclick={onclick} />}
-            />
-            {/* <input type='button' value='click' key={index} onclick={onclick} /> */}
-          </>
+          <FoldCard key={index} index={index} project={project} />
         ))}
         {/* < className="project_cards" id="popupWrapper" /> */}
       </div>
