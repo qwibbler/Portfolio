@@ -1,24 +1,11 @@
-import Heading from '../components/Heading';
 import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
-// import { pageOptions } from '../helper';
+// import { pageOptions } from '../helpers/helper';
 import { projectsData } from '../helpers/helper';
-import ProjectCard from '../components/ProjectCard';
-import Foldable from '../components/Foldable';
+import Heading from '../components/Heading';
 import FoldCard from '../components/FoldCard';
 
 const ProjectPage = () => {
   const { ref, inView } = useInView();
-
-  const [folding, setFolding] = useState(false);
-
-  const finishAction = () => {
-    setFolding(false);
-  };
-
-  const onclick = () => {
-    setFolding(true);
-  };
 
   return (
     <section ref={ref} className="project page" id="second-page">

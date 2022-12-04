@@ -11,9 +11,9 @@ const FoldCard = ({ index, project }) => {
 
   const onclick = () => {
     setFolding(true);
-    setTimeout(() => {
-      setFolding(false);
-    }, 5000);
+    // setTimeout(() => {
+    //   setFolding(false);
+    // }, 5000);
   }
 
   return (
