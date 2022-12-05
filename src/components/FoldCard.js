@@ -7,12 +7,13 @@ import { buildThreshold } from "../helpers/helper";
 const FoldCard = ({ index, project }) => {
   const [folding, setFolding] = useState(false);
   const [ratio, setRatio] = useState(0);
+  const [coming, setComing] = useState(false);
 
   const { ref } = useInView({
     threshold: buildThreshold(10),
     onChange: (inView, entry) => {
-      let coming = ratio < entry.intersectionRatio;
-      setFolding(entry.intersectionRatio > 0.5);
+      setFolding(entry.intersectionRatio > 0.9);
+      setComing(ratio < entry.intersectionRatio);
       setRatio(entry.intersectionRatio);
     },
   });
@@ -32,8 +33,9 @@ const FoldCard = ({ index, project }) => {
     <div ref={ref} className={'card-space'}>
       <Foldable
         isFolded={folding}
+        open={coming}
         front={<ProjectCard key={index} index={index} project={project} onclick={() => {}} />}
-        back={<div className="back">Back</div>}
+        back={<div className="back-text">{project.title}</div>}
         duration={4000}
         onCompleteFolding={() => {
           console.log("Folded!");
