@@ -257,12 +257,25 @@ main {
           margin-bottom: 0;
         }
 
+        @keyframes enterLeft {
+          from {
+            // transform-origin: top center;
+            transform: translateX(50%) scale(0.25);
+          }
+
+          to {
+            // transform-origin: top center;
+            transform: translateX(-50%) scale(1);
+          }
+        }
+
         .wrapper {
           position: fixed;
           z-index: 10000;
           width: $card-width;
           left: 50%;
           transform: translateX(-50%);
+          animation: 3s enterLeft 3s ease-in reverse forwards;
 
           .hide-overflow {
             position: relative;
