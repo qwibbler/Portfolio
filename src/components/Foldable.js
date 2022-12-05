@@ -10,7 +10,7 @@ class Foldable extends PureComponent {
   componentDidUpdate(prevProps) {
     const { onCompleteFolding } = this.props;
 
-    if (!prevProps.isFolded && this.props.isFolded && this.finalFoldNode) {
+    if (!prevProps.toFold && this.props.toFold && this.finalFoldNode) {
       this.finalFoldNode.addEventListener('animationend', onCompleteFolding);
     }
   }
@@ -24,12 +24,12 @@ class Foldable extends PureComponent {
   }
 
   renderOriginal() {
-    const { front, isFolded } = this.props;
+    const { front, toFold, coming } = this.props;
 
     return (
       <div
         ref={node => (this.node = node)}
-        style={{ opacity: isFolded ? 0 : 1 }}
+        style={{ opacity: (toFold && !coming) ? 0 : 1 }}
       >
         {front}
       </div>
@@ -37,22 +37,18 @@ class Foldable extends PureComponent {
   }
 
   renderFoldedCopy() {
-    const { back, duration } = this.props;
+    const { back, duration, coming } = this.props;
     const { node } = this;
 
-    const { width, height, top, left } = node.getBoundingClientRect();
-    // console.log('width: ' + width + ' height: ' + height + ' top: ' + top + ' left: ' + left);
+    const { height, top } = node.getBoundingClientRect();
 
     const foldHeights = [height * 0.35, height * 0.35, height * 0.3];
 
-    // HACK: using top: 0 and left: 0 because this is mounted within a
-    // transformed container, which means that position: fixed doesn't work
-    // properly. If you want to use this in an app, you'll likely wish to use
-    // the top/left from node.getBoundingClientRect.
     return (
       <div className='wrapper' style={{ top, height }}>
         <TopFold
           innerRef={(node) => (this.finalFoldNode = node)}
+          coming={coming}
           duration={duration}
           foldHeight={foldHeights[0]}
         >
@@ -78,6 +74,7 @@ class Foldable extends PureComponent {
           duration={duration}
           foldHeight={foldHeights[2]}
           offsetTop={foldHeights[0] + foldHeights[1]}
+          coming={coming}
         >
           <div className='hide-overflow'>
             <BottomFoldContents
@@ -95,14 +92,14 @@ class Foldable extends PureComponent {
     return (
       <Fragment>
         {this.renderOriginal()}
-        {this.props.isFolded && this.renderFoldedCopy()}
+        {this.props.toFold && this.renderFoldedCopy()}
       </Fragment>
     );
   }
 }
 
 Foldable.propTypes = {
-  isFolded: PropTypes.bool,
+  toFold: PropTypes.bool,
   open: PropTypes.bool,
   front: PropTypes.element,
   back: PropTypes.element,
@@ -143,7 +140,7 @@ const TopFold = styled(FoldBase)`
   top: 0;
   height: ${(props) => Math.round(props.foldHeight)}px;
   animation: ${foldTopDown} ${(props) => props.duration * 0.8}ms forwards
-    ${(props) => props.duration * 0.33}ms;
+    ${(props) => props.duration * 0.33}ms ${props => props.coming ? 'reverse' : ''};
   transform-style: preserve-3d;
 `;
 
@@ -157,7 +154,7 @@ const BottomFold = styled(FoldBase)`
   z-index: 2;
   top: ${(props) => Math.round(props.offsetTop)}px;
   height: ${(props) => Math.round(props.foldHeight)}px;
-  animation: ${foldBottomUp} ${(props) => props.duration}ms forwards;
+  animation: ${foldBottomUp} ${(props) => props.duration}ms forwards ${props => props.coming ? 'reverse' : ''};
   transform-style: preserve-3d;
 `;
 

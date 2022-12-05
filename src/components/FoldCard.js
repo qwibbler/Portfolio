@@ -5,14 +5,14 @@ import { useInView } from "react-intersection-observer";
 import { buildThreshold } from "../helpers/helper";
 
 const FoldCard = ({ index, project }) => {
-  const [folding, setFolding] = useState(false);
+  const [fold, setFold] = useState(false);
   const [ratio, setRatio] = useState(0);
   const [coming, setComing] = useState(false);
 
   const { ref } = useInView({
     threshold: buildThreshold(10),
     onChange: (inView, entry) => {
-      setFolding(entry.intersectionRatio > 0.9);
+      setFold(entry.intersectionRatio > 0.9);
       setComing(ratio < entry.intersectionRatio);
       setRatio(entry.intersectionRatio);
     },
@@ -23,24 +23,27 @@ const FoldCard = ({ index, project }) => {
   // };
 
   const onclick = () => {
-    setFolding(true);
+    setFold(true);
     setTimeout(() => {
-      setFolding(false);
+      setFold(false);
     }, 6000);
   }
 
   return (
     <div ref={ref} className={'card-space'}>
       <Foldable
-        isFolded={folding}
-        open={coming}
+        toFold={fold}
+        coming={coming}
         front={<ProjectCard key={index} index={index} project={project} onclick={() => {}} />}
-        back={<h1 className="back-text">{project.title}</h1>}
+        back={<h1>{project.title}</h1>}
         duration={4000}
         onCompleteFolding={() => {
           console.log("Folded!");
         }}
       />
+      <div className="btn">
+        <button onClick={onclick}>See Project</button>
+      </div>
     </div>
   );
 }

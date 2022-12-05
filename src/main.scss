@@ -275,7 +275,7 @@ main {
           width: $card-width;
           left: 50%;
           transform: translateX(-50%);
-          animation: 3s enterLeft 3s ease-in reverse forwards;
+          animation: 3s enterLeft ease-in forwards;
 
           .hide-overflow {
             position: relative;
@@ -300,7 +300,7 @@ main {
             &.topfold {
               border-top: none;
 
-              .back-text {
+              h1 {
                 @include gold-text;
                 font-family: 'IM Fell English SC', serif;
                 font-size: 2em;

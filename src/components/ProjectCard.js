@@ -11,9 +11,6 @@ const ProjectCard = ({ index, project, onclick }) => {
           <ul className="project-list">{project.list}</ul>
         </div>
       </div>
-      <div className="btn">
-        <button onClick={onclick}>See Project</button>
-      </div>
     </>
   );
 };
