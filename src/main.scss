@@ -245,17 +245,54 @@ main {
     .cards {
       $card-width: 80vw;
 
-      & > div {
-        margin: 6rem 0;
-      }
+      // & > div {
+      //   margin: 6rem 0;
+      // }
 
       .card-space {
         height: 70vh;
-        // margin-bottom: 100vh;
+        margin-bottom: 100vh;
 
-        // &:last-child {
-        //   margin-bottom: 0;
-        // }
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .wrapper {
+          position: fixed;
+          z-index: 10000;
+          width: $card-width;
+          left: 50%;
+          transform: translateX(-50%);
+
+          .hide-overflow {
+            position: relative;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+          }
+
+          .back {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(180deg);
+            backface-visibility: hidden;
+            background: url(./images/bg/black-paper.jpg), rgba(193, 187, 187, 0.9);
+            background-blend-mode: hard-light;
+
+            &.topfold {
+              // background: grey;
+            }
+
+            &.bottomfold {
+              // background: darkgray;
+              box-shadow: 0px -30px 50px -20px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
       }
 
       .card {
@@ -264,7 +301,7 @@ main {
         margin: 0 auto;
         padding: 1rem;
         border-radius: 2px;
-        background: hsl(60, 20%, 83%) url(./images/bg/black-paper.jpg);
+        background: url(./images/bg/black-paper.jpg);
         font-family: 'IM Fell English SC', serif;
         color: goldenrod;
 
