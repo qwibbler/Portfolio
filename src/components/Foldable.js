@@ -110,17 +110,6 @@ Foldable.propTypes = {
   onCompleteFolding: PropTypes.func,
 };
 
-// const enterLeft = keyframes`
-//   from {
-//     transform-origin: top center;
-//     transform: translateX(-100%) scale(0);
-//   }
-//   to {
-//     transform-origin: top center;
-//     transform: translateX(0) scale(1);
-//   }
-// `;
-
 const foldBottomUp = keyframes`
   from {
     transform-origin: top center;
@@ -142,11 +131,6 @@ const foldTopDown = keyframes`
     transform: perspective(1000px) rotateX(-180deg);
   }
 `;
-
-// const Wrapper = styled.div`
-//   position: fixed;
-//   z-index: 10000;
-// `;
 
 const FoldBase = styled.div`
   position: absolute;
@@ -177,13 +161,6 @@ const BottomFold = styled(FoldBase)`
   transform-style: preserve-3d;
 `;
 
-// const HideOverflow = styled.div`
-//   position: relative;
-//   height: 100%;
-//   z-index: 2;
-//   overflow: hidden;
-// `;
-
 const TopFoldContents = styled.div`
   backface-visibility: hidden;
 `;
@@ -199,33 +176,6 @@ const BottomFoldContents = styled.div`
   height: ${(props) => props.height}px;
   transform: translateY(${(props) => Math.round(props.offsetTop) * -1}px);
   backface-visibility: hidden;
-`;
-
-// const TopFoldBack = styled.div`
-//   position: absolute;
-//   z-index: 1;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   transform: rotateX(180deg);
-//   background: rgba(255, 255, 255, 0.95);
-//   background: grey;
-//   backface-visibility: hidden;
-// `;
-
-const BottomFoldBack = styled.div`
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: rotateX(180deg);
-  background: rgba(255, 255, 255, 0.95);
-  background: white;
-  backface-visibility: hidden;
-  box-shadow: 0px -30px 50px -20px rgba(0, 0, 0, 0.2);
 `;
 
 export default Foldable;
