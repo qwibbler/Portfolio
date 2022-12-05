@@ -29,7 +29,7 @@ class Foldable extends PureComponent {
     return (
       <div
         ref={node => (this.node = node)}
-        style={{ opacity: (toFold && !coming) ? 0 : 1 }}
+        style={{ opacity: toFold && !coming ? 0 : 1 }}
       >
         {front}
       </div>
@@ -40,12 +40,16 @@ class Foldable extends PureComponent {
     const { back, duration, coming } = this.props;
     const { node } = this;
 
-    const { height, top } = node.getBoundingClientRect();
+    if (!node) { return null; }
+
+    // const { top } = node.getBoundingClientRect();
+
+    const height = window.innerHeight * 0.7
 
     const foldHeights = [height * 0.35, height * 0.35, height * 0.3];
 
     return (
-      <div className='wrapper' style={{ top, height }}>
+      <div className='wrapper' style={{ height }}>
         <TopFold
           innerRef={(node) => (this.finalFoldNode = node)}
           coming={coming}
