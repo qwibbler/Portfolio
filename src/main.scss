@@ -245,13 +245,17 @@ main {
     .cards {
       $card-width: 80vw;
 
+      & > div {
+        margin: 6rem 0;
+      }
+
       .card-space {
         height: 70vh;
-        margin-bottom: 100vh;
+        // margin-bottom: 100vh;
 
-        &:last-child {
-          margin-bottom: 0;
-        }
+        // &:last-child {
+        //   margin-bottom: 0;
+        // }
       }
 
       .card {

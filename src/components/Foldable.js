@@ -1,4 +1,3 @@
-// @flow
 import React, { PureComponent, Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
@@ -7,9 +6,6 @@ class Foldable extends PureComponent {
   static defaultProps = {
     duration: 1000,
   };
-
-  // node: ?HTMLElement;
-  // finalFoldNode: ?HTMLElement;
 
   componentDidUpdate(prevProps) {
     const { onCompleteFolding } = this.props;
@@ -44,12 +40,6 @@ class Foldable extends PureComponent {
     const { back, duration } = this.props;
     const { node } = this;
 
-    // If we weren't able to capture a ref to the node, we can't do any of this
-    // However, I think that's impossible? This is just for Flow.
-    if (!node) {
-      return;
-    }
-
     const { width, height } = node.getBoundingClientRect();
 
     const foldHeights = [height * 0.35, height * 0.35, height * 0.3];
@@ -59,7 +49,7 @@ class Foldable extends PureComponent {
     // properly. If you want to use this in an app, you'll likely wish to use
     // the top/left from node.getBoundingClientRect.
     return (
-      <Wrapper style={{ top: 0, left: 0, width, height }}>
+      <Wrapper style={{ top: 0, left: '50%', width, height }}>
         <TopFold
           innerRef={node => (this.finalFoldNode = node)}
           duration={duration}
@@ -143,6 +133,7 @@ const foldTopDown = keyframes`
 const Wrapper = styled.div`
   position: fixed;
   z-index: 10000;
+  transform: translateX(-50%);
 `;
 
 const FoldBase = styled.div`
@@ -207,6 +198,7 @@ const TopFoldBack = styled.div`
   height: 100%;
   transform: rotateX(180deg);
   background: rgba(255, 255, 255, 0.95);
+  background: grey;
   backface-visibility: hidden;
 `;
 
@@ -219,6 +211,7 @@ const BottomFoldBack = styled.div`
   height: 100%;
   transform: rotateX(180deg);
   background: rgba(255, 255, 255, 0.95);
+  background: white;
   backface-visibility: hidden;
   box-shadow: 0px -30px 50px -20px rgba(0, 0, 0, 0.2);
 `;

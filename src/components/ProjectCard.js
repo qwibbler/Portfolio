@@ -3,7 +3,7 @@ import img from '../images/project_img/Gmail.png';
 const ProjectCard = ({ index, project, onclick }) => {
   return (
     <div className={'card-space ' + (index % 2)}>
-      <div className="card-pos-fixed">
+      {/* <div className="card-pos-fixed"> */}
         <div className="card to-fold">
           <div className="card-content">
             <img src={img} alt="projimg" />
@@ -15,7 +15,7 @@ const ProjectCard = ({ index, project, onclick }) => {
         <div className="btn">
           <button onClick={onclick}>See Project</button>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

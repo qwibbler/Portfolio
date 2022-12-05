@@ -11,9 +11,9 @@ const FoldCard = ({ index, project }) => {
 
   const onclick = () => {
     setFolding(true);
-    // setTimeout(() => {
-    //   setFolding(false);
-    // }, 5000);
+    setTimeout(() => {
+      setFolding(false);
+    }, 5000);
   }
 
   return (
@@ -21,7 +21,7 @@ const FoldCard = ({ index, project }) => {
         isFolded={folding}
         front={<ProjectCard key={index} index={index} project={project} onclick={onclick} />}
         back={<div className="back">Back</div>}
-        duration={1000}
+        duration={2000}
         onCompleteFolding={() => {
           console.log("Folded!");
         }}
