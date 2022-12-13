@@ -8,15 +8,17 @@ const FoldCard = ({ index, project }) => {
   const [fold, setFold] = useState(false);
   const [ratio, setRatio] = useState(0);
   const [coming, setComing] = useState(true);
+  const [time, setTime] = useState(0);
 
 
   // TODO: Change this to animation pause. animation time set.
   const { ref, inView } = useInView({
-    threshold: [1, 0.99, 0.98, 0.97],
+    threshold: buildThreshold(100),
     onChange: (inView, entry) => {
       setFold(inView);
       setComing(ratio < entry.intersectionRatio);
       setRatio(entry.intersectionRatio);
+      setTime(entry.intersectionRatio);
       // console.log(fold, ratio, entry.intersectionRatio, coming);
     },
   });
@@ -39,6 +41,7 @@ const FoldCard = ({ index, project }) => {
           <Foldable
             toFold={true}
             coming={coming}
+            time={time}
             front={
               <ProjectCard
                 key={index}
@@ -48,7 +51,7 @@ const FoldCard = ({ index, project }) => {
               />
             }
             back={<h1>{project.title}</h1>}
-            duration={4000}
+            duration={1000}
             onCompleteFolding={() => {
               console.log('Folded!');
             }}
