@@ -39,7 +39,7 @@ const FoldCard = ({ index, project }) => {
       {inView && (
         <>
           <Foldable
-            toFold={true}
+            folding={fold}
             coming={coming}
             time={time}
             front={
