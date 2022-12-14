@@ -7,23 +7,6 @@ class Foldable extends PureComponent {
     duration: 1000,
   };
 
-  componentDidUpdate(prevProps) {
-    const { onCompleteFolding } = this.props;
-
-    if (!prevProps.toFold && this.props.toFold && this.finalFoldNode) {
-      this.finalFoldNode.addEventListener('animationend', onCompleteFolding);
-    }
-  }
-
-  componentWillUnmount() {
-    const { onCompleteFolding } = this.props;
-
-    if (this.finalFoldNode) {
-      this.finalFoldNode.removeEventListener('animationend', onCompleteFolding);
-    }
-  }
-
-  // TODO: Figure out why offset...
   renderOriginal() {
     const { front, unfolded } = this.props;
 

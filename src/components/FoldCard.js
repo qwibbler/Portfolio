@@ -33,9 +33,6 @@ const FoldCard = ({ index, project }) => {
             front={<ProjectCard key={index} index={index} project={project} />}
             back={<h1>{project.title}</h1>}
             duration={1000}
-            onCompleteFolding={() => {
-              console.log('Folded!');
-            }}
           />
           <div className="btn">
             <button onClick={onclick}>See Project</button>
