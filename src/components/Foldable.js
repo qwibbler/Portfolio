@@ -40,7 +40,7 @@ class Foldable extends PureComponent {
 
     if (!node) return null;
 
-    const height = window.innerHeight * 0.7;
+    const { height } = node.firstElementChild.getBoundingClientRect();
 
     const foldHeights = [height * 0.35, height * 0.35, height * 0.3];
 
@@ -49,14 +49,14 @@ class Foldable extends PureComponent {
         className="wrapper"
         style={{
           height,
-          animationDelay: `${-(time * 1500)}ms`,
+          animationDelay: `${-(time * duration * 1.75)}ms`,
         }}
       >
         <TopFold
           innerRef={(node) => (this.finalFoldNode = node)}
           duration={duration}
           foldHeight={foldHeights[0]}
-          style={{ animationDelay: `${-(duration * 0.33) - time * 1000}ms` }}
+          style={{ animationDelay: `${- time * duration}ms` }}
         >
           <div className="hide-overflow">
             <TopFoldContents
@@ -80,7 +80,7 @@ class Foldable extends PureComponent {
           duration={duration}
           foldHeight={foldHeights[2]}
           offsetTop={foldHeights[0] + foldHeights[1]}
-          style={{ animationDelay: `${-(time * 1000)}ms` }}
+          style={{ animationDelay: `${-(time * duration)}ms` }}
         >
           <div className="hide-overflow">
             <BottomFoldContents
@@ -107,7 +107,6 @@ class Foldable extends PureComponent {
 Foldable.propTypes = {
   folding: PropTypes.bool,
   unfolded: PropTypes.bool,
-  open: PropTypes.bool,
   front: PropTypes.element,
   back: PropTypes.element,
   duration: PropTypes.number,

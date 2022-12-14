@@ -274,7 +274,8 @@ main {
           z-index: 10000;
           width: $card-width;
           left: 50%;
-          bottom: calc(20vh - 0.5rem);
+          bottom: calc(20vh - 1.5rem);
+          bottom: 20vh;
           transform: translateX(-50%);
           animation: 1s enterLeft ease-in forwards reverse;
           animation-play-state: paused;
