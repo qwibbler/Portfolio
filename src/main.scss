@@ -260,12 +260,12 @@ main {
         @keyframes enterLeft {
           from {
             // transform-origin: top center;
-            transform: translateX(50%) scale(0.25);
+            transform: translateX(-50%) scale(1);
           }
 
           to {
             // transform-origin: top center;
-            transform: translateX(-50%) scale(1);
+            transform: translateX(50%) scale(0.25);
           }
         }
 
@@ -276,7 +276,8 @@ main {
           left: 50%;
           bottom: calc(20vh - 0.5rem);
           transform: translateX(-50%);
-          animation: 3s enterLeft ease-in forwards;
+          animation: 1s enterLeft ease-in forwards reverse;
+          animation-play-state: paused;
 
           .card {
             position: relative;

@@ -44,7 +44,13 @@ class Foldable extends PureComponent {
     const foldHeights = [height * 0.35, height * 0.35, height * 0.3];
 
     return (
-      <div className="wrapper" style={{ height }}>
+      <div
+        className="wrapper"
+        style={{
+          height,
+          animationDelay: `${-(time * 1500)}ms`,
+        }}
+      >
         <TopFold
           innerRef={(node) => (this.finalFoldNode = node)}
           duration={duration}
@@ -139,7 +145,7 @@ const TopFold = styled(FoldBase)`
   top: 0;
   height: ${(props) => Math.round(props.foldHeight)}px;
   animation: ${foldTopDown} ${(props) =>
-    props.duration * 0.8}ms forwards reverse};
+  props.duration * 0.8}ms forwards reverse};
   animation-play-state: paused;
   transform-style: preserve-3d;
 `;
