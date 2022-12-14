@@ -1,3 +1,4 @@
+import Skills from './Skills';
 import img from '../images/project_img/Gmail.png';
 
 const ProjectCard = ({ index, project, onclick }) => {
@@ -7,7 +8,7 @@ const ProjectCard = ({ index, project, onclick }) => {
         <img src={img} alt="projimg" />
         <h4>{project.title}</h4>
         <p>{project.desc}</p>
-        <ul className="project-list">{project.list}</ul>
+        <Skills skills={project.langs} />
       </div>
     </div>
   );
