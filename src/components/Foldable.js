@@ -23,11 +23,12 @@ class Foldable extends PureComponent {
     }
   }
 
+  // TODO: Figure out why offset...
   renderOriginal() {
-    const { front, folding } = this.props;
+    const { front, unfolded } = this.props;
 
     return (
-      <div className="original" style={{ opacity: 0 }}>
+      <div className="original" style={{ opacity: unfolded ? 1 : 0 }}>
         <div ref={(node) => (this.node = node)}>{front}</div>
       </div>
     );
@@ -105,6 +106,7 @@ class Foldable extends PureComponent {
 
 Foldable.propTypes = {
   folding: PropTypes.bool,
+  unfolded: PropTypes.bool,
   open: PropTypes.bool,
   front: PropTypes.element,
   back: PropTypes.element,
