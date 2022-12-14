@@ -8,7 +8,7 @@ const ProjectCard = ({ key, project }) => {
         <img src={img} alt="projimg" />
         <h4>{project.title}</h4>
         <p>{project.desc}</p>
-        <Skills skills={project.langs} />
+        <Skills skills={project.langs} classes={'project-list'} />
       </div>
     </div>
   );
