@@ -25,7 +25,6 @@ class Foldable extends PureComponent {
 
   renderOriginal() {
     const { front, folding } = this.props;
-    console.log(this.node)
 
     return (
       <div
@@ -77,7 +76,7 @@ class Foldable extends PureComponent {
           duration={duration}
           foldHeight={foldHeights[2]}
           offsetTop={foldHeights[0] + foldHeights[1]}
-          style={{ animationDelay: `${-duration - (time * 1000)}ms` }}
+          style={{ animationDelay: `${-(time * 1000)}ms` }}
         >
           <div className='hide-overflow'>
             <BottomFoldContents
@@ -158,8 +157,7 @@ const BottomFold = styled(FoldBase)`
   z-index: 2;
   top: ${(props) => Math.round(props.offsetTop)}px;
   height: ${(props) => Math.round(props.foldHeight)}px;
-  // animation: ${foldBottomUp} ${(props) => props.duration}ms forwards ${props => props.coming ? 'reverse' : ''};
-  animation: ${foldBottomUp} ${(props) => props.duration}ms forwards 'reverse'};
+  animation: ${foldBottomUp} ${(props) => props.duration}ms forwards reverse};
   animation-play-state: paused;
   transform-style: preserve-3d;
 `;
