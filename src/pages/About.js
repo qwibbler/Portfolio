@@ -1,7 +1,7 @@
 import Card from '../components/Card';
 import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
-import List from '../components/List';
+import Skills from '../components/Skills';
 import { useInView } from 'react-intersection-observer';
 import { pageOptions } from '../helpers/helper';
 
@@ -42,15 +42,15 @@ const AboutPage = () => {
       <div className="about cards">
         <Card>
           <h4>Languages</h4>
-          <List skills={['JavaScript', 'Ruby', 'Html', 'CSS']} />
+          <Skills skills={['JavaScript', 'Ruby', 'Html', 'CSS']} />
         </Card>
         <Card>
           <h4>Frameworks</h4>
-          <List skills={['Bootstrap', 'Ruby on rails', 'RSpec', 'Capybara', 'Selenium']} />
+          <Skills skills={['Bootstrap', 'Ruby on rails', 'RSpec', 'Capybara', 'Selenium']} />
         </Card>
         <Card>
           <h4>Skills</h4>
-          <List skills={['Codekit', 'GitHub', 'Codepen', 'Gitlab', 'Terminal',]} />
+          <Skills skills={['Codekit', 'GitHub', 'Codepen', 'Gitlab', 'Terminal',]} />
         </Card>
       </div>
     </>}
