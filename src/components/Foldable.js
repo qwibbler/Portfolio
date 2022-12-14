@@ -141,8 +141,7 @@ const TopFold = styled(FoldBase)`
   z-index: 3;
   top: 0;
   height: ${(props) => Math.round(props.foldHeight)}px;
-  animation: ${foldTopDown} ${(props) => props.duration * 0.8}ms forwards
-    ${(props) => props.duration * 0.33}ms reverse};
+  animation: ${foldTopDown} ${(props) => props.duration * 0.8}ms forwards reverse};
   animation-play-state: paused;
   transform-style: preserve-3d;
 `;
