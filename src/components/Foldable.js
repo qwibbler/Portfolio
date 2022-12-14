@@ -38,7 +38,7 @@ class Foldable extends PureComponent {
   }
 
   renderFoldedCopy() {
-    const { back, duration, coming, time } = this.props;
+    const { back, duration, time } = this.props;
     const { node } = this;
 
     if (!node) { return null; }
@@ -51,7 +51,6 @@ class Foldable extends PureComponent {
       <div className='wrapper' style={{ height }}>
         <TopFold
           innerRef={(node) => (this.finalFoldNode = node)}
-          coming={coming}
           duration={duration}
           foldHeight={foldHeights[0]}
           style={{ animationDelay: `${-(duration * 0.33) - (time * 1000)}ms` }}
@@ -78,7 +77,6 @@ class Foldable extends PureComponent {
           duration={duration}
           foldHeight={foldHeights[2]}
           offsetTop={foldHeights[0] + foldHeights[1]}
-          coming={coming}
           style={{ animationDelay: `${-duration - (time * 1000)}ms` }}
         >
           <div className='hide-overflow'>
@@ -144,8 +142,6 @@ const TopFold = styled(FoldBase)`
   z-index: 3;
   top: 0;
   height: ${(props) => Math.round(props.foldHeight)}px;
-  // animation: ${foldTopDown} ${(props) => props.duration * 0.8}ms forwards
-  //   ${(props) => props.duration * 0.33}ms ${props => props.coming ? 'reverse' : ''};
   animation: ${foldTopDown} ${(props) => props.duration * 0.8}ms forwards
     ${(props) => props.duration * 0.33}ms reverse};
   animation-play-state: paused;
