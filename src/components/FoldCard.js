@@ -6,8 +6,8 @@ import { buildThreshold } from '../helpers/helper';
 
 const FoldCard = ({ index, project }) => {
   const [fold, setFold] = useState(false);
-  const [ratio, setRatio] = useState(0);
-  const [coming, setComing] = useState(true);
+  // const [ratio, setRatio] = useState(0);
+  // const [coming, setComing] = useState(true);
   const [time, setTime] = useState(0);
 
 
@@ -16,8 +16,8 @@ const FoldCard = ({ index, project }) => {
     threshold: buildThreshold(100),
     onChange: (inView, entry) => {
       setFold(inView);
-      setComing(ratio < entry.intersectionRatio);
-      setRatio(entry.intersectionRatio);
+      // setComing(ratio < entry.intersectionRatio);
+      // setRatio(entry.intersectionRatio);
       setTime(entry.intersectionRatio);
       // console.log(fold, ratio, entry.intersectionRatio, coming);
     },
@@ -40,7 +40,7 @@ const FoldCard = ({ index, project }) => {
         <>
           <Foldable
             folding={fold}
-            coming={coming}
+            // coming={coming}
             time={time}
             front={
               <ProjectCard
