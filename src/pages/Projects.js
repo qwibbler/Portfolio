@@ -1,5 +1,4 @@
 import { useInView } from 'react-intersection-observer';
-// import { pageOptions } from '../helpers/helper';
 import { projectsData } from '../helpers/helper';
 import Heading from '../components/Heading';
 import FoldCard from '../components/FoldCard';
