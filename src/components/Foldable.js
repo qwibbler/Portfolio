@@ -24,14 +24,15 @@ class Foldable extends PureComponent {
   }
 
   renderOriginal() {
-    const { front, toFold, coming } = this.props;
+    const { front, folding } = this.props;
+    console.log(this.node)
 
     return (
       <div
-        ref={node => (this.node = node)}
-        style={{ opacity: toFold && !coming ? 0 : 1 }}
+        className='original'
+        style={{ opacity: folding ? 0 : 1 }}
       >
-        {front}
+        <div ref={node => (this.node = node)}>{front}</div>
       </div>
     );
   }
@@ -42,14 +43,9 @@ class Foldable extends PureComponent {
 
     if (!node) { return null; }
 
-    // const { top } = node.getBoundingClientRect();
-
     const height = window.innerHeight * 0.7
 
     const foldHeights = [height * 0.35, height * 0.35, height * 0.3];
-
-    // TopFold.style.animationDelay = `${(duration * 0.33) - time}ms`
-    // BottomFold.style.animationDelay = `${duration - time}ms`
 
     return (
       <div className='wrapper' style={{ height }}>
@@ -101,14 +97,14 @@ class Foldable extends PureComponent {
     return (
       <Fragment>
         {this.renderOriginal()}
-        {this.props.toFold && this.renderFoldedCopy()}
+        {this.props.folding && this.renderFoldedCopy()}
       </Fragment>
     );
   }
 }
 
 Foldable.propTypes = {
-  toFold: PropTypes.bool,
+  folding: PropTypes.bool,
   open: PropTypes.bool,
   front: PropTypes.element,
   back: PropTypes.element,
