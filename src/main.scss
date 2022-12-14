@@ -259,12 +259,12 @@ main {
 
         @keyframes enterLeft {
           from {
-            // transform-origin: top center;
+            transform-origin: bottom left;
             transform: translateX(-50%) scale(1);
           }
 
           to {
-            // transform-origin: top center;
+            transform-origin: bottom left;
             transform: translateX(50%) scale(0.25);
           }
         }

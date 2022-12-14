@@ -56,7 +56,7 @@ class Foldable extends PureComponent {
           innerRef={(node) => (this.finalFoldNode = node)}
           duration={duration}
           foldHeight={foldHeights[0]}
-          style={{ animationDelay: `${- time * duration}ms` }}
+          style={{ animationDelay: `${-(duration * 0.33) - time * duration}ms` }}
         >
           <div className="hide-overflow">
             <TopFoldContents
@@ -80,7 +80,8 @@ class Foldable extends PureComponent {
           duration={duration}
           foldHeight={foldHeights[2]}
           offsetTop={foldHeights[0] + foldHeights[1]}
-          style={{ animationDelay: `${-(time * duration)}ms` }}
+          // style={{ animationDelay: `${-(time * duration)}ms` }}
+          style={{ animationDelay: `${-(duration * 0.33) - time * duration}ms` }}
         >
           <div className="hide-overflow">
             <BottomFoldContents
