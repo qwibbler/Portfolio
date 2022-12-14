@@ -30,7 +30,7 @@ const FoldCard = ({ index, project }) => {
             folding={fold}
             unfolded={unfolded}
             time={time}
-            front={<ProjectCard key={index} index={index} project={project} />}
+            front={<ProjectCard key={index} project={project} />}
             back={<h1>{project.title}</h1>}
             duration={1000}
           />
