@@ -22,13 +22,6 @@ const FoldCard = ({ index, project }) => {
   //   setFolding(false);
   // };
 
-  const onclick = () => {
-    setFold(true);
-    setTimeout(() => {
-      setFold(false);
-    }, 6000);
-  };
-
   return (
     <div ref={ref} className={'card-space'}>
       {inView && (
@@ -37,14 +30,7 @@ const FoldCard = ({ index, project }) => {
             folding={fold}
             unfolded={unfolded}
             time={time}
-            front={
-              <ProjectCard
-                key={index}
-                index={index}
-                project={project}
-                onclick={() => {}}
-              />
-            }
+            front={<ProjectCard key={index} index={index} project={project} />}
             back={<h1>{project.title}</h1>}
             duration={1000}
             onCompleteFolding={() => {
