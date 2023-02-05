@@ -18,7 +18,7 @@ class Foldable extends PureComponent {
   }
 
   renderFoldedCopy() {
-    const { back, duration, time } = this.props;
+    const { back, duration, time, index } = this.props;
     const { node } = this;
 
     if (!node) return null;
@@ -29,7 +29,7 @@ class Foldable extends PureComponent {
 
     return (
       <div
-        className="wrapper"
+        className={"wrapper index" + (index % 2)}
         style={{
           height,
           animationDelay: `${-(time * duration * 1.75)}ms`,
@@ -82,19 +82,19 @@ class Foldable extends PureComponent {
     return (
       <Fragment>
         {this.renderOriginal()}
-        {this.props.folding && this.renderFoldedCopy()}
+        {this.renderFoldedCopy()}
       </Fragment>
     );
   }
 }
 
 Foldable.propTypes = {
-  folding: PropTypes.bool,
+  // folding: PropTypes.bool,
   unfolded: PropTypes.bool,
   front: PropTypes.element,
   back: PropTypes.element,
   duration: PropTypes.number,
-  onCompleteFolding: PropTypes.func,
+  // onCompleteFolding: PropTypes.func,
 };
 
 const foldBottomUp = keyframes`
@@ -129,8 +129,7 @@ const TopFold = styled(FoldBase)`
   z-index: 3;
   top: 0;
   height: ${(props) => Math.round(props.foldHeight)}px;
-  animation: ${foldTopDown} ${(props) =>
-  props.duration * 0.8}ms forwards reverse};
+  animation: ${foldTopDown} ${(props) => props.duration * 0.8}ms forwards reverse};
   animation-play-state: paused;
   transform-style: preserve-3d;
 `;

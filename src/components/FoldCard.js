@@ -12,8 +12,8 @@ const FoldCard = ({ index, project }) => {
   const { ref, inView } = useInView({
     threshold: buildThreshold(100),
     onChange: (inView, entry) => {
-      setFold(inView);
-      setUnfolded(entry.intersectionRatio > 0.9)
+      // setFold(true);
+      setUnfolded(entry.intersectionRatio > 0.6)
       setTime(entry.intersectionRatio);
     },
   });
@@ -27,9 +27,10 @@ const FoldCard = ({ index, project }) => {
       {inView && (
         <>
           <Foldable
-            folding={fold}
+            // folding={fold}
             unfolded={unfolded}
             time={time}
+            index={index}
             front={<ProjectCard key={index} project={project} />}
             back={<h1>{project.title}</h1>}
             duration={1000}

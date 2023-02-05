@@ -257,32 +257,48 @@ main {
           margin-bottom: 0;
         }
 
-        @keyframes enterLeft {
-          from {
-            transform-origin: bottom left;
-            transform: translateX(-50%) scale(1);
-          }
+        @mixin animation($name, $direction, $position) {
+          @keyframes #{$name} {
+            from {
+              transform-origin: bottom $direction;
+              transform: translateX($position) scale(0.25);
+            }
 
-          to {
-            transform-origin: bottom left;
-            transform: translateX(50%) scale(0.25);
+            to {
+              transform-origin: bottom $direction;
+              transform: translateX(-$position) scale(1);
+            }
           }
+        }
+
+        @mixin animate($name) {
+          animation: 1s #{$name} ease-in forwards;
+          animation-play-state: paused;
+        }
+
+        @mixin enterCard($name, $direction, $position) {
+          @include animation($name, $direction, $position);
+          @include animate($name);
+          #{$direction}: 50%;
         }
 
         .wrapper {
           position: fixed;
           z-index: 10000;
           width: $card-width;
-          left: 50%;
-          bottom: calc(20vh - 1.5rem);
-          bottom: 20vh;
-          transform: translateX(-50%);
-          animation: 1s enterLeft ease-in forwards reverse;
-          animation-play-state: paused;
+          bottom: 15vh;
+
+          &.index0 {
+            @include enterCard(enter-left, left, 50%);
+          }
+
+          &.index1 {
+            @include enterCard(enter-right, right, -50%);
+          }
 
           .card {
             position: relative;
-            transform: translateX(-50%);
+            // transform: translateX(-50%);
             top: 0;
           }
 
@@ -333,7 +349,7 @@ main {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
-        bottom: 20vh;
+        bottom: 15vh;
         max-width: $card-width;
         margin: 0 auto;
         padding: 1rem;
