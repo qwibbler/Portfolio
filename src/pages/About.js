@@ -2,17 +2,27 @@ import Card from '../components/Card';
 import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
 import Skills from '../components/Skills';
+import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { pageOptions } from '../helpers/helper';
+import { buildThreshold } from '../helpers/helper';
 
 const AboutPage = () => {
-  const { ref, inView } = useInView(pageOptions);
+  const [infoOn, setInfoOn] = useState(false);
+
+  const { ref, inView } = useInView({
+    threshold: buildThreshold(100),
+    onChange: (inView, entry) => {
+      const bcr = entry.boundingClientRect;
+      const isTopVisible = bcr.top && bcr.top > 0;
+      setInfoOn(entry.intersectionRatio > 0.1 && entry.intersectionRatio < 0.5 && isTopVisible);
+    },
+  });
 
   return (
   <section ref={ref} className="about-page page" id="third-page">
     {inView && <>
       <Heading>About Me ➢</Heading>
-      <InfoBox>
+      <InfoBox moreClasses={infoOn}>
         <span className="sub-heading">
           Hi, I'm <strong>Humaira Zaman!</strong>
         </span>
@@ -46,7 +56,7 @@ const AboutPage = () => {
         </Card>
         <Card>
           <h4>Frameworks</h4>
-          <Skills skills={['Bootstrap', 'Ruby on rails', 'RSpec', 'Capybara', 'Selenium']} />
+          <Skills skills={['Ruby on Rails', 'Bootstrap', 'RSpec', 'Capybara', 'Selenium']} />
         </Card>
         <Card>
           <h4>Skills</h4>

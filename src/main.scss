@@ -218,36 +218,22 @@ main {
         top: 5.25em;
         left: 50%;
         z-index: 0;
-        transform: translateX(-50%);
+        transform: scale(0.5, 0.01) translate(-50%, -100%);
         transform-origin: top left;
-        animation: 1.5s enter-info ease-in;
+        transition: transform 0.5s cubic-bezier(.6,-0.28,.74,.05);
 
         .sub-heading {
           font-size: 1.5em;
         }
+      }
 
-        @keyframes enter-info {
-          0% {
-            transform: scale(0, 0) translateX(-50%);
-          }
-
-          75% {
-            transform: scale(0.75, 0) translateX(-50%);
-          }
-
-          100% {
-            transform: scale(1, 1) translateX(-50%);
-          }
-        }
+      &.infobox.true {
+        transform: scale(1) translate(-50%);
       }
     }
 
     .cards {
       $card-width: 80vw;
-
-      // & > div {
-      //   margin: 6rem 0;
-      // }
 
       .card-space {
         height: 50vh;

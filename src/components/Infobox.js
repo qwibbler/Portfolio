@@ -1,3 +1,3 @@
-const InfoBox = (props) => <p className="wood-bg infobox">{props.children}</p>;
+const InfoBox = (props) => <div className={"wood-bg infobox " + props.moreClasses}>{props.children}</div>;
 
 export default InfoBox;
