@@ -11,7 +11,7 @@ const AboutPage = () => {
 
   const { ref, inView } = useInView({
     threshold: buildThreshold(100),
-    onChange: (inView, entry) => {
+    onChange: (_inView, entry) => {
       const bcr = entry.boundingClientRect;
       const isTopVisible = bcr.top && bcr.top > 0;
       setInfoOn(entry.intersectionRatio > 0.1 && entry.intersectionRatio < 0.5 && isTopVisible);

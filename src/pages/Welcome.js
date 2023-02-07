@@ -1,17 +1,25 @@
 import Heading from '../components/Heading';
 import InfoBox from '../components/Infobox';
+import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { pageOptions } from '../helpers/helper';
+import { buildThreshold } from '../helpers/helper';
 
 const WelcomePage = () => {
-  const { ref, inView } = useInView(pageOptions);
+  const [infoOn, setInfoOn] = useState(false);
+
+  const { ref, inView } = useInView({
+    threshold: buildThreshold(100),
+    onChange: (_inView, entry) => {
+      setInfoOn(entry.intersectionRatio > 0.2);
+    },
+  });
 
   return (
     <section ref={ref} className="welcome page" id="first-page">
       {inView && (
         <>
           <Heading>Welcome! ➢</Heading>
-          <InfoBox>
+          <InfoBox moreClasses={infoOn}>
             <span className="sub-heading">
               Hi, I’m <strong>Humaira Zaman!</strong>
             </span>
