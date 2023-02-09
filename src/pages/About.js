@@ -20,7 +20,7 @@ const AboutPage = () => {
       const cardStart = window.innerHeight * 0.45;
       const cardEnd = window.innerHeight * -0.9;
       const cardPCent = Math.floor(
-        ((top - cardStart) * 100) / (cardEnd - cardStart),
+        (top - cardStart) * 100 / (cardEnd - cardStart),
       );
 
       setInfoOn(top < infoStart && top > infoEnd);
@@ -28,6 +28,8 @@ const AboutPage = () => {
       if (cardPCent > 0 && cardPCent < 100) {
         setCardPos(cardPCent);
       }
+
+      console.log(cardPCent);
     },
   });
 
@@ -64,7 +66,7 @@ const AboutPage = () => {
               <button type="button">Get My Resume</button>
             </span>
           </InfoBox>
-          <div className={`about cards ${infoOn} ${cardPos}`}>
+          <div className='about cards' style={{ animationDelay: `-${cardPos}ms` }}>
             {/* have the animation work acording to top position. Have it go 0-100 -> probably sth to do with window.innerHeight */}
             <Card>
               <h4>Languages</h4>

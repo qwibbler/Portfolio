@@ -446,15 +446,37 @@ main {
       }
     }
 
-    // .cards {
-    //   display: flex;
-    //   justify-content: center;
-    //   transform: translateX(100%);
+    @keyframes enterSkillCards {
+      0% {
+        transform: translate(0, calc(15vh + 100%)) scale(0);
+      }
 
-    //   .card {
-    //     margin: 1rem;
-    //   }
-    // }
+      50% {
+        transform: translate(0) scale(1.5);
+      }
+
+      100% {
+        transform: translate(-100%, 0) scale(0);
+      }
+    }
+
+    .cards {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      // left: 50%;
+      // transform: translateX(50%);
+      animation: enterSkillCards 100ms ease-in-out forwards;
+      animation-play-state: paused;
+
+      .card {
+        position: relative;
+        // left: 0;
+        // transform: translateX(0);
+        margin: 1rem;
+      }
+    }
   }
 
   .contact-page {
