@@ -8,23 +8,26 @@ import { buildThreshold } from '../helpers/helper';
 
 const AboutPage = () => {
   const [infoOn, setInfoOn] = useState(false);
-  const [oldTop, setOldTop] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [cardPos, setCardPos] = useState(0);
 
   const { ref, inView } = useInView({
     threshold: buildThreshold(100),
     onChange: (_inView, entry) => {
       const top = entry.boundingClientRect.top;
-      setDirection((top - oldTop) > 0 ? 'up' : 'down');
-      console.log((top - oldTop) > 0 ? 'up' : 'down');
-      setOldTop(top);
 
-      const isTopVisible = top && top > 0;
-      setInfoOn(
-        entry.intersectionRatio > 0.1 &&
-          entry.intersectionRatio < 0.5 &&
-          isTopVisible,
+      const infoStart = window.innerHeight * 0.85;
+      const infoEnd = window.innerHeight * 0.5;
+      const cardStart = window.innerHeight * 0.45;
+      const cardEnd = window.innerHeight * -0.9;
+      const cardPCent = Math.floor(
+        ((top - cardStart) * 100) / (cardEnd - cardStart),
       );
+
+      setInfoOn(top < infoStart && top > infoEnd);
+
+      if (cardPCent > 0 && cardPCent < 100) {
+        setCardPos(cardPCent);
+      }
     },
   });
 
@@ -61,7 +64,8 @@ const AboutPage = () => {
               <button type="button">Get My Resume</button>
             </span>
           </InfoBox>
-          <div className={`about cards ${infoOn} ${direction}`}>
+          <div className={`about cards ${infoOn} ${cardPos}`}>
+            {/* have the animation work acording to top position. Have it go 0-100 -> probably sth to do with window.innerHeight */}
             <Card>
               <h4>Languages</h4>
               <Skills skills={['JavaScript', 'Ruby', 'Html', 'CSS']} />
