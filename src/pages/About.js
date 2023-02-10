@@ -9,6 +9,7 @@ import { buildThreshold } from '../helpers/helper';
 const AboutPage = () => {
   const [infoOn, setInfoOn] = useState(false);
   const [cardPos, setCardPos] = useState(0);
+  const duration = 1000;
 
   const { ref, inView } = useInView({
     threshold: buildThreshold(100),
@@ -26,10 +27,10 @@ const AboutPage = () => {
       setInfoOn(top < infoStart && top > infoEnd);
 
       if (cardPCent > 0 && cardPCent < 100) {
-        setCardPos(cardPCent);
+        setCardPos(cardPCent/100);
       }
+      console.log();
 
-      console.log(cardPCent);
     },
   });
 
@@ -66,13 +67,13 @@ const AboutPage = () => {
               <button type="button">Get My Resume</button>
             </span>
           </InfoBox>
-          <div className='about cards' style={{ animationDelay: `-${cardPos}ms` }}>
+          <div className='about cards'>
             {/* have the animation work acording to top position. Have it go 0-100 -> probably sth to do with window.innerHeight */}
-            <Card>
+            <Card style={{ animationDelay: `${duration - (cardPos * 3 * duration)}ms` }}>
               <h4>Languages</h4>
               <Skills skills={['JavaScript', 'Ruby', 'Html', 'CSS']} />
             </Card>
-            <Card>
+            <Card style={{ animationDelay: `${(duration * 0.33) - (cardPos * duration)}ms` }}>
               <h4>Frameworks</h4>
               <Skills
                 skills={[
@@ -84,7 +85,7 @@ const AboutPage = () => {
                 ]}
               />
             </Card>
-            <Card>
+            <Card style={{ animationDelay: `${(duration * 0.66) - (cardPos * duration)}ms` }}>
               <h4>Skills</h4>
               <Skills
                 skills={['Codekit', 'GitHub', 'Codepen', 'Gitlab', 'Terminal']}

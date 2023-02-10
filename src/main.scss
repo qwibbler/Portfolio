@@ -221,7 +221,7 @@ main {
         transform: scale(0.5, 0.01) translate(-50%, -100%);
         opacity: 0;
         transform-origin: top left;
-        transition: transform 1s cubic-bezier(.6,-0.28,.74,.05), opacity 0.01s 1s;
+        transition: transform 1s cubic-bezier(.6, -0.28, .74, .05), opacity 0.01s 1s;
 
         .sub-heading {
           font-size: 1.5em;
@@ -229,7 +229,7 @@ main {
       }
 
       &.infobox.true {
-        transition: transform 1s cubic-bezier(.6,-0.28,.74,.05), opacity 0.01s 0s;
+        transition: transform 1s cubic-bezier(.6, -0.28, .74, .05), opacity 0.01s 0s;
         transform: scale(1) translate(-50%);
         opacity: 1;
       }
@@ -448,32 +448,23 @@ main {
 
     @keyframes enterSkillCards {
       0% {
-        transform: translate(0, calc(15vh + 100%)) scale(0);
+        transform: translate(-50%, calc(15vh + 100%)) scale(0);
       }
 
       50% {
-        transform: translate(0) scale(1.5);
+        transform: translate(-50%, 0) scale(1.5);
       }
 
       100% {
-        transform: translate(-100%, 0) scale(0);
+        transform: translate(-100vw, 0) scale(0);
       }
     }
 
     .cards {
-      position: fixed;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      // left: 50%;
-      // transform: translateX(50%);
-      animation: enterSkillCards 100ms ease-in-out forwards;
-      animation-play-state: paused;
-
       .card {
-        position: relative;
-        // left: 0;
-        // transform: translateX(0);
+        transform: translate(-50%, -100vh);
+        animation: enterSkillCards 1000ms ease-in-out forwards;
+        animation-play-state: paused;
         margin: 1rem;
       }
     }
