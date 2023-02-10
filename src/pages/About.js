@@ -16,6 +16,9 @@ const AboutPage = () => {
     onChange: (_inView, entry) => {
       const top = entry.boundingClientRect.top;
 
+      // when 100vh => As you scroll down, top goes from window.innerHeight to -window.innerHeight
+      // when 200vh => As you scroll down, top goes from window.innerHeight to -window.innerHeight * 2
+      // BUT, when intersectionRatio does not change, function is not called
       const infoStart = window.innerHeight * 0.85;
       const infoEnd = window.innerHeight * 0.5;
       const cardStart = window.innerHeight * 0.45;
@@ -29,8 +32,6 @@ const AboutPage = () => {
       if (cardPCent > 0 && cardPCent < 100) {
         setCardPos(cardPCent/100);
       }
-      console.log();
-
     },
   });
 
