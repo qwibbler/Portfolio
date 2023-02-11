@@ -470,33 +470,44 @@ main {
   }
 
   .contact-page {
-    fieldset {
-      @include gold-border(0.1em);
+    .card {
+      height: 50vh;
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
 
-      legend {
-        text-align: left;
-        padding: 0.2rem;
-        margin: 0 1rem;
-      }
+      fieldset {
+        @include gold-border(0.1em);
 
-      input,
-      textarea {
-        color: $gold;
-        font-family: 'IM Fell English SC', serif;
-        padding: 0.5rem 1rem;
-        width: 100%;
-        font-size: 1.3rem;
-        background: transparent;
-        border: none;
-
-        &:focus {
-          outline: none;
+        legend {
+          text-align: left;
+          padding: 0.2rem;
+          margin: 0 1rem;
         }
-      }
 
-      textarea {
-        resize: none;
-        height: 6rem;
+        input,
+        textarea {
+          color: $gold;
+          font-family: 'IM Fell English SC', serif;
+          padding: 0.5rem 1rem;
+          width: 100%;
+          font-size: 1.3rem;
+          background: transparent;
+          border: none;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        textarea {
+          resize: none;
+          height: 100%;
+        }
+
+        &:last-child {
+          height: 100%;
+        }
       }
     }
   }
