@@ -1,19 +1,29 @@
 import Heading from "../components/Heading";
 import InfoBox from "../components/Infobox";
 import FormInput from "../components/FormInput";
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { pageOptions } from "../helpers/helper";
+import { buildThreshold } from "../helpers/helper";
 
 const ContactPage = () => {
-  const { ref, inView } = useInView(pageOptions);
+  const [infoOn, setInfoOn] = useState(false);
+
+  const { ref, inView } = useInView({
+    threshold: buildThreshold(100),
+    onChange: (_inView, entry) => {
+      setInfoOn(entry.intersectionRatio > 0.2);
+    },
+  });
 
   return (
     <section ref={ref} className="contact-page page" id="contact-me">
       {inView && <>
         <Heading>Contact Me</Heading>
-        <InfoBox>
-          I'm always interested in hearing about new projects,
-          so if you'd like to chat please get in touch.
+        <InfoBox moreClasses={infoOn}>
+          <span>
+            I'm always interested in hearing about new projects,
+            so if you'd like to chat please get in touch.
+          </span>
         </InfoBox>
         <form className="cards" action="https://formspree.io/f/moqyzrzd" method="post">
           <div className="card">
