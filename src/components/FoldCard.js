@@ -5,29 +5,23 @@ import { useInView } from 'react-intersection-observer';
 import { buildThreshold } from '../helpers/helper';
 
 const FoldCard = ({ index, project }) => {
-  const [fold, setFold] = useState(false);
   const [unfolded, setUnfolded] = useState(false);
   const [time, setTime] = useState(0);
 
   const { ref, inView } = useInView({
     threshold: buildThreshold(100),
-    onChange: (inView, entry) => {
+    onChange: (_inView, entry) => {
       // setFold(true);
-      setUnfolded(entry.intersectionRatio > 0.6)
+      setUnfolded(entry.intersectionRatio > 0.6);
       setTime(entry.intersectionRatio);
     },
   });
-
-  // const finishAction = () => {
-  //   setFolding(false);
-  // };
 
   return (
     <div ref={ref} className={'card-space'}>
       {inView && (
         <>
           <Foldable
-            // folding={fold}
             unfolded={unfolded}
             time={time}
             index={index}
