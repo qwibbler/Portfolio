@@ -6,27 +6,26 @@
   padding: 0;
   text-decoration: none;
   // list-style: none;
-  border: 2px solid pink;
 }
 
 body {
   scroll-behavior: smooth;
   font-style: normal;
-  width: 100vw;
   // overflow-x: hidden;
+  max-width: 100vw;
   text-align: center;
-  background: black url(../images/bg/stage.jpg) no-repeat fixed;
+  background: black url(./images/bg/stage.jpg) no-repeat fixed;
   background-size: auto 100%;
   background-position: center;
 }
 
 @mixin gold-border($width) {
   border: #{$width} solid goldenrod;
-  border-image: url(../images/bg/gold.jpg) 7 round;
+  border-image: url(./images/bg/gold.jpg) 7 round;
 }
 
 @mixin gold-text {
-  background: url(../images/bg/gold.jpg);
+  background: url(./images/bg/gold.jpg);
   background-size: 50px;
   -webkit-background-clip: text;
   background-clip: text;
@@ -35,46 +34,46 @@ body {
 
 section {
   position: relative;
-  width: 100vw;
   min-height: 100vh;
+  margin-bottom: 100vh;
+}
+
+.bg-dark {
+  position: fixed;
+  background-color: black;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin curtain($position) {
+  #{$position}: 0;
+}
+
+.curtain {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 50%;
+
+  &#left {
+    @include curtain(left);
+  }
+
+  &#right {
+    @include curtain(right);
+  }
 }
 
 .splash-page {
   z-index: 100;
   height: 100vh;
-  width: 100vw;
-  margin-bottom: 100vh;
+  // width: 100vw;
 
   .splash-space {
     margin: 0;
     height: 90vh;
-    width: 100vw;
-    background-color: black;
-  }
-
-  .bg-dark {
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    margin: -5vh 0;
-  }
-
-  @mixin curtain($position) {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    width: 50%;
-    #{$position}: 0;
-  }
-
-  .curtain {
-    &#left {
-      @include curtain(left);
-    }
-
-    &#right {
-      @include curtain(right);
-    }
   }
 
   $color-skin: #DE9B72;
@@ -146,10 +145,6 @@ main {
   }
 
   section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
     $hang: 1.5em;
 
     .wood-bg {
@@ -169,22 +164,19 @@ main {
       }
 
       &.heading {
-        background: $red url(../images/bg/dark-wood.jpg);
+        background: $red url(./images/bg/dark-wood.jpg);
         background-blend-mode: hard-light;
         background-size: 100% 100%;
+        position: fixed;
+        top: $hang;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, 0);
+        animation: 1s enter-heading ease-in;
 
         h1 {
           @include gold-border(0.1em);
           padding: 0.1em;
-        }
-
-        &.page-visible {
-          position: fixed;
-          top: $hang;
-          left: 50%;
-          z-index: 1;
-          transform: translate(-50%, 0);
-          animation: 1s enter-heading ease-in;
         }
 
         @keyframes enter-heading {
@@ -218,38 +210,28 @@ main {
         @include gold-border(0.3em);
         display: flex;
         flex-direction: column;
-        background: rgb(27, 27, 27) url(../images/bg/dark-wood.jpg);
+        background: rgb(27, 27, 27) url(./images/bg/dark-wood.jpg);
         background-blend-mode: difference;
         background-size: 100% 100%;
+        position: fixed;
+        // height: fit-content;
+        top: 5.25em;
+        left: 50%;
+        z-index: 0;
+        transform: scale(0.5, 0.01) translate(-50%, -100%);
+        opacity: 0;
+        transform-origin: top left;
+        transition: transform 1s cubic-bezier(.6, -0.28, .74, .05), opacity 0.01s 1s;
 
         .sub-heading {
           font-size: 1.5em;
         }
+      }
 
-        &.active {
-          position: fixed;
-          height: fit-content;
-          top: 5.25em;
-          left: 50%;
-          z-index: 0;
-          transform: translateX(-50%);
-          transform-origin: top left;
-          animation: 1.5s enter-info ease-in;
-        }
-
-        @keyframes enter-info {
-          0% {
-            transform: scale(0, 0) translateX(-50%);
-          }
-
-          75% {
-            transform: scale(0.75, 0) translateX(-50%);
-          }
-
-          100% {
-            transform: scale(1, 1) translateX(-50%);
-          }
-        }
+      &.infobox.true {
+        transition: transform 1s cubic-bezier(.6, -0.28, .74, .05), opacity 0.01s 0s;
+        transform: scale(1) translate(-50%);
+        opacity: 1;
       }
     }
 
@@ -257,21 +239,111 @@ main {
       $card-width: 80vw;
 
       .card-space {
-        height: 70vh;
-        margin-bottom: 100vh;
-      }
+        height: 50vh;
+        margin-bottom: 90vh;
 
-      .card-space:last-child {
-        margin-bottom: 0;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        @mixin animation($name, $direction, $position) {
+          @keyframes #{$name} {
+            from {
+              transform-origin: bottom $direction;
+              transform: translateX($position) scale(0.25);
+            }
+
+            to {
+              transform-origin: bottom $direction;
+              transform: translateX(-$position) scale(1);
+            }
+          }
+        }
+
+        @mixin animate($name) {
+          animation: 1s #{$name} ease-in forwards;
+          animation-play-state: paused;
+        }
+
+        @mixin enterCard($name, $direction, $position) {
+          @include animation($name, $direction, $position);
+          @include animate($name);
+          #{$direction}: 50%;
+        }
+
+        .wrapper {
+          position: fixed;
+          z-index: 10000;
+          width: $card-width;
+          bottom: 15vh;
+
+          &.index0 {
+            @include enterCard(enter-left, left, 50%);
+          }
+
+          &.index1 {
+            @include enterCard(enter-right, right, -50%);
+          }
+
+          .card {
+            position: relative;
+            // transform: translateX(-50%);
+            top: 0;
+          }
+
+          .hide-overflow {
+            position: relative;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+          }
+
+          .back {
+            @include gold-border(0.3em);
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(180deg);
+            backface-visibility: hidden;
+            background: url(./images/bg/black-paper.jpg), rgba(193, 187, 187, 0.9);
+            background-blend-mode: hard-light;
+
+            &.topfold {
+              border-top: none;
+
+              h1 {
+                @include gold-text;
+                font-family: 'IM Fell English SC', serif;
+                font-size: 2em;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+                width: 100%;
+              }
+            }
+
+            &.bottomfold {
+              border-bottom: none;
+              box-shadow: 0px -30px 50px -20px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
       }
 
       .card {
-        position: relative;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15vh;
         max-width: $card-width;
         margin: 0 auto;
         padding: 1rem;
         border-radius: 2px;
-        background: hsl(60, 20%, 83%) url(../images/bg/black-paper.jpg);
+        background: url(./images/bg/black-paper.jpg);
         font-family: 'IM Fell English SC', serif;
         color: goldenrod;
 
@@ -313,13 +385,17 @@ main {
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            justify-content: space-between;
+            // justify-content: space-between;
             max-height: 10vh;
           }
         }
       }
 
       .btn {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10vh;
         perspective: 100px;
         perspective-origin: 50%;
 
@@ -328,7 +404,7 @@ main {
           transform: rotateX(20deg) translateY(1.2rem);
           font-family: 'Vollkorn SC', serif;
           font-weight: bold;
-          background: url(../images/bg/mat.jpeg);
+          background: url(./images/bg/mat.jpeg);
           color: #3f1414;
           box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
           border: none;
@@ -346,14 +422,14 @@ main {
     }
   }
 
-  .about-page {
+  .about {
     button {
       padding: 0.2rem 1rem;
       // transform: translateY(0.2rem);
       margin-top: 0.2rem;
       font-family: 'Vollkorn SC', serif;
       font-weight: bold;
-      background: url(../images/bg/mat.jpeg);
+      background: url(./images/bg/mat.jpeg);
       color: #3f1414;
       box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 1px inset;
       border: none;
@@ -370,46 +446,90 @@ main {
       }
     }
 
-    .cards {
-      display: flex;
-      justify-content: center;
-      transform: translateX(100%);
+    @keyframes enterSkillCards {
+      0% {
+        transform: translate(-50%, calc(15vh + 100%)) scale(0);
+      }
 
+      50% {
+        transform: translate(-50%, 0) scale(1.5);
+      }
+
+      100% {
+        transform: translate(-100vw, 0) scale(0);
+      }
+    }
+
+    .cards {
       .card {
+        transform: translate(-50%, -100vh);
+        animation: enterSkillCards 1000ms ease-in-out forwards;
+        animation-play-state: paused;
         margin: 1rem;
       }
     }
   }
 
-  .contact-page {
-    fieldset {
-      @include gold-border(0.1em);
+  .contact {
+    margin-bottom: 0;
 
-      legend {
-        text-align: left;
-        padding: 0.2rem;
-        margin: 0 1rem;
-      }
+    .card {
+      height: 50vh;
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0px 8px 20px -5px rgb(225, 210, 145);
 
-      input,
-      textarea {
-        color: $gold;
-        font-family: 'IM Fell English SC', serif;
-        padding: 0.5rem 1rem;
-        width: 100%;
-        font-size: 1.3rem;
-        background: transparent;
-        border: none;
+      fieldset {
+        @include gold-border(0.1em);
 
-        &:focus {
-          outline: none;
+        legend {
+          text-align: left;
+          padding: 0.2rem;
+          margin: 0 1rem;
+        }
+
+        input,
+        textarea {
+          color: $gold;
+          font-family: 'IM Fell English SC', serif;
+          padding: 0.5rem 1rem;
+          width: 100%;
+          font-size: 1.3rem;
+          background: transparent;
+          border: none;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        textarea {
+          resize: none;
+          height: 100%;
+        }
+
+        &:last-child {
+          height: 100%;
         }
       }
+    }
 
-      textarea {
-        resize: none;
-        height: 6rem;
+    .btn {
+      button {
+        // Make more specific to work
+        box-shadow: 0px 3px 20px -6px rgb(225, 210, 145), rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
+    }
+
+    .curtain {
+      width: 0;
+      transition: width 0.1s;
+    }
+
+    .bg-dark {
+      opacity: 0;
+      transition: opacity 0.1s;
     }
   }
 
