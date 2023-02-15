@@ -38,6 +38,34 @@ section {
   margin-bottom: 100vh;
 }
 
+.bg-dark {
+  position: fixed;
+  background-color: black;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin curtain($position) {
+  #{$position}: 0;
+}
+
+.curtain {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 50%;
+
+  &#left {
+    @include curtain(left);
+  }
+
+  &#right {
+    @include curtain(right);
+  }
+}
+
 .splash-page {
   z-index: 100;
   height: 100vh;
@@ -46,33 +74,6 @@ section {
   .splash-space {
     margin: 0;
     height: 90vh;
-  }
-
-  .bg-dark {
-    position: fixed;
-    background-color: black;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  @mixin curtain($position) {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    width: 50%;
-    #{$position}: 0;
-  }
-
-  .curtain {
-    &#left {
-      @include curtain(left);
-    }
-
-    &#right {
-      @include curtain(right);
-    }
   }
 
   $color-skin: #DE9B72;
@@ -421,7 +422,7 @@ main {
     }
   }
 
-  .about-page {
+  .about {
     button {
       padding: 0.2rem 1rem;
       // transform: translateY(0.2rem);
@@ -469,12 +470,15 @@ main {
     }
   }
 
-  .contact-page {
+  .contact {
+    margin-bottom: 0;
+
     .card {
       height: 50vh;
       width: 90vw;
       display: flex;
       flex-direction: column;
+      box-shadow: 0px 8px 20px -5px rgb(225, 210, 145);
 
       fieldset {
         @include gold-border(0.1em);
@@ -509,6 +513,23 @@ main {
           height: 100%;
         }
       }
+    }
+
+    .btn {
+      button {
+        // Make more specific to work
+        box-shadow: 0px 3px 20px -6px rgb(225, 210, 145), rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      }
+    }
+
+    .curtain {
+      width: 0;
+      transition: width 0.1s;
+    }
+
+    .bg-dark {
+      opacity: 0;
+      transition: opacity 0.1s;
     }
   }
 

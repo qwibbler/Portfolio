@@ -26,7 +26,7 @@ const SplashPage = () => {
       {inView && (
         <>
           <div className="bg-dark" />
-          <img className="curtain paper" id="left" src={Curtain} alt="" />
+          <img className="curtain" id="left" src={Curtain} alt="" />
           <img className="curtain" id="right" src={Curtain} alt="" />
           <Plaque>
             <h1>Humaira Zaman</h1>

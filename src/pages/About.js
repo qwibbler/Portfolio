@@ -36,7 +36,7 @@ const AboutPage = () => {
   });
 
   return (
-    <section ref={ref} className="about-page page" id="third-page">
+    <section ref={ref} className="about page" id="third-page">
       {inView && (
         <>
           <Heading>About Me ➢</Heading>
